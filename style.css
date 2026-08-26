@@ -211,3 +211,357 @@ td {
     }
 
 }
+
+/* ========================================
+   HEADER RIGHT
+======================================== */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* ========================================
+   BUTTON QR
+======================================== */
+
+.btn-qr {
+    background: #16804f;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-qr:hover {
+    background: #10673f;
+}
+
+
+/* ========================================
+   BUTTON DATA
+======================================== */
+
+.btn-data {
+    margin-top: 20px;
+    background: #16804f;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-data:hover {
+    background: #10673f;
+}
+
+
+/* ========================================
+   DASHBOARD INFO
+======================================== */
+
+.dashboard-info {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #e5e7eb;
+}
+
+.dashboard-info h2 {
+    margin-bottom: 10px;
+}
+
+.dashboard-info p {
+    color: #6b7280;
+    margin-top: 6px;
+}
+
+
+/* ========================================
+   MODAL QR
+======================================== */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    z-index: 999;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        rgba(0, 0, 0, 0.5);
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+.modal-content {
+
+    position: relative;
+
+    width: 380px;
+
+    max-width: 90%;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 40px
+        rgba(0,0,0,0.20);
+
+}
+
+
+.modal-content h2 {
+
+    color: #17324d;
+
+    margin-bottom: 10px;
+
+}
+
+
+.modal-content p {
+
+    color: #667085;
+
+    line-height: 1.5;
+
+}
+
+
+.close-modal {
+
+    position: absolute;
+
+    top: 12px;
+    right: 18px;
+
+    border: none;
+
+    background: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+}
+
+
+#qrcode {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin: 25px 0;
+
+}
+
+
+.qr-info {
+
+    font-size: 14px;
+
+}
+
+
+.btn-tutup {
+
+    margin-top: 15px;
+
+    padding: 10px 25px;
+
+    border: none;
+
+    background: #16804f;
+
+    color: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+
+
+/* ========================================
+   FILTER DATA
+======================================== */
+
+.filter-area {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.filter-area input,
+.filter-area select {
+
+    padding: 10px;
+
+    border:
+
+        1px solid
+        #d1d5db;
+
+    border-radius: 8px;
+
+    background: white;
+
+}
+
+
+.table-scroll {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+}
+
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+
+    body {
+
+        display: block;
+
+    }
+
+
+    .sidebar {
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 15px;
+
+    }
+
+
+    .sidebar nav {
+
+        flex-direction: row;
+
+        overflow-x: auto;
+
+    }
+
+
+    .sidebar nav a {
+
+        white-space: nowrap;
+
+    }
+
+
+    .main-content {
+
+        padding: 15px;
+
+    }
+
+
+    header {
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        flex-direction: column;
+
+    }
+
+
+    .header-right {
+
+        width: 100%;
+
+    }
+
+
+    .tanggal {
+
+        flex: 1;
+
+    }
+
+
+    .btn-qr {
+
+        flex: 1;
+
+    }
+
+
+    .cards {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .table-header {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    .filter-area {
+
+        flex-direction: column;
+
+    }
+
+
+    .filter-area input,
+    .filter-area select {
+
+        width: 100%;
+
+    }
+
+
+    table {
+
+        min-width: 800px;
+
+    }
+
+}

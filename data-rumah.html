@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html lang="id">
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Data Rumah - MASAGI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+
+
+<body>
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <h2>
+            MASAGI
+        </h2>
+
+        <p>
+            Monitoring Aktif Sampah<br>
+            Berbasis Data Terintegrasi
+        </p>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Dashboard
+        </a>
+
+        <a
+            href="data-rumah.html"
+            class="active">
+
+            Data Rumah
+
+        </a>
+
+    </nav>
+
+</aside>
+
+
+
+<!-- ================= CONTENT ================= -->
+
+<main class="main-content">
+
+
+    <header>
+
+        <div>
+
+            <h1>
+                Data Rumah
+            </h1>
+
+            <p>
+                Status Pemilahan Sampah
+                Kelurahan Sukaluyu
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= SUMMARY ================= -->
+
+    <section class="cards">
+
+
+        <div class="card">
+
+            <p>
+                Total Rumah
+            </p>
+
+            <h2 id="totalDataRumah">
+                0
+            </h2>
+
+        </div>
+
+
+
+        <div class="card hijau">
+
+            <p>
+                Sudah Memilah
+            </p>
+
+            <h2 id="totalSudah">
+                0
+            </h2>
+
+        </div>
+
+
+
+        <div class="card merah">
+
+            <p>
+                Belum Memilah
+            </p>
+
+            <h2 id="totalBelum">
+                0
+            </h2>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= DATA ================= -->
+
+    <section class="table-container">
+
+
+        <div class="table-header">
+
+
+            <div>
+
+                <h2>
+                    Data Rumah
+                </h2>
+
+                <p>
+                    Status Pemilahan Sampah
+                </p>
+
+            </div>
+
+
+
+            <div class="filter-area">
+
+
+                <input
+                    type="text"
+                    id="cariData"
+                    placeholder="Cari ID atau alamat..."
+                    onkeyup="filterData()">
+
+
+
+                <select
+                    id="filterRW"
+                    onchange="filterData()">
+
+                    <option value="">
+                        Semua RW
+                    </option>
+
+                    <option value="01">
+                        RW 01
+                    </option>
+
+                    <option value="02">
+                        RW 02
+                    </option>
+
+                    <option value="03">
+                        RW 03
+                    </option>
+
+                    <option value="04">
+                        RW 04
+                    </option>
+
+                </select>
+
+
+
+                <select
+                    id="filterStatus"
+                    onchange="filterData()">
+
+                    <option value="">
+                        Semua Status
+                    </option>
+
+                    <option value="Sudah Memilah">
+                        Sudah Memilah
+                    </option>
+
+                    <option value="Belum Memilah">
+                        Belum Memilah
+                    </option>
+
+                </select>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- TABLE SCROLL -->
+
+        <div class="table-scroll">
+
+
+            <table>
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            No
+                        </th>
+
+                        <th>
+                            ID Rumah
+                        </th>
+
+                        <th>
+                            Alamat
+                        </th>
+
+                        <th>
+                            RT
+                        </th>
+
+                        <th>
+                            RW
+                        </th>
+
+                        <th>
+                            Status Pemilahan
+                        </th>
+
+                        <th>
+                            Tanggal Laporan
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+
+                <tbody id="tabelDataRumah">
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<script src="data.js">
+</script>
+
+
+<script>
+
+
+// ==========================
+// MENAMPILKAN DATA
+// ==========================
+
+
+function tampilkanData(data) {
+
+
+    const tabel =
+        document.getElementById(
+            "tabelDataRumah"
+        );
+
+
+    tabel.innerHTML = "";
+
+
+    data.forEach(
+        (rumah, index) => {
+
+
+            const kelasStatus =
+                rumah.status === "Sudah Memilah"
+                ? "sudah"
+                : "belum";
+
+
+            tabel.innerHTML += `
+
+                <tr>
+
+                    <td>
+                        ${index + 1}
+                    </td>
+
+
+                    <td>
+                        ${rumah.id}
+                    </td>
+
+
+                    <td>
+                        ${rumah.alamat}
+                    </td>
+
+
+                    <td>
+                        RT ${rumah.rt}
+                    </td>
+
+
+                    <td>
+                        RW ${rumah.rw}
+                    </td>
+
+
+                    <td>
+
+                        <span
+                            class="status ${kelasStatus}">
+
+                            ${rumah.status}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+                        ${rumah.tanggal}
+                    </td>
+
+
+                </tr>
+
+            `;
+
+        }
+    );
+
+}
+
+
+
+// ==========================
+// RINGKASAN
+// ==========================
+
+
+function hitungRingkasan() {
+
+
+    const total =
+        dataRumah.length;
+
+
+    const sudah =
+        dataRumah.filter(
+            rumah =>
+            rumah.status ===
+            "Sudah Memilah"
+        ).length;
+
+
+    const belum =
+        total - sudah;
+
+
+
+    document.getElementById(
+        "totalDataRumah"
+    ).innerText = total;
+
+
+    document.getElementById(
+        "totalSudah"
+    ).innerText = sudah;
+
+
+    document.getElementById(
+        "totalBelum"
+    ).innerText = belum;
+
+}
+
+
+
+// ==========================
+// FILTER
+// ==========================
+
+
+function filterData() {
+
+
+    const keyword =
+        document
+        .getElementById("cariData")
+        .value
+        .toLowerCase();
+
+
+    const rw =
+        document
+        .getElementById("filterRW")
+        .value;
+
+
+    const status =
+        document
+        .getElementById("filterStatus")
+        .value;
+
+
+
+    const hasil =
+        dataRumah.filter(
+            rumah => {
+
+
+                const cocokCari =
+
+                    rumah.alamat
+                    .toLowerCase()
+                    .includes(keyword)
+
+                    ||
+
+                    rumah.id
+                    .toLowerCase()
+                    .includes(keyword);
+
+
+
+                const cocokRW =
+
+                    rw === ""
+
+                    ||
+
+                    rumah.rw === rw;
+
+
+
+                const cocokStatus =
+
+                    status === ""
+
+                    ||
+
+                    rumah.status === status;
+
+
+
+                return (
+
+                    cocokCari
+                    &&
+                    cocokRW
+                    &&
+                    cocokStatus
+
+                );
+
+            }
+        );
+
+
+    tampilkanData(hasil);
+
+}
+
+
+
+// ==========================
+// JALANKAN
+// ==========================
+
+
+tampilkanData(dataRumah);
+
+hitungRingkasan();
+
+
+</script>
+
+
+
+</body>
+
+</html>

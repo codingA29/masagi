@@ -1,117 +1,306 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Dashboard MASAGI</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
 
-        <div class="logo">
-            <h2>MASAGI</h2>
-            <p>Monitoring Aktif Sampah<br>Berbasis Data Terintegrasi</p>
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <h2>MASAGI</h2>
+
+        <p>
+            Monitoring Aktif Sampah<br>
+            Berbasis Data Terintegrasi
+        </p>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html" class="active">
+            Dashboard
+        </a>
+
+        <a href="data-rumah.html">
+            Data Rumah
+        </a>
+
+        <a href="#">
+            Pemilahan Sampah
+        </a>
+
+        <a href="#">
+            Laporan
+        </a>
+
+    </nav>
+
+</aside>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main-content">
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div>
+
+            <h1>
+                Dashboard Pemilahan Sampah
+            </h1>
+
+            <p>
+                Kelurahan Sukaluyu
+            </p>
+
         </div>
 
-        <nav>
-            <a href="#" class="active">Dashboard</a>
-            <a href="#data-rumah">Data Rumah</a>
-            <a href="#pemilahan">Pemilahan Sampah</a>
-            <a href="#laporan">Laporan</a>
-        </nav>
 
-    </aside>
+        <!-- BAGIAN KANAN HEADER -->
+
+        <div class="header-right">
 
 
-    <!-- ISI DASHBOARD -->
-    <main class="main-content">
-
-        <header>
-            <div>
-                <h1>Dashboard Pemilahan Sampah</h1>
-                <p>Kelurahan Sukaluyu</p>
-            </div>
+            <!-- TANGGAL -->
 
             <div class="tanggal">
-                <span>Tanggal</span>
-                <strong id="tanggalHariIni"></strong>
-            </div>
-        </header>
 
+                <span>
+                    Tanggal
+                </span>
 
-        <!-- KARTU RINGKASAN -->
-        <section class="cards">
+                <strong id="tanggalHariIni">
+                </strong>
 
-            <div class="card">
-                <p>Total Rumah</p>
-                <h2 id="totalRumah">0</h2>
-                <span>Rumah Terdata</span>
-            </div>
-
-            <div class="card hijau">
-                <p>Sudah Memilah</p>
-                <h2 id="sudahMemilah">0</h2>
-                <span id="persenMemilah">0%</span>
-            </div>
-
-            <div class="card merah">
-                <p>Belum Memilah</p>
-                <h2 id="belumMemilah">0</h2>
-                <span id="persenBelum">0%</span>
-            </div>
-
-        </section>
-
-
-        <!-- DATA RUMAH -->
-        <section class="table-container" id="data-rumah">
-
-            <div class="table-header">
-                <div>
-                    <h2>Data Rumah</h2>
-                    <p>Status Pemilahan Sampah</p>
-                </div>
-
-                <input
-                    type="text"
-                    id="cariData"
-                    placeholder="Cari alamat..."
-                    onkeyup="cariRumah()"
-                >
             </div>
 
 
-            <table>
+            <!-- BUTTON QR -->
 
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Alamat Rumah</th>
-                        <th>RT</th>
-                        <th>RW</th>
-                        <th>Status Pemilahan</th>
-                        <th>Tanggal Laporan</th>
-                    </tr>
-                </thead>
+            <button
+                class="btn-qr"
+                onclick="bukaQR()">
 
-                <tbody id="tabelRumah">
+                ▦ QR Code
 
-                </tbody>
+            </button>
 
-            </table>
+        </div>
 
-        </section>
-
-    </main>
+    </header>
 
 
-    <script src="script.js"></script>
+
+    <!-- ================= KARTU ================= -->
+
+    <section class="cards">
+
+
+        <div class="card">
+
+            <p>
+                Total Rumah
+            </p>
+
+            <h2 id="totalRumah">
+                0
+            </h2>
+
+            <span>
+                Rumah Terdata
+            </span>
+
+        </div>
+
+
+
+        <div class="card hijau">
+
+            <p>
+                Sudah Memilah
+            </p>
+
+            <h2 id="sudahMemilah">
+                0
+            </h2>
+
+            <span id="persenMemilah">
+                0%
+            </span>
+
+        </div>
+
+
+
+        <div class="card merah">
+
+            <p>
+                Belum Memilah
+            </p>
+
+            <h2 id="belumMemilah">
+                0
+            </h2>
+
+            <span id="persenBelum">
+                0%
+            </span>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= INFORMASI ================= -->
+
+    <section class="dashboard-info">
+
+
+        <h2>
+            Monitoring Pemilahan Sampah
+        </h2>
+
+        <p>
+
+            Dashboard ini menampilkan ringkasan
+            pemilahan sampah rumah tangga
+            Kelurahan Sukaluyu.
+
+        </p>
+
+
+        <p>
+
+            Scan QR Code untuk melihat
+            seluruh data rumah dan status
+            pemilahannya.
+
+        </p>
+
+
+        <button
+            class="btn-data"
+            onclick="window.location.href='data-rumah.html'">
+
+            Lihat Data Rumah
+
+        </button>
+
+
+    </section>
+
+
+
+</main>
+
+
+
+<!-- ================= MODAL QR ================= -->
+
+<div
+    id="modalQR"
+    class="modal">
+
+
+    <div class="modal-content">
+
+
+        <button
+            class="close-modal"
+            onclick="tutupQR()">
+
+            ×
+
+        </button>
+
+
+        <h2>
+            QR Code Data Rumah
+        </h2>
+
+
+        <p>
+
+            Scan QR Code untuk melihat
+            seluruh data rumah dan
+            status pemilahan sampah.
+
+        </p>
+
+
+        <div id="qrcode">
+        </div>
+
+
+        <p class="qr-info">
+
+            Data menampilkan rumah
+            yang sudah maupun belum
+            memilah sampah.
+
+        </p>
+
+
+        <button
+            class="btn-tutup"
+            onclick="tutupQR()">
+
+            Tutup
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- QR CODE LIBRARY -->
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+</script>
+
+
+<!-- DATA -->
+
+<script src="data.js">
+</script>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="script.js">
+</script>
+
 
 </body>
+
 </html>
