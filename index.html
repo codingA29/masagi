@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard MASAGI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>MASAGI</h2>
+            <p>Monitoring Aktif Sampah<br>Berbasis Data Terintegrasi</p>
+        </div>
+
+        <nav>
+            <a href="#" class="active">Dashboard</a>
+            <a href="#data-rumah">Data Rumah</a>
+            <a href="#pemilahan">Pemilahan Sampah</a>
+            <a href="#laporan">Laporan</a>
+        </nav>
+
+    </aside>
+
+
+    <!-- ISI DASHBOARD -->
+    <main class="main-content">
+
+        <header>
+            <div>
+                <h1>Dashboard Pemilahan Sampah</h1>
+                <p>Kelurahan Sukaluyu</p>
+            </div>
+
+            <div class="tanggal">
+                <span>Tanggal</span>
+                <strong id="tanggalHariIni"></strong>
+            </div>
+        </header>
+
+
+        <!-- KARTU RINGKASAN -->
+        <section class="cards">
+
+            <div class="card">
+                <p>Total Rumah</p>
+                <h2 id="totalRumah">0</h2>
+                <span>Rumah Terdata</span>
+            </div>
+
+            <div class="card hijau">
+                <p>Sudah Memilah</p>
+                <h2 id="sudahMemilah">0</h2>
+                <span id="persenMemilah">0%</span>
+            </div>
+
+            <div class="card merah">
+                <p>Belum Memilah</p>
+                <h2 id="belumMemilah">0</h2>
+                <span id="persenBelum">0%</span>
+            </div>
+
+        </section>
+
+
+        <!-- DATA RUMAH -->
+        <section class="table-container" id="data-rumah">
+
+            <div class="table-header">
+                <div>
+                    <h2>Data Rumah</h2>
+                    <p>Status Pemilahan Sampah</p>
+                </div>
+
+                <input
+                    type="text"
+                    id="cariData"
+                    placeholder="Cari alamat..."
+                    onkeyup="cariRumah()"
+                >
+            </div>
+
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Alamat Rumah</th>
+                        <th>RT</th>
+                        <th>RW</th>
+                        <th>Status Pemilahan</th>
+                        <th>Tanggal Laporan</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelRumah">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
