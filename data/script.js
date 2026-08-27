@@ -112,7 +112,7 @@ function bukaQR() {
 
 
         const urlDataRumah =
-            "https://codingA29.github.io/masagi/data-rumah.html";
+            "https://codingA29.github.io/masagi/dashboard/data-rumah.html";
 
 
         new QRCode(

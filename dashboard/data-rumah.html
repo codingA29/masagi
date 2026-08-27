@@ -15,9 +15,10 @@
         Data Rumah - MASAGI
     </title>
 
+    <!-- CSS -->
     <link
         rel="stylesheet"
-        href="style.css">
+        href="../style/style.css">
 
 </head>
 
@@ -46,7 +47,8 @@
 
     <nav>
 
-        <a href="index.html">
+        <!-- KEMBALI KE DASHBOARD -->
+        <a href="../index.html">
             Dashboard
         </a>
 
@@ -288,8 +290,10 @@
 
 
 
-<script src="data.js">
-</script>
+<!-- ================= DATA ================= -->
+
+<script src="../data/data.js"></script>
+
 
 
 <script>
@@ -299,9 +303,7 @@
 // MENAMPILKAN DATA
 // ==========================
 
-
 function tampilkanData(data) {
-
 
     const tabel =
         document.getElementById(
@@ -353,8 +355,7 @@ function tampilkanData(data) {
 
                     <td>
 
-                        <span
-                            class="status ${kelasStatus}">
+                        <span class="status ${kelasStatus}">
 
                             ${rumah.status}
 
@@ -382,7 +383,6 @@ function tampilkanData(data) {
 // ==========================
 // RINGKASAN
 // ==========================
-
 
 function hitungRingkasan() {
 
@@ -425,7 +425,6 @@ function hitungRingkasan() {
 // ==========================
 // FILTER
 // ==========================
-
 
 function filterData() {
 
@@ -512,7 +511,6 @@ function filterData() {
 // ==========================
 // JALANKAN
 // ==========================
-
 
 tampilkanData(dataRumah);
 

@@ -10,7 +10,8 @@
 
     <title>Dashboard MASAGI</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/style.css">
 
 </head>
 
@@ -40,7 +41,7 @@
             Dashboard
         </a>
 
-        <a href="data-rumah.html">
+        <a href="dashboard/data-rumah.html">
             Data Rumah
         </a>
 
@@ -187,26 +188,22 @@
         </h2>
 
         <p>
-
             Dashboard ini menampilkan ringkasan
             pemilahan sampah rumah tangga
             Kelurahan Sukaluyu.
-
         </p>
 
 
         <p>
-
             Scan QR Code untuk melihat
             seluruh data rumah dan status
             pemilahannya.
-
         </p>
 
 
         <button
             class="btn-data"
-            onclick="window.location.href='data-rumah.html'">
+            onclick="window.location.href='dashboard/data-rumah.html'">
 
             Lihat Data Rumah
 
@@ -246,11 +243,9 @@
 
 
         <p>
-
             Scan QR Code untuk melihat
             seluruh data rumah dan
             status pemilahan sampah.
-
         </p>
 
 
@@ -259,11 +254,9 @@
 
 
         <p class="qr-info">
-
             Data menampilkan rumah
             yang sudah maupun belum
             memilah sampah.
-
         </p>
 
 
@@ -282,23 +275,21 @@
 
 
 
-<!-- QR CODE LIBRARY -->
+<!-- ================= QR CODE LIBRARY ================= -->
 
 <script
-src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
 </script>
 
 
-<!-- DATA -->
+<!-- ================= DATA ================= -->
 
-<script src="data.js">
-</script>
+<script src="data/data.js"></script>
 
 
-<!-- JAVASCRIPT -->
+<!-- ================= JAVASCRIPT ================= -->
 
-<script src="script.js">
-</script>
+<script src="data/script.js"></script>
 
 
 </body>
