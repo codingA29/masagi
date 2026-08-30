@@ -25,194 +25,7 @@
 
 
 <!-- =====================================================
-     MOBILE ADMIN HEADER
-     Hanya tampil di HP
-===================================================== -->
-
-<header class="mobile-admin-header">
-
-    <div class="mobile-admin-brand">
-
-        <img
-            src="assets/logo-masagi.jpeg"
-            alt="Logo MASAGI">
-
-        <div>
-
-            <strong>
-                MASAGI
-            </strong>
-
-            <span>
-                Dashboard Admin
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <button
-        type="button"
-        class="mobile-menu-button"
-        onclick="bukaMenuAdmin()"
-        aria-label="Buka menu">
-
-        <span></span>
-        <span></span>
-        <span></span>
-
-    </button>
-
-</header>
-
-
-
-<!-- =====================================================
-     MOBILE OVERLAY
-===================================================== -->
-
-<div
-    id="mobileAdminOverlay"
-    class="mobile-admin-overlay"
-    onclick="tutupMenuAdmin()">
-</div>
-
-
-
-<!-- =====================================================
-     MOBILE ADMIN MENU
-===================================================== -->
-
-<aside
-    id="mobileAdminMenu"
-    class="mobile-admin-menu">
-
-
-    <div class="mobile-menu-top">
-
-
-        <div class="mobile-menu-brand">
-
-            <img
-                src="assets/logo-masagi.jpeg"
-                alt="Logo MASAGI">
-
-            <div>
-
-                <strong>
-                    MASAGI
-                </strong>
-
-                <span>
-                    Admin
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <button
-            type="button"
-            class="mobile-menu-close"
-            onclick="tutupMenuAdmin()"
-            aria-label="Tutup menu">
-
-            ×
-
-        </button>
-
-
-    </div>
-
-
-    <nav class="mobile-menu-nav">
-
-
-        <a
-            href="index.html"
-            class="active">
-
-            Dashboard
-
-        </a>
-
-
-        <a
-            href="dashboard/data-rumah-admin.html">
-
-            Data Rumah
-
-        </a>
-
-
-        <a href="#">
-
-            Pemilahan Sampah
-
-        </a>
-
-
-        <a href="#">
-
-            Laporan
-
-        </a>
-
-
-        <button
-            type="button"
-            class="mobile-logout"
-            onclick="logout()">
-
-
-            <svg
-                viewBox="0 0 24 24"
-                width="21"
-                height="21"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round">
-
-
-                <path
-                    d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4">
-                </path>
-
-
-                <path
-                    d="M14 8l4 4-4 4">
-                </path>
-
-
-                <path
-                    d="M18 12H9">
-                </path>
-
-
-            </svg>
-
-
-            <span>
-                Exit
-            </span>
-
-
-        </button>
-
-
-    </nav>
-
-
-</aside>
-
-
-
-<!-- =====================================================
-     SIDEBAR DESKTOP
+     SIDEBAR
 ===================================================== -->
 
 <aside class="sidebar">
@@ -228,6 +41,7 @@
             class="logo-masagi">
 
     </div>
+
 
 
     <!-- MENU -->
@@ -246,6 +60,7 @@
         </a>
 
 
+
         <!-- DATA RUMAH -->
 
         <a
@@ -254,6 +69,7 @@
             Data Rumah
 
         </a>
+
 
 
         <!-- PEMILAHAN SAMPAH -->
@@ -265,6 +81,7 @@
         </a>
 
 
+
         <!-- LAPORAN -->
 
         <a href="#">
@@ -274,7 +91,10 @@
         </a>
 
 
-        <!-- EXIT -->
+
+        <!-- =========================================
+             EXIT
+        ========================================== -->
 
         <button
             class="btn-exit"
@@ -282,8 +102,9 @@
             onclick="logout()">
 
 
-            <span class="exit-icon">
+            <!-- ICON EXIT -->
 
+            <span class="exit-icon">
 
                 <svg
                     viewBox="0 0 24 24"
@@ -296,10 +117,14 @@
                     stroke-linejoin="round">
 
 
+                    <!-- PINTU -->
+
                     <path
                         d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4">
                     </path>
 
+
+                    <!-- PANAH -->
 
                     <path
                         d="M14 8l4 4-4 4">
@@ -313,9 +138,10 @@
 
                 </svg>
 
-
             </span>
 
+
+            <!-- TEXT -->
 
             <span class="exit-text">
 
@@ -341,6 +167,7 @@
 <main class="main-content">
 
 
+
     <!-- =================================================
          HEADER
     ================================================== -->
@@ -350,6 +177,7 @@
 
         <div class="header-space">
         </div>
+
 
 
         <div class="header-right">
@@ -367,6 +195,7 @@
                 </strong>
 
             </div>
+
 
 
             <!-- QR CODE -->
@@ -395,6 +224,7 @@
     <section class="cards">
 
 
+
         <!-- TOTAL RUMAH -->
 
         <div class="card">
@@ -414,6 +244,7 @@
         </div>
 
 
+
         <!-- SUDAH MEMILAH -->
 
         <div class="card card-sudah">
@@ -427,6 +258,7 @@
             </h2>
 
         </div>
+
 
 
         <!-- BELUM MEMILAH -->
@@ -455,6 +287,7 @@
     <section class="chart-section">
 
 
+
         <!-- =============================================
              DIAGRAM DONAT
         ============================================== -->
@@ -467,7 +300,9 @@
             </h2>
 
 
+
             <div class="donut-content">
+
 
 
                 <!-- DONUT -->
@@ -479,6 +314,9 @@
                     </canvas>
 
 
+
+                    <!-- TOTAL DI TENGAH DONUT -->
+
                     <div class="donut-center">
 
                         <strong id="totalDonut">
@@ -486,6 +324,7 @@
                             0
 
                         </strong>
+
 
                         <span>
 
@@ -500,9 +339,12 @@
 
 
 
-                <!-- LEGEND -->
+                <!-- =====================================
+                     LEGEND DONUT
+                ====================================== -->
 
                 <div class="chart-legend">
+
 
 
                     <!-- SUDAH MEMILAH -->
@@ -532,6 +374,7 @@
 
 
                         </div>
+
 
 
                         <strong
@@ -574,6 +417,7 @@
 
 
                         </div>
+
 
 
                         <strong
@@ -667,6 +511,7 @@
     <div class="modal-content">
 
 
+
         <!-- TOMBOL X -->
 
         <button
@@ -679,6 +524,7 @@
         </button>
 
 
+
         <!-- JUDUL -->
 
         <h2>
@@ -688,10 +534,12 @@
         </h2>
 
 
+
         <!-- TEMPAT QR -->
 
         <div id="qrcode">
         </div>
+
 
 
         <!-- INFORMASI -->
@@ -723,11 +571,13 @@
 </script>
 
 
+
 <!-- CHART.JS -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/chart.js">
 </script>
+
 
 
 <!-- SUPABASE LIBRARY -->
@@ -737,11 +587,13 @@
 </script>
 
 
+
 <!-- SUPABASE CONFIG -->
 
 <script
     src="data/supabase.js">
 </script>
+
 
 
 <!-- AUTH -->
@@ -780,134 +632,6 @@
 
 <script
     src="data/dashboard.js">
-</script>
-
-
-
-<!-- =====================================================
-     MOBILE ADMIN MENU SCRIPT
-===================================================== -->
-
-<script>
-
-
-function bukaMenuAdmin() {
-
-    const menu =
-        document.getElementById(
-            "mobileAdminMenu"
-        );
-
-
-    const overlay =
-        document.getElementById(
-            "mobileAdminOverlay"
-        );
-
-
-    if (menu) {
-
-        menu.classList.add(
-            "show"
-        );
-
-    }
-
-
-    if (overlay) {
-
-        overlay.classList.add(
-            "show"
-        );
-
-    }
-
-
-    document.body.classList.add(
-        "menu-admin-open"
-    );
-
-}
-
-
-
-function tutupMenuAdmin() {
-
-    const menu =
-        document.getElementById(
-            "mobileAdminMenu"
-        );
-
-
-    const overlay =
-        document.getElementById(
-            "mobileAdminOverlay"
-        );
-
-
-    if (menu) {
-
-        menu.classList.remove(
-            "show"
-        );
-
-    }
-
-
-    if (overlay) {
-
-        overlay.classList.remove(
-            "show"
-        );
-
-    }
-
-
-    document.body.classList.remove(
-        "menu-admin-open"
-    );
-
-}
-
-
-
-/* Tutup menu ketika ukuran layar kembali desktop */
-
-window.addEventListener(
-    "resize",
-    function() {
-
-        if (
-            window.innerWidth > 768
-        ) {
-
-            tutupMenuAdmin();
-
-        }
-
-    }
-);
-
-
-
-/* Tutup menggunakan tombol ESC */
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Escape"
-        ) {
-
-            tutupMenuAdmin();
-
-        }
-
-    }
-);
-
-
 </script>
 
 
