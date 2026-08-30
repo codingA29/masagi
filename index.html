@@ -5,13 +5,18 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard MASAGI</title>
+    <title>
+        Dashboard MASAGI
+    </title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style/style.css">
+    <link
+        rel="stylesheet"
+        href="style/style.css">
 
 </head>
 
@@ -19,69 +24,161 @@
 <body>
 
 
-<!-- ================= SIDEBAR ================= -->
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
 
 <aside class="sidebar">
 
-    <div class="logo">
 
-        <h2>MASAGI</h2>
+    <!-- LOGO MASAGI -->
 
-        <p>
-            Monitoring Aktif Sampah<br>
-            Berbasis Data Terintegrasi
-        </p>
+    <div class="logo-container">
+
+        <img
+            src="assets/logo-masagi.jpeg"
+            alt="Logo MASAGI"
+            class="logo-masagi">
 
     </div>
 
 
+
+    <!-- MENU -->
+
     <nav>
 
-        <a href="index.html" class="active">
+
+        <!-- DASHBOARD -->
+
+        <a
+            href="index.html"
+            class="active">
+
             Dashboard
+
         </a>
 
-        <a href="dashboard/data-rumah.html">
+
+
+        <!-- DATA RUMAH -->
+
+        <a
+            href="dashboard/data-rumah.html">
+
             Data Rumah
+
         </a>
 
+
+
+        <!-- PEMILAHAN SAMPAH -->
+
         <a href="#">
+
             Pemilahan Sampah
+
         </a>
 
+
+
+        <!-- LAPORAN -->
+
         <a href="#">
+
             Laporan
+
         </a>
+
+
+
+        <!-- =========================================
+             EXIT
+        ========================================== -->
+
+        <button
+            class="btn-exit"
+            type="button"
+            onclick="logout()">
+
+
+            <!-- ICON EXIT -->
+
+            <span class="exit-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="26"
+                    height="26"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+
+
+                    <!-- PINTU -->
+
+                    <path
+                        d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4">
+                    </path>
+
+
+                    <!-- PANAH -->
+
+                    <path
+                        d="M14 8l4 4-4 4">
+                    </path>
+
+
+                    <path
+                        d="M18 12H9">
+                    </path>
+
+
+                </svg>
+
+            </span>
+
+
+            <!-- TEXT -->
+
+            <span class="exit-text">
+
+                Exit
+
+            </span>
+
+
+        </button>
+
 
     </nav>
+
 
 </aside>
 
 
 
-<!-- ================= MAIN ================= -->
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
 
 <main class="main-content">
 
 
-    <!-- HEADER -->
 
-    <header>
+    <!-- =================================================
+         HEADER
+    ================================================== -->
 
-        <div>
+    <header class="dashboard-header">
 
-            <h1>
-                Dashboard Pemilahan Sampah
-            </h1>
 
-            <p>
-                Kelurahan Sukaluyu
-            </p>
-
+        <div class="header-space">
         </div>
 
 
-        <!-- BAGIAN KANAN HEADER -->
 
         <div class="header-right">
 
@@ -100,26 +197,35 @@
             </div>
 
 
-            <!-- BUTTON QR -->
+
+            <!-- QR CODE -->
 
             <button
                 class="btn-qr"
+                type="button"
                 onclick="bukaQR()">
 
                 ▦ QR Code
 
             </button>
 
+
         </div>
+
 
     </header>
 
 
 
-    <!-- ================= KARTU ================= -->
+    <!-- =================================================
+         KARTU RINGKASAN
+    ================================================== -->
 
     <section class="cards">
 
+
+
+        <!-- TOTAL RUMAH -->
 
         <div class="card">
 
@@ -139,7 +245,9 @@
 
 
 
-        <div class="card hijau">
+        <!-- SUDAH MEMILAH -->
+
+        <div class="card card-sudah">
 
             <p>
                 Sudah Memilah
@@ -149,15 +257,13 @@
                 0
             </h2>
 
-            <span id="persenMemilah">
-                0%
-            </span>
-
         </div>
 
 
 
-        <div class="card merah">
+        <!-- BELUM MEMILAH -->
+
+        <div class="card card-belum">
 
             <p>
                 Belum Memilah
@@ -167,10 +273,6 @@
                 0
             </h2>
 
-            <span id="persenBelum">
-                0%
-            </span>
-
         </div>
 
 
@@ -178,47 +280,228 @@
 
 
 
-    <!-- ================= INFORMASI ================= -->
+    <!-- =================================================
+         BAGIAN GRAFIK
+    ================================================== -->
 
-    <section class="dashboard-info">
-
-
-        <h2>
-            Monitoring Pemilahan Sampah
-        </h2>
-
-        <p>
-            Dashboard ini menampilkan ringkasan
-            pemilahan sampah rumah tangga
-            Kelurahan Sukaluyu.
-        </p>
+    <section class="chart-section">
 
 
-        <p>
-            Scan QR Code untuk melihat
-            seluruh data rumah dan status
-            pemilahannya.
-        </p>
+
+        <!-- =============================================
+             DIAGRAM DONAT
+        ============================================== -->
+
+        <div class="chart-box donut-box">
 
 
-        <button
-            class="btn-data"
-            onclick="window.location.href='dashboard/data-rumah.html'">
+            <h2>
+                Ringkasan Pemilahan Sampah
+            </h2>
 
-            Lihat Data Rumah
 
-        </button>
+
+            <div class="donut-content">
+
+
+
+                <!-- DONUT -->
+
+                <div class="donut-wrapper">
+
+
+                    <canvas id="statusChart">
+                    </canvas>
+
+
+
+                    <!-- TOTAL DI TENGAH DONUT -->
+
+                    <div class="donut-center">
+
+                        <strong id="totalDonut">
+
+                            0
+
+                        </strong>
+
+
+                        <span>
+
+                            Total Rumah
+
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =====================================
+                     LEGEND DONUT
+                ====================================== -->
+
+                <div class="chart-legend">
+
+
+
+                    <!-- SUDAH MEMILAH -->
+
+                    <div class="legend-item">
+
+
+                        <div class="legend-left">
+
+
+                            <span
+                                class="legend-dot hijau-dot">
+                            </span>
+
+
+                            <div>
+
+                                <strong>
+                                    Sudah Memilah
+                                </strong>
+
+                                <p id="legendSudah">
+                                    0 Rumah
+                                </p>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <strong
+                            class="legend-percent hijau-text"
+                            id="persenSudahDonut">
+
+                            0%
+
+                        </strong>
+
+
+                    </div>
+
+
+
+                    <!-- BELUM MEMILAH -->
+
+                    <div class="legend-item">
+
+
+                        <div class="legend-left">
+
+
+                            <span
+                                class="legend-dot merah-dot">
+                            </span>
+
+
+                            <div>
+
+                                <strong>
+                                    Belum Memilah
+                                </strong>
+
+                                <p id="legendBelum">
+                                    0 Rumah
+                                </p>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <strong
+                            class="legend-percent merah-text"
+                            id="persenBelumDonut">
+
+                            0%
+
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =============================================
+             DIAGRAM BATANG
+        ============================================== -->
+
+        <div class="chart-box bar-box">
+
+
+            <h2>
+                Persentase Rumah Memilah per RW
+            </h2>
+
+
+            <div class="bar-chart-container">
+
+                <canvas id="rwChart">
+                </canvas>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =============================================
+             CATATAN
+        ============================================== -->
+
+        <div class="chart-note">
+
+
+            <span class="info-icon">
+
+                i
+
+            </span>
+
+
+            <p>
+
+                Grafik menunjukkan ringkasan status
+                pemilahan sampah dan persentase rumah
+                yang sudah memilah sampah pada setiap RW.
+
+            </p>
+
+
+        </div>
 
 
     </section>
-
 
 
 </main>
 
 
 
-<!-- ================= MODAL QR ================= -->
+<!-- =====================================================
+     MODAL QR CODE
+===================================================== -->
 
 <div
     id="modalQR"
@@ -228,8 +511,12 @@
     <div class="modal-content">
 
 
+
+        <!-- TOMBOL X -->
+
         <button
             class="close-modal"
+            type="button"
             onclick="tutupQR()">
 
             ×
@@ -237,59 +524,115 @@
         </button>
 
 
+
+        <!-- JUDUL -->
+
         <h2>
-            QR Code Data Rumah
+
+            Scan Disini !
+
         </h2>
 
 
-        <p>
-            Scan QR Code untuk melihat
-            seluruh data rumah dan
-            status pemilahan sampah.
-        </p>
 
+        <!-- TEMPAT QR -->
 
         <div id="qrcode">
         </div>
 
 
+
+        <!-- INFORMASI -->
+
         <p class="qr-info">
-            Data menampilkan rumah
-            yang sudah maupun belum
-            memilah sampah.
+
+            Data menampilkan rumah yang sudah maupun
+            belum memilah sampah.
+
         </p>
 
 
-        <button
-            class="btn-tutup"
-            onclick="tutupQR()">
-
-            Tutup
-
-        </button>
-
-
     </div>
+
 
 </div>
 
 
 
-<!-- ================= QR CODE LIBRARY ================= -->
+<!-- =====================================================
+     LIBRARY JAVASCRIPT
+===================================================== -->
+
+
+<!-- QR CODE LIBRARY -->
 
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
 </script>
 
 
-<!-- ================= DATA ================= -->
 
-<script src="data/data.js"></script>
+<!-- CHART.JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/chart.js">
+</script>
 
 
-<!-- ================= JAVASCRIPT ================= -->
 
-<script src="data/script.js"></script>
+<!-- SUPABASE LIBRARY -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+
+<!-- SUPABASE CONFIG -->
+
+<script
+    src="data/supabase.js">
+</script>
+
+
+
+<!-- AUTH -->
+
+<script
+    src="data/auth.js">
+</script>
+
+
+
+<!-- =====================================================
+     CEK LOGIN
+===================================================== -->
+
+<script>
+
+    cekLogin();
+
+</script>
+
+
+
+<!-- =====================================================
+     DATA RUMAH
+===================================================== -->
+
+<script
+    src="data/data.js">
+</script>
+
+
+
+<!-- =====================================================
+     SCRIPT DASHBOARD
+===================================================== -->
+
+<script
+    src="data/script.js">
+</script>
 
 
 </body>

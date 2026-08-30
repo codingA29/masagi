@@ -1,11 +1,12 @@
 const dataRumah = [
+
     {
         id: "SKLY-001",
         alamat: "Jl. Sukaluyu I No. 12",
         rt: "01",
         rw: "01",
         status: "Sudah Memilah",
-        tanggal: "26/08/2026"
+        tanggal: "28/08/2026"
     },
 
     {
@@ -14,7 +15,7 @@ const dataRumah = [
         rt: "02",
         rw: "01",
         status: "Belum Memilah",
-        tanggal: "26/08/2026"
+        tanggal: "28/08/2026"
     },
 
     {
@@ -23,7 +24,7 @@ const dataRumah = [
         rt: "03",
         rw: "02",
         status: "Sudah Memilah",
-        tanggal: "26/08/2026"
+        tanggal: "28/08/2026"
     },
 
     {
@@ -32,7 +33,7 @@ const dataRumah = [
         rt: "04",
         rw: "02",
         status: "Sudah Memilah",
-        tanggal: "26/08/2026"
+        tanggal: "28/08/2026"
     },
 
     {
@@ -41,6 +42,7 @@ const dataRumah = [
         rt: "01",
         rw: "03",
         status: "Belum Memilah",
-        tanggal: "26/08/2026"
+        tanggal: "28/08/2026"
     }
+
 ];
