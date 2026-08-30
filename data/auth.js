@@ -1,27 +1,33 @@
+// ======================================================
+// MASAGI - AUTHENTICATION
+// ======================================================
+
+
+// ======================================================
+// LOGIN
+// ======================================================
+
 async function login() {
 
     const email =
         document
-        .getElementById("email")
-        .value
-        .trim();
+            .getElementById("email")
+            .value
+            .trim();
 
 
     const password =
         document
-        .getElementById("password")
-        .value;
+            .getElementById("password")
+            .value;
 
 
     const errorElement =
-        document.getElementById(
-            "loginError"
-        );
+        document
+            .getElementById("loginError");
 
 
-    errorElement.innerText =
-        "Memproses...";
-
+    // VALIDASI
 
     if (!email || !password) {
 
@@ -29,26 +35,40 @@ async function login() {
             "Email dan password harus diisi.";
 
         return;
+
     }
 
+
+    errorElement.innerText =
+        "Memproses...";
+
+
+    // LOGIN SUPABASE
 
     const {
         data,
         error
     } =
-        await supabaseClient.auth
-        .signInWithPassword({
+        await supabaseClient
+            .auth
+            .signInWithPassword({
 
-            email: email,
+                email: email,
 
-            password: password
+                password: password
 
-        });
+            });
 
+
+    // JIKA ERROR
 
     if (error) {
 
-        console.error(error);
+        console.error(
+            "Login gagal:",
+            error
+        );
+
 
         errorElement.innerText =
             "Email atau password salah.";
@@ -58,9 +78,12 @@ async function login() {
     }
 
 
-    errorElement.innerText =
-        "";
+    // LOGIN BERHASIL
 
+    errorElement.innerText = "";
+
+
+    // MENUJU DASHBOARD ADMIN
 
     window.location.href =
         "index.html";
@@ -69,22 +92,31 @@ async function login() {
 
 
 
+// ======================================================
+// CEK LOGIN ADMIN
+// ======================================================
+
 async function cekLogin() {
 
     const {
+
         data: {
             session
         },
+
         error
+
     } =
-        await supabaseClient.auth
-        .getSession();
+        await supabaseClient
+            .auth
+            .getSession();
+
 
 
     if (error) {
 
         console.error(
-            "Gagal memeriksa session:",
+            "Gagal memeriksa login:",
             error
         );
 
@@ -93,10 +125,43 @@ async function cekLogin() {
     }
 
 
+
+    // ==================================================
+    // JIKA BELUM LOGIN
+    // ==================================================
+
     if (!session) {
 
-        window.location.href =
-            "login.html";
+
+        // CEK APAKAH HALAMAN BERADA
+        // DI DALAM FOLDER /dashboard/
+
+
+        if (
+            window.location.pathname
+                .includes("/dashboard/")
+        ) {
+
+
+            // Dari folder dashboard
+            // naik satu folder
+
+            window.location.href =
+                "../login.html";
+
+        }
+
+
+        else {
+
+
+            // Dari folder utama
+
+            window.location.href =
+                "login.html";
+
+        }
+
 
     }
 
@@ -104,13 +169,19 @@ async function cekLogin() {
 
 
 
+// ======================================================
+// LOGOUT
+// ======================================================
+
 async function logout() {
 
     const {
         error
     } =
-        await supabaseClient.auth
-        .signOut();
+        await supabaseClient
+            .auth
+            .signOut();
+
 
 
     if (error) {
@@ -125,22 +196,53 @@ async function logout() {
     }
 
 
-    window.location.href =
-        "login.html";
+
+    // ==================================================
+    // ARAHKAN KE LOGIN
+    // ==================================================
+
+    if (
+        window.location.pathname
+            .includes("/dashboard/")
+    ) {
+
+
+        window.location.href =
+            "../login.html";
+
+    }
+
+
+    else {
+
+
+        window.location.href =
+            "login.html";
+
+    }
 
 }
 
 
 
+// ======================================================
+// CEK SUDAH LOGIN
+// Digunakan pada login.html
+// ======================================================
+
 async function cekSudahLogin() {
 
     const {
+
         data: {
             session
         }
+
     } =
-        await supabaseClient.auth
-        .getSession();
+        await supabaseClient
+            .auth
+            .getSession();
+
 
 
     if (session) {

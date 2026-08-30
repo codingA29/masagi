@@ -3,9 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Data Rumah - MASAGI</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Data Rumah - MASAGI
+    </title>
 
     <link
         rel="stylesheet"
@@ -13,73 +18,115 @@
 </head>
 
 
-<body class="data-rumah-page">
+<body class="data-rumah-page public-data-page">
 
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
 
 <main class="data-rumah-only">
 
 
-    <!-- =================================================
-         TOMBOL KEMBALI
-    ================================================== -->
+    <!-- =====================================================
+         NAVIGASI
+    ====================================================== -->
 
-    <div class="data-rumah-back">
+    <div class="data-rumah-nav">
+
 
         <a
-            href="#"
-            class="btn-back-dashboard"
-            onclick="kembaliKeDashboard(event)">
+            href="../dashboard-publik.html"
+            class="btn-back-dashboard">
 
-             ← Dashboard
+            ← Dashboard
 
         </a>
+
 
     </div>
 
 
 
-    <!-- =================================================
+    <!-- =====================================================
          DATA RUMAH
-    ================================================== -->
+    ====================================================== -->
 
-    <section class="table-container">
-
-
-        <div class="table-header">
+    <section class="table-container modern-data-card">
 
 
-            <div>
+        <div class="table-header modern-table-header">
+
+
+            <!-- JUDUL -->
+
+            <div class="data-title-area">
+
+
+                <span class="data-title-label">
+                    MASAGI
+                </span>
+
 
                 <h2>
                     Data Rumah
                 </h2>
 
+
                 <p>
                     Status Pemilahan Sampah
+                    Kelurahan Sukaluyu
                 </p>
+
 
             </div>
 
 
 
-            <div class="filter-area">
+            <!-- FILTER -->
+
+            <div class="filter-area modern-filter-area">
 
 
                 <!-- SEARCH -->
 
-                <input
-                    type="text"
-                    id="cariData"
-                    placeholder="Cari ID atau alamat..."
-                    onkeyup="filterData()">
+                <div class="search-wrapper">
+
+
+                    <span class="search-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="19"
+                            height="19"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+
+                            <circle
+                                cx="11"
+                                cy="11"
+                                r="7">
+                            </circle>
+
+                            <path
+                                d="m20 20-3.5-3.5">
+                            </path>
+
+                        </svg>
+
+                    </span>
+
+
+                    <input
+                        type="text"
+                        id="cariData"
+                        placeholder="Cari ID atau alamat..."
+                        onkeyup="filterData()">
+
+                </div>
 
 
 
-                <!-- FILTER RW -->
+                <!-- RW -->
 
                 <select
                     id="filterRW"
@@ -93,7 +140,7 @@
 
 
 
-                <!-- FILTER STATUS -->
+                <!-- STATUS -->
 
                 <select
                     id="filterStatus"
@@ -116,15 +163,50 @@
 
             </div>
 
+        </div>
+
+
+
+        <!-- INFO -->
+
+        <div class="data-info-row">
+
+
+            <div class="data-count-info">
+
+                <span class="data-count-dot">
+                </span>
+
+                <span>
+
+                    <strong id="jumlahDataTampil">
+                        0
+                    </strong>
+
+                    data ditampilkan
+
+                </span>
+
+            </div>
+
+
+            <span class="data-update-info">
+
+                Informasi pemilahan sampah MASAGI
+
+            </span>
+
 
         </div>
 
 
 
-        <div class="table-scroll">
+        <!-- TABLE -->
+
+        <div class="table-scroll modern-table-scroll">
 
 
-            <table>
+            <table class="modern-data-table">
 
 
                 <thead>
@@ -173,7 +255,7 @@
 ===================================================== -->
 
 <script
-    src="../data/data.js">
+    src="../data/data-rumah.js">
 </script>
 
 
@@ -182,7 +264,7 @@
 
 
 // ======================================================
-// TABEL
+// TAMPILKAN DATA
 // ======================================================
 
 function tampilkanData(data) {
@@ -198,8 +280,16 @@ function tampilkanData(data) {
         "";
 
 
+    document.getElementById(
+        "jumlahDataTampil"
+    ).innerText =
+        data.length;
 
-    if (data.length === 0) {
+
+
+    if (
+        data.length === 0
+    ) {
 
 
         tabel.innerHTML = `
@@ -208,11 +298,7 @@ function tampilkanData(data) {
 
                 <td
                     colspan="7"
-                    style="
-                        text-align:center;
-                        padding:30px;
-                        color:#667085;
-                    ">
+                    class="empty-data">
 
                     Data tidak ditemukan.
 
@@ -234,6 +320,7 @@ function tampilkanData(data) {
 
 
             const kelasStatus =
+
                 rumah.status ===
                 "Sudah Memilah"
 
@@ -247,30 +334,57 @@ function tampilkanData(data) {
 
                 <tr>
 
-                    <td>
+
+                    <td class="nomor-data">
+
                         ${index + 1}
+
                     </td>
 
-                    <td>
-                        ${rumah.id}
-                    </td>
 
                     <td>
+
+                        <strong class="id-rumah">
+
+                            ${rumah.id}
+
+                        </strong>
+
+                    </td>
+
+
+                    <td>
+
                         ${rumah.alamat}
+
                     </td>
 
-                    <td>
-                        RT ${rumah.rt}
-                    </td>
-
-                    <td>
-                        RW ${rumah.rw}
-                    </td>
 
                     <td>
 
-                        <span
-                            class="status ${kelasStatus}">
+                        <span class="rt-rw-chip">
+
+                            RT ${rumah.rt}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="rt-rw-chip">
+
+                            RW ${rumah.rw}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="status ${kelasStatus}">
 
                             ${rumah.status}
 
@@ -278,9 +392,13 @@ function tampilkanData(data) {
 
                     </td>
 
+
                     <td>
+
                         ${rumah.tanggal}
+
                     </td>
+
 
                 </tr>
 
@@ -304,7 +422,6 @@ function buatFilterRW() {
         document.getElementById(
             "filterRW"
         );
-
 
 
     const daftarRW = [
@@ -360,7 +477,7 @@ function buatFilterRW() {
 
 
 // ======================================================
-// FILTER
+// FILTER DATA
 // ======================================================
 
 function filterData() {
@@ -449,8 +566,9 @@ function filterData() {
 
                     ||
 
-                    String(rumah.rw) ===
-                    rw;
+                    String(
+                        rumah.rw
+                    ) === rw;
 
 
 
@@ -483,37 +601,13 @@ function filterData() {
         );
 
 
-
     tampilkanData(
         hasil
     );
 
 }
 
-// ======================================================
-// KEMBALI KE DASHBOARD SEBELUMNYA
-// ======================================================
 
-function kembaliKeDashboard(event) {
-
-    event.preventDefault();
-
-    // Jika halaman Data Rumah dibuka dari halaman sebelumnya,
-    // kembali ke halaman tersebut.
-    if (document.referrer) {
-
-        window.history.back();
-
-    } else {
-
-        // Jika Data Rumah dibuka langsung,
-        // arahkan ke dashboard publik.
-        window.location.href =
-            "../dashboard-publik.html";
-
-    }
-
-}
 
 // ======================================================
 // START
@@ -522,6 +616,20 @@ function kembaliKeDashboard(event) {
 document.addEventListener(
     "DOMContentLoaded",
     function() {
+
+
+        if (
+            typeof dataRumah ===
+            "undefined"
+        ) {
+
+            console.error(
+                "dataRumah tidak ditemukan."
+            );
+
+            return;
+
+        }
 
 
         buatFilterRW();

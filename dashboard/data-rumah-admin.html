@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Data Rumah Admin - MASAGI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../style/style.css">
+</head>
+
+
+<body class="data-rumah-page admin-data-page">
+
+
+<main class="data-rumah-only">
+
+
+    <!-- =====================================================
+         NAVIGASI
+    ====================================================== -->
+
+    <div class="data-rumah-nav">
+
+
+        <!-- KEMBALI KE DASHBOARD ADMIN -->
+
+        <a
+            href="../index.html"
+            class="btn-back-dashboard">
+
+            ← Dashboard
+
+        </a>
+
+
+
+        <!-- HAMBURGER -->
+
+        <div class="data-action-wrapper">
+
+
+            <button
+                type="button"
+                class="btn-hamburger-data"
+                onclick="toggleMenuData()"
+                aria-label="Menu pengelolaan data">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+
+            <!-- MENU -->
+
+            <div
+                id="menuDataRumah"
+                class="data-action-menu">
+
+
+                <!-- UPDATE -->
+
+                <button
+                    type="button"
+                    class="data-action-item action-update"
+                    onclick="menuUpdate()">
+
+
+                    <span class="action-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="20"
+                            height="20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+
+                            <path d="M12 20h9"></path>
+
+                            <path
+                                d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z">
+                            </path>
+
+                        </svg>
+
+                    </span>
+
+
+                    <span>
+                        Update
+                    </span>
+
+                </button>
+
+
+
+                <!-- DELETE -->
+
+                <button
+                    type="button"
+                    class="data-action-item action-delete"
+                    onclick="menuDelete()">
+
+
+                    <span class="action-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="20"
+                            height="20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+
+                            <path d="M3 6h18"></path>
+
+                            <path d="M8 6V4h8v2"></path>
+
+                            <path d="M19 6l-1 14H6L5 6"></path>
+
+                            <path d="M10 11v5"></path>
+
+                            <path d="M14 11v5"></path>
+
+                        </svg>
+
+                    </span>
+
+
+                    <span>
+                        Delete
+                    </span>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         DATA RUMAH
+    ====================================================== -->
+
+    <section class="table-container modern-data-card">
+
+
+        <div class="table-header modern-table-header">
+
+
+            <!-- JUDUL -->
+
+            <div class="data-title-area">
+
+
+                <span class="data-title-label">
+                    ADMIN MASAGI
+                </span>
+
+
+                <h2>
+                    Data Rumah
+                </h2>
+
+
+                <p>
+                    Pengelolaan Data Pemilahan Sampah
+                    Kelurahan Sukaluyu
+                </p>
+
+
+            </div>
+
+
+
+            <!-- FILTER -->
+
+            <div class="filter-area modern-filter-area">
+
+
+                <!-- SEARCH -->
+
+                <div class="search-wrapper">
+
+
+                    <span class="search-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            width="19"
+                            height="19"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+
+                            <circle
+                                cx="11"
+                                cy="11"
+                                r="7">
+                            </circle>
+
+                            <path
+                                d="m20 20-3.5-3.5">
+                            </path>
+
+                        </svg>
+
+                    </span>
+
+
+                    <input
+                        type="text"
+                        id="cariData"
+                        placeholder="Cari ID atau alamat..."
+                        onkeyup="filterData()">
+
+                </div>
+
+
+
+                <!-- RW -->
+
+                <select
+                    id="filterRW"
+                    onchange="filterData()">
+
+                    <option value="">
+                        Semua RW
+                    </option>
+
+                </select>
+
+
+
+                <!-- STATUS -->
+
+                <select
+                    id="filterStatus"
+                    onchange="filterData()">
+
+                    <option value="">
+                        Semua Status
+                    </option>
+
+                    <option value="Sudah Memilah">
+                        Sudah Memilah
+                    </option>
+
+                    <option value="Belum Memilah">
+                        Belum Memilah
+                    </option>
+
+                </select>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INFO -->
+
+        <div class="data-info-row">
+
+
+            <div class="data-count-info">
+
+                <span class="data-count-dot">
+                </span>
+
+                <span>
+
+                    <strong id="jumlahDataTampil">
+                        0
+                    </strong>
+
+                    data ditampilkan
+
+                </span>
+
+            </div>
+
+
+            <span class="data-update-info">
+
+                Mode pengelolaan data admin
+
+            </span>
+
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div class="table-scroll modern-table-scroll">
+
+
+            <table class="modern-data-table">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>No</th>
+
+                        <th>ID Rumah</th>
+
+                        <th>Alamat</th>
+
+                        <th>RT</th>
+
+                        <th>RW</th>
+
+                        <th>Status Pemilahan</th>
+
+                        <th>Tanggal Laporan</th>
+
+                    </tr>
+
+                </thead>
+
+
+
+                <tbody id="tabelDataRumah">
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     SUPABASE AUTH
+===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+<script
+    src="../data/supabase.js">
+</script>
+
+<script
+    src="../data/auth.js">
+</script>
+
+
+
+<!-- =====================================================
+     DATA
+===================================================== -->
+
+<script
+    src="../data/data-rumah.js">
+</script>
+
+
+
+<script>
+
+
+// ======================================================
+// WAJIB LOGIN
+// ======================================================
+
+cekLogin();
+
+
+
+// ======================================================
+// HAMBURGER
+// ======================================================
+
+function toggleMenuData() {
+
+    const menu =
+        document.getElementById(
+            "menuDataRumah"
+        );
+
+
+    menu.classList.toggle(
+        "show"
+    );
+
+}
+
+
+
+// ======================================================
+// TUTUP MENU JIKA KLIK DI LUAR
+// ======================================================
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+
+        const wrapper =
+            document.querySelector(
+                ".data-action-wrapper"
+            );
+
+
+        const menu =
+            document.getElementById(
+                "menuDataRumah"
+            );
+
+
+        if (
+            wrapper &&
+            menu &&
+            !wrapper.contains(event.target)
+        ) {
+
+            menu.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+
+// ======================================================
+// UPDATE
+// ======================================================
+
+function menuUpdate() {
+
+
+    document.getElementById(
+        "menuDataRumah"
+    ).classList.remove(
+        "show"
+    );
+
+
+    alert(
+        "Fitur Update akan dihubungkan ke database Supabase."
+    );
+
+}
+
+
+
+// ======================================================
+// DELETE
+// ======================================================
+
+function menuDelete() {
+
+
+    document.getElementById(
+        "menuDataRumah"
+    ).classList.remove(
+        "show"
+    );
+
+
+    alert(
+        "Fitur Delete akan dihubungkan ke database Supabase."
+    );
+
+}
+
+
+
+// ======================================================
+// TAMPILKAN DATA
+// ======================================================
+
+function tampilkanData(data) {
+
+
+    const tabel =
+        document.getElementById(
+            "tabelDataRumah"
+        );
+
+
+    tabel.innerHTML =
+        "";
+
+
+    document.getElementById(
+        "jumlahDataTampil"
+    ).innerText =
+        data.length;
+
+
+
+    if (
+        data.length === 0
+    ) {
+
+
+        tabel.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="7"
+                    class="empty-data">
+
+                    Data tidak ditemukan.
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        return;
+
+    }
+
+
+
+    data.forEach(
+        (rumah, index) => {
+
+
+            const kelasStatus =
+
+                rumah.status ===
+                "Sudah Memilah"
+
+                    ? "sudah"
+
+                    : "belum";
+
+
+
+            tabel.innerHTML += `
+
+                <tr>
+
+
+                    <td class="nomor-data">
+
+                        ${index + 1}
+
+                    </td>
+
+
+                    <td>
+
+                        <strong class="id-rumah">
+
+                            ${rumah.id}
+
+                        </strong>
+
+                    </td>
+
+
+                    <td>
+
+                        ${rumah.alamat}
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="rt-rw-chip">
+
+                            RT ${rumah.rt}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="rt-rw-chip">
+
+                            RW ${rumah.rw}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="status ${kelasStatus}">
+
+                            ${rumah.status}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        ${rumah.tanggal}
+
+                    </td>
+
+
+                </tr>
+
+            `;
+
+        }
+    );
+
+}
+
+
+
+// ======================================================
+// FILTER RW
+// ======================================================
+
+function buatFilterRW() {
+
+
+    const selectRW =
+        document.getElementById(
+            "filterRW"
+        );
+
+
+    const daftarRW = [
+
+        ...new Set(
+
+            dataRumah.map(
+                rumah =>
+                    String(rumah.rw)
+            )
+
+        )
+
+    ];
+
+
+
+    daftarRW.sort(
+        (a, b) =>
+            Number(a) -
+            Number(b)
+    );
+
+
+
+    daftarRW.forEach(
+        rw => {
+
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                rw;
+
+
+            option.textContent =
+                "RW " + rw;
+
+
+            selectRW.appendChild(
+                option
+            );
+
+        }
+    );
+
+}
+
+
+
+// ======================================================
+// FILTER DATA
+// ======================================================
+
+function filterData() {
+
+
+    const keyword =
+        document
+            .getElementById(
+                "cariData"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+
+    const rw =
+        document
+            .getElementById(
+                "filterRW"
+            )
+            .value;
+
+
+
+    const status =
+        document
+            .getElementById(
+                "filterStatus"
+            )
+            .value;
+
+
+
+    const hasil =
+        dataRumah.filter(
+            rumah => {
+
+
+                const id =
+                    String(
+                        rumah.id || ""
+                    ).toLowerCase();
+
+
+                const alamat =
+                    String(
+                        rumah.alamat || ""
+                    ).toLowerCase();
+
+
+                const rt =
+                    String(
+                        rumah.rt || ""
+                    ).toLowerCase();
+
+
+                const rwRumah =
+                    String(
+                        rumah.rw || ""
+                    ).toLowerCase();
+
+
+
+                const cocokCari =
+
+                    id.includes(keyword)
+
+                    ||
+
+                    alamat.includes(keyword)
+
+                    ||
+
+                    rt.includes(keyword)
+
+                    ||
+
+                    rwRumah.includes(keyword);
+
+
+
+                const cocokRW =
+
+                    rw === ""
+
+                    ||
+
+                    String(
+                        rumah.rw
+                    ) === rw;
+
+
+
+                const cocokStatus =
+
+                    status === ""
+
+                    ||
+
+                    rumah.status ===
+                    status;
+
+
+
+                return (
+
+                    cocokCari
+
+                    &&
+
+                    cocokRW
+
+                    &&
+
+                    cocokStatus
+
+                );
+
+            }
+        );
+
+
+    tampilkanData(
+        hasil
+    );
+
+}
+
+
+
+// ======================================================
+// START
+// ======================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        if (
+            typeof dataRumah ===
+            "undefined"
+        ) {
+
+            console.error(
+                "dataRumah tidak ditemukan."
+            );
+
+            return;
+
+        }
+
+
+        buatFilterRW();
+
+
+        tampilkanData(
+            dataRumah
+        );
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
