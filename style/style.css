@@ -3670,3 +3670,389 @@ td {
     }
 
 }
+
+/* =====================================================
+   ADMIN MOBILE NAVIGATION
+===================================================== */
+
+/* Default desktop:
+   semua komponen mobile disembunyikan */
+
+.mobile-admin-header,
+.mobile-admin-menu,
+.mobile-admin-overlay {
+    display: none;
+}
+
+
+/* =====================================================
+   MOBILE ADMIN
+===================================================== */
+
+@media (max-width: 768px) {
+
+    /* =================================================
+       HEADER
+    ================================================= */
+
+    .mobile-admin-header {
+
+        display: flex;
+
+        width: 100%;
+
+        min-height: 64px;
+
+        padding: 10px 15px;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        background: #ffffff;
+
+        border-bottom:
+            1px solid #e3e8e5;
+
+        box-shadow:
+            0 3px 12px
+            rgba(16, 24, 40, 0.05);
+
+        position: sticky;
+
+        top: 0;
+
+        z-index: 850;
+
+        box-sizing: border-box;
+    }
+
+
+    /* =================================================
+       BRAND
+    ================================================= */
+
+    .mobile-admin-brand {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        min-width: 0;
+    }
+
+
+    .mobile-admin-brand img {
+
+        width: 42px !important;
+
+        height: 42px !important;
+
+        max-width: 42px !important;
+
+        object-fit: contain;
+
+        flex-shrink: 0;
+    }
+
+
+    .mobile-admin-brand div {
+
+        display: flex;
+
+        flex-direction: column;
+
+        min-width: 0;
+    }
+
+
+    .mobile-admin-brand strong {
+
+        font-size: 16px;
+
+        color: #17243a;
+    }
+
+
+    .mobile-admin-brand span {
+
+        margin-top: 2px;
+
+        font-size: 11px;
+
+        color: #667085;
+    }
+
+
+    /* =================================================
+       HAMBURGER
+    ================================================= */
+
+    .mobile-admin-toggle {
+
+        width: 44px;
+
+        height: 44px;
+
+        border: none;
+
+        border-radius: 10px;
+
+        background: #e9f7ef;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 5px;
+
+        padding: 0;
+
+        flex-shrink: 0;
+
+        cursor: pointer;
+    }
+
+
+    .mobile-admin-toggle span {
+
+        display: block;
+
+        width: 21px;
+
+        height: 2px;
+
+        background: #16804f;
+
+        border-radius: 10px;
+    }
+
+
+    /* =================================================
+       OVERLAY
+    ================================================= */
+
+    .mobile-admin-overlay {
+
+        display: block;
+
+        position: fixed;
+
+        inset: 0;
+
+        z-index: 900;
+
+        background:
+            rgba(15, 23, 42, 0.40);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease;
+    }
+
+
+    .mobile-admin-overlay.show {
+
+        opacity: 1;
+
+        visibility: visible;
+    }
+
+
+    /* =================================================
+       MENU
+    ================================================= */
+
+    .mobile-admin-menu {
+
+        display: block;
+
+        position: fixed;
+
+        top: 0;
+
+        right: 0;
+
+        z-index: 950;
+
+        width: min(82vw, 310px);
+
+        height: 100vh;
+
+        background: #ffffff;
+
+        padding: 20px;
+
+        box-sizing: border-box;
+
+        transform: translateX(105%);
+
+        transition:
+            transform 0.25s ease;
+
+        box-shadow:
+            -10px 0 30px
+            rgba(16, 24, 40, 0.15);
+    }
+
+
+    .mobile-admin-menu.show {
+
+        transform: translateX(0);
+    }
+
+
+    /* =================================================
+       MENU TOP
+    ================================================= */
+
+    .mobile-admin-menu-top {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        padding-bottom: 17px;
+
+        border-bottom:
+            1px solid #e8eeeb;
+    }
+
+
+    .mobile-admin-menu-top strong {
+
+        font-size: 18px;
+
+        color: #17243a;
+    }
+
+
+    .mobile-admin-close {
+
+        width: 38px;
+
+        height: 38px;
+
+        border: none;
+
+        border-radius: 9px;
+
+        background: #f2f5f3;
+
+        color: #344054;
+
+        font-size: 27px;
+
+        line-height: 1;
+
+        cursor: pointer;
+    }
+
+
+    /* =================================================
+       NAV
+    ================================================= */
+
+    .mobile-admin-nav {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 7px;
+
+        margin-top: 20px;
+
+        overflow: visible;
+    }
+
+
+    .mobile-admin-nav a {
+
+        display: flex;
+
+        align-items: center;
+
+        width: 100%;
+
+        min-height: 46px;
+
+        padding: 0 14px;
+
+        box-sizing: border-box;
+
+        border-radius: 9px;
+
+        color: #344054;
+
+        text-decoration: none;
+
+        font-size: 15px;
+
+        font-weight: 600;
+
+        white-space: normal;
+    }
+
+
+    .mobile-admin-nav a.active {
+
+        background: #e7f6ed;
+
+        color: #16804f;
+    }
+
+
+    /* =================================================
+       EXIT
+    ================================================= */
+
+    .mobile-admin-exit {
+
+        width: 100%;
+
+        min-height: 46px;
+
+        margin-top: 12px;
+
+        padding: 0 14px;
+
+        border: none;
+
+        border-top:
+            1px solid #e8eeeb;
+
+        background: transparent;
+
+        color: #d92d20;
+
+        font-family: inherit;
+
+        font-size: 15px;
+
+        font-weight: 600;
+
+        text-align: left;
+
+        cursor: pointer;
+    }
+
+
+    .mobile-menu-open {
+
+        overflow: hidden;
+    }
+
+}

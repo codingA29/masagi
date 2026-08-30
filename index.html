@@ -25,7 +25,153 @@
 
 
 <!-- =====================================================
-     SIDEBAR
+     HEADER ADMIN MOBILE
+     Hanya tampil di HP melalui CSS
+===================================================== -->
+
+<header class="mobile-admin-header">
+
+    <div class="mobile-admin-brand">
+
+        <img
+            src="assets/logo-masagi.jpeg"
+            alt="Logo MASAGI">
+
+        <div>
+
+            <strong>
+                MASAGI
+            </strong>
+
+            <span>
+                Dashboard Admin
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="mobile-admin-toggle"
+        type="button"
+        onclick="bukaMenuAdmin()"
+        aria-label="Buka menu">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     OVERLAY MENU MOBILE
+===================================================== -->
+
+<div
+    id="mobileAdminOverlay"
+    class="mobile-admin-overlay"
+    onclick="tutupMenuAdmin()">
+</div>
+
+
+
+<!-- =====================================================
+     MENU ADMIN MOBILE
+===================================================== -->
+
+<aside
+    id="mobileAdminMenu"
+    class="mobile-admin-menu">
+
+
+    <div class="mobile-admin-menu-top">
+
+        <strong>
+            Menu Admin
+        </strong>
+
+
+        <button
+            type="button"
+            onclick="tutupMenuAdmin()"
+            class="mobile-admin-close"
+            aria-label="Tutup menu">
+
+            ×
+
+        </button>
+
+    </div>
+
+
+    <nav class="mobile-admin-nav">
+
+
+        <!-- DASHBOARD -->
+
+        <a
+            href="index.html"
+            class="active">
+
+            Dashboard
+
+        </a>
+
+
+        <!-- DATA RUMAH -->
+
+        <a
+            href="dashboard/data-rumah-admin.html">
+
+            Data Rumah
+
+        </a>
+
+
+        <!-- PEMILAHAN SAMPAH -->
+
+        <a href="#">
+
+            Pemilahan Sampah
+
+        </a>
+
+
+        <!-- LAPORAN -->
+
+        <a href="#">
+
+            Laporan
+
+        </a>
+
+
+        <!-- EXIT -->
+
+        <button
+            type="button"
+            class="mobile-admin-exit"
+            onclick="logout()">
+
+            Exit
+
+        </button>
+
+
+    </nav>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     SIDEBAR DESKTOP
 ===================================================== -->
 
 <aside class="sidebar">
@@ -92,9 +238,9 @@
 
 
 
-        <!-- =========================================
+        <!-- =================================================
              EXIT
-        ========================================== -->
+        ================================================== -->
 
         <button
             class="btn-exit"
@@ -105,6 +251,7 @@
             <!-- ICON EXIT -->
 
             <span class="exit-icon">
+
 
                 <svg
                     viewBox="0 0 24 24"
@@ -138,6 +285,7 @@
 
                 </svg>
 
+
             </span>
 
 
@@ -165,7 +313,6 @@
 ===================================================== -->
 
 <main class="main-content">
-
 
 
     <!-- =================================================
@@ -222,7 +369,6 @@
     ================================================== -->
 
     <section class="cards">
-
 
 
         <!-- TOTAL RUMAH -->
@@ -287,7 +433,6 @@
     <section class="chart-section">
 
 
-
         <!-- =============================================
              DIAGRAM DONAT
         ============================================== -->
@@ -302,7 +447,6 @@
 
 
             <div class="donut-content">
-
 
 
                 <!-- DONUT -->
@@ -344,7 +488,6 @@
                 ====================================== -->
 
                 <div class="chart-legend">
-
 
 
                     <!-- SUDAH MEMILAH -->
@@ -511,7 +654,6 @@
     <div class="modal-content">
 
 
-
         <!-- TOMBOL X -->
 
         <button
@@ -632,6 +774,132 @@
 
 <script
     src="data/dashboard.js">
+</script>
+
+
+
+<!-- =====================================================
+     SCRIPT MENU ADMIN MOBILE
+===================================================== -->
+
+<script>
+
+
+function bukaMenuAdmin() {
+
+    const menu =
+        document.getElementById(
+            "mobileAdminMenu"
+        );
+
+    const overlay =
+        document.getElementById(
+            "mobileAdminOverlay"
+        );
+
+
+    if (menu) {
+
+        menu.classList.add(
+            "show"
+        );
+
+    }
+
+
+    if (overlay) {
+
+        overlay.classList.add(
+            "show"
+        );
+
+    }
+
+
+    document.body.classList.add(
+        "mobile-menu-open"
+    );
+
+}
+
+
+
+function tutupMenuAdmin() {
+
+    const menu =
+        document.getElementById(
+            "mobileAdminMenu"
+        );
+
+    const overlay =
+        document.getElementById(
+            "mobileAdminOverlay"
+        );
+
+
+    if (menu) {
+
+        menu.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    if (overlay) {
+
+        overlay.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    document.body.classList.remove(
+        "mobile-menu-open"
+    );
+
+}
+
+
+
+/* Tutup menu jika layar berubah ke desktop */
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        if (
+            window.innerWidth > 768
+        ) {
+
+            tutupMenuAdmin();
+
+        }
+
+    }
+);
+
+
+
+/* Bisa ditutup dengan tombol ESC */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            tutupMenuAdmin();
+
+        }
+
+    }
+);
+
+
 </script>
 
 
