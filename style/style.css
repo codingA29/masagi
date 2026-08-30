@@ -1765,3 +1765,448 @@ td {
     }
 
 }
+
+/* =====================================================
+   DASHBOARD PUBLIK MASAGI - RESPONSIVE
+===================================================== */
+
+
+/* DESKTOP */
+
+.public-dashboard-page .main-content {
+    min-height: 100vh;
+}
+
+
+
+/* =====================================================
+   TABLET / HP
+===================================================== */
+
+@media (max-width: 768px) {
+
+
+    /* ---------------------------------------------
+       BODY
+    --------------------------------------------- */
+
+    .public-dashboard-page {
+        background: #f5f7f6;
+    }
+
+
+
+    /* ---------------------------------------------
+       SIDEBAR DIUBAH MENJADI HEADER LOGO
+    --------------------------------------------- */
+
+    .public-dashboard-page .public-sidebar {
+
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        min-height: 0;
+
+        padding: 15px 20px;
+
+        box-sizing: border-box;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border-right: none;
+
+        border-bottom: 1px solid #e3e8e5;
+
+        background: #ffffff;
+
+    }
+
+
+
+    /* LOGO */
+
+    .public-dashboard-page
+    .public-sidebar
+    .logo-container {
+
+        margin: 0;
+
+        padding: 0;
+
+        display: flex;
+
+        justify-content: center;
+
+    }
+
+
+    .public-dashboard-page
+    .public-sidebar
+    .logo-masagi {
+
+        width: 170px;
+
+        max-width: 70%;
+
+        height: auto;
+
+    }
+
+
+
+    /* NAV TIDAK DIPERLUKAN DI HP */
+
+    .public-dashboard-page
+    .public-sidebar
+    nav {
+
+        display: none;
+
+    }
+
+
+
+    /* ---------------------------------------------
+       MAIN CONTENT FULL WIDTH
+    --------------------------------------------- */
+
+    .public-dashboard-page
+    .main-content {
+
+        width: 100%;
+
+        margin-left: 0;
+
+        padding: 15px;
+
+        box-sizing: border-box;
+
+    }
+
+
+
+    /* ---------------------------------------------
+       HEADER
+    --------------------------------------------- */
+
+    .public-dashboard-page
+    .dashboard-header {
+
+        min-height: auto;
+
+        margin-bottom: 18px;
+
+        padding: 0;
+
+    }
+
+
+    .public-dashboard-page
+    .header-space {
+
+        display: none;
+
+    }
+
+
+    .public-dashboard-page
+    .header-right {
+
+        width: 100%;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 10px;
+
+    }
+
+
+
+    /* TANGGAL */
+
+    .public-dashboard-page
+    .tanggal {
+
+        flex: 1;
+
+    }
+
+
+    .public-dashboard-page
+    .tanggal span {
+
+        display: block;
+
+        font-size: 11px;
+
+    }
+
+
+    .public-dashboard-page
+    .tanggal strong {
+
+        font-size: 14px;
+
+    }
+
+
+
+    /* QR */
+
+    .public-dashboard-page
+    .btn-qr {
+
+        flex-shrink: 0;
+
+        padding: 10px 14px;
+
+        font-size: 13px;
+
+    }
+
+
+
+    /* ---------------------------------------------
+       CARDS
+    --------------------------------------------- */
+
+    .public-dashboard-page
+    .cards {
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .public-dashboard-page
+    .card {
+
+        width: 100%;
+
+        min-height: 0;
+
+        padding: 17px 18px;
+
+        box-sizing: border-box;
+
+    }
+
+
+    .public-dashboard-page
+    .card p {
+
+        margin-bottom: 7px;
+
+    }
+
+
+    .public-dashboard-page
+    .card h2 {
+
+        margin-top: 0;
+
+        margin-bottom: 5px;
+
+        font-size: 28px;
+
+    }
+
+
+
+    /* ---------------------------------------------
+       CHART SECTION
+    --------------------------------------------- */
+
+    .public-dashboard-page
+    .chart-section {
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+    }
+
+
+
+    /* CHART BOX */
+
+    .public-dashboard-page
+    .chart-box {
+
+        width: 100%;
+
+        min-width: 0;
+
+        padding: 18px 15px;
+
+        box-sizing: border-box;
+
+    }
+
+
+    .public-dashboard-page
+    .chart-box h2 {
+
+        margin-top: 0;
+
+        margin-bottom: 20px;
+
+        font-size: 17px;
+
+        line-height: 1.4;
+
+    }
+
+
+
+    /* ---------------------------------------------
+       DONUT
+    --------------------------------------------- */
+
+    .public-dashboard-page
+    .donut-content {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 18px;
+
+    }
+
+
+    .public-dashboard-page
+    .donut-wrapper {
+
+        position: relative;
+
+        width: 220px;
+
+        height: 220px;
+
+        max-width: 100%;
+
+    }
+
+
+    .public-dashboard-page
+    .chart-legend {
+
+        width: 100%;
+
+    }
+
+
+    .public-dashboard-page
+    .legend-item {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+
+
+    /* ---------------------------------------------
+       BAR CHART
+    --------------------------------------------- */
+
+    .public-dashboard-page
+    .bar-chart-container {
+
+        position: relative;
+
+        width: 100%;
+
+        height: 280px;
+
+    }
+
+
+
+    /* ---------------------------------------------
+       CATATAN
+    --------------------------------------------- */
+
+    .public-dashboard-page
+    .chart-note {
+
+        width: 100%;
+
+        box-sizing: border-box;
+
+    }
+
+
+
+    /* ---------------------------------------------
+       QR MODAL
+    --------------------------------------------- */
+
+    .public-dashboard-page
+    .modal {
+
+        padding: 15px;
+
+        box-sizing: border-box;
+
+    }
+
+
+    .public-dashboard-page
+    .modal-content {
+
+        width: 100%;
+
+        max-width: 400px;
+
+        box-sizing: border-box;
+
+    }
+
+
+    .public-dashboard-page
+    #qrcode {
+
+        display: flex;
+
+        justify-content: center;
+
+    }
+
+
+    .public-dashboard-page
+    #qrcode canvas,
+
+    .public-dashboard-page
+    #qrcode img {
+
+        max-width: 100%;
+
+        height: auto !important;
+
+    }
+
+}
