@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard Publik MASAGI</title>
+
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+
+<body class="public-dashboard-page">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar public-sidebar">
+
+    <div class="logo-container">
+
+        <img
+            src="assets/logo-masagi.jpeg"
+            alt="Logo MASAGI"
+            class="logo-masagi">
+
+    </div>
+
+
+    <nav>
+
+        <a
+            href="dashboard-publik.html"
+            class="active">
+
+            Dashboard
+
+        </a>
+
+
+        <a href="dashboard/data-rumah.html">
+
+            Data Rumah
+
+        </a>
+
+    </nav>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <header class="dashboard-header">
+
+
+        <div class="header-space"></div>
+
+
+        <div class="header-right">
+
+
+            <!-- TANGGAL -->
+
+            <div class="tanggal">
+
+                <span>
+                    Tanggal
+                </span>
+
+                <strong id="tanggalHariIni">
+                    -
+                </strong>
+
+            </div>
+
+
+
+            <!-- DATA RUMAH -->
+
+            <a
+                href="dashboard/data-rumah.html"
+                class="btn-data-public">
+
+                Data Rumah
+
+            </a>
+
+
+
+            <!-- QR CODE -->
+
+            <button
+                class="btn-qr"
+                type="button"
+                onclick="bukaQR()">
+
+                ▦ QR Code
+
+            </button>
+
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         SUMMARY
+    ================================================== -->
+
+    <section class="cards">
+
+
+        <div class="card">
+
+            <p>
+                Total Rumah
+            </p>
+
+            <h2 id="totalRumah">
+                0
+            </h2>
+
+            <span>
+                Rumah Terdata
+            </span>
+
+        </div>
+
+
+
+        <div class="card card-sudah">
+
+            <p>
+                Sudah Memilah
+            </p>
+
+            <h2 id="sudahMemilah">
+                0
+            </h2>
+
+        </div>
+
+
+
+        <div class="card card-belum">
+
+            <p>
+                Belum Memilah
+            </p>
+
+            <h2 id="belumMemilah">
+                0
+            </h2>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         CHART
+    ================================================== -->
+
+    <section class="chart-section">
+
+
+        <!-- DONUT -->
+
+        <div class="chart-box donut-box">
+
+
+            <h2>
+                Ringkasan Pemilahan Sampah
+            </h2>
+
+
+            <div class="donut-content">
+
+
+                <div class="donut-wrapper">
+
+                    <canvas id="statusChart">
+                    </canvas>
+
+
+                    <div class="donut-center">
+
+                        <strong id="totalDonut">
+                            0
+                        </strong>
+
+                        <span>
+                            Total Rumah
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="chart-legend">
+
+
+                    <div class="legend-item">
+
+                        <div class="legend-left">
+
+                            <span
+                                class="legend-dot hijau-dot">
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Sudah Memilah
+                                </strong>
+
+                                <p id="legendSudah">
+                                    0 Rumah
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <strong
+                            class="legend-percent hijau-text"
+                            id="persenSudahDonut">
+
+                            0%
+
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="legend-item">
+
+                        <div class="legend-left">
+
+                            <span
+                                class="legend-dot merah-dot">
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Belum Memilah
+                                </strong>
+
+                                <p id="legendBelum">
+                                    0 Rumah
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <strong
+                            class="legend-percent merah-text"
+                            id="persenBelumDonut">
+
+                            0%
+
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BAR -->
+
+        <div class="chart-box bar-box">
+
+
+            <h2>
+                Persentase Rumah Memilah per RW
+            </h2>
+
+
+            <div class="bar-chart-container">
+
+                <canvas id="rwChart">
+                </canvas>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- CATATAN -->
+
+        <div class="chart-note">
+
+            <span class="info-icon">
+                i
+            </span>
+
+            <p>
+                Grafik menunjukkan ringkasan status pemilahan sampah
+                dan persentase rumah yang sudah memilah pada setiap RW.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     MODAL QR
+===================================================== -->
+
+<div
+    id="modalQR"
+    class="modal">
+
+
+    <div class="modal-content">
+
+
+        <button
+            class="close-modal"
+            type="button"
+            onclick="tutupQR()">
+
+            ×
+
+        </button>
+
+
+        <h2>
+            QR Code Dashboard MASAGI
+        </h2>
+
+
+        <p>
+            Scan QR Code untuk membuka dashboard publik MASAGI.
+        </p>
+
+
+        <div id="qrcode">
+        </div>
+
+
+        <p class="qr-info">
+            Monitoring Aktif Sampah Berbasis Data Terintegrasi
+        </p>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     LIBRARY
+===================================================== -->
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+</script>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/chart.js">
+</script>
+
+
+<script
+    src="data/data.js">
+</script>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+function formatPersen(nilai) {
+
+    if (Number.isInteger(nilai)) {
+        return nilai + "%";
+    }
+
+    return nilai.toFixed(1) + "%";
+
+}
+
+
+
+// ======================================================
+// TANGGAL
+// ======================================================
+
+function tampilkanTanggal() {
+
+    const sekarang =
+        new Date();
+
+
+    const format =
+        sekarang.toLocaleDateString(
+            "id-ID",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+
+    document.getElementById(
+        "tanggalHariIni"
+    ).innerText =
+        format;
+
+}
+
+
+
+// ======================================================
+// HITUNG
+// ======================================================
+
+function hitungDashboard() {
+
+
+    const total =
+        dataRumah.length;
+
+
+    const sudah =
+        dataRumah.filter(
+            rumah =>
+                rumah.status ===
+                "Sudah Memilah"
+        ).length;
+
+
+    const belum =
+        dataRumah.filter(
+            rumah =>
+                rumah.status ===
+                "Belum Memilah"
+        ).length;
+
+
+
+    document.getElementById(
+        "totalRumah"
+    ).innerText =
+        total;
+
+
+    document.getElementById(
+        "sudahMemilah"
+    ).innerText =
+        sudah;
+
+
+    document.getElementById(
+        "belumMemilah"
+    ).innerText =
+        belum;
+
+
+    document.getElementById(
+        "totalDonut"
+    ).innerText =
+        total;
+
+
+    document.getElementById(
+        "legendSudah"
+    ).innerText =
+        sudah + " Rumah";
+
+
+    document.getElementById(
+        "legendBelum"
+    ).innerText =
+        belum + " Rumah";
+
+
+
+    const persenSudah =
+        total > 0
+            ? sudah / total * 100
+            : 0;
+
+
+    const persenBelum =
+        total > 0
+            ? belum / total * 100
+            : 0;
+
+
+
+    document.getElementById(
+        "persenSudahDonut"
+    ).innerText =
+        formatPersen(
+            persenSudah
+        );
+
+
+    document.getElementById(
+        "persenBelumDonut"
+    ).innerText =
+        formatPersen(
+            persenBelum
+        );
+
+
+
+    return {
+        total,
+        sudah,
+        belum
+    };
+
+}
+
+
+
+// ======================================================
+// DONUT
+// ======================================================
+
+function buatStatusChart(
+    sudah,
+    belum
+) {
+
+
+    new Chart(
+        document.getElementById(
+            "statusChart"
+        ),
+        {
+
+            type:
+                "doughnut",
+
+
+            data: {
+
+                labels: [
+                    "Sudah Memilah",
+                    "Belum Memilah"
+                ],
+
+
+                datasets: [
+
+                    {
+
+                        data: [
+                            sudah,
+                            belum
+                        ],
+
+
+                        backgroundColor: [
+                            "#20ad5a",
+                            "#f5333f"
+                        ],
+
+
+                        borderWidth:
+                            0
+
+                    }
+
+                ]
+
+            },
+
+
+            options: {
+
+                responsive:
+                    true,
+
+
+                maintainAspectRatio:
+                    false,
+
+
+                cutout:
+                    "72%",
+
+
+                plugins: {
+
+                    legend: {
+                        display: false
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+
+// ======================================================
+// BAR
+// ======================================================
+
+function buatRWChart() {
+
+
+    const daftarRW = [
+
+        ...new Set(
+
+            dataRumah.map(
+                rumah =>
+                    String(rumah.rw)
+            )
+
+        )
+
+    ];
+
+
+
+    daftarRW.sort(
+        (a, b) =>
+            Number(a) -
+            Number(b)
+    );
+
+
+
+    const persentase =
+        daftarRW.map(
+            rw => {
+
+
+                const rumahRW =
+                    dataRumah.filter(
+                        rumah =>
+                            String(rumah.rw) ===
+                            rw
+                    );
+
+
+                const sudah =
+                    rumahRW.filter(
+                        rumah =>
+                            rumah.status ===
+                            "Sudah Memilah"
+                    ).length;
+
+
+                return rumahRW.length > 0
+
+                    ? Number(
+                        (
+                            sudah /
+                            rumahRW.length *
+                            100
+                        ).toFixed(1)
+                    )
+
+                    : 0;
+
+            }
+        );
+
+
+
+    new Chart(
+        document.getElementById(
+            "rwChart"
+        ),
+        {
+
+            type:
+                "bar",
+
+
+            data: {
+
+                labels:
+                    daftarRW.map(
+                        rw =>
+                            "RW " + rw
+                    ),
+
+
+                datasets: [
+
+                    {
+
+                        data:
+                            persentase,
+
+
+                        backgroundColor:
+                            "#199453",
+
+
+                        borderRadius:
+                            7
+
+                    }
+
+                ]
+
+            },
+
+
+            options: {
+
+                responsive:
+                    true,
+
+
+                maintainAspectRatio:
+                    false,
+
+
+                plugins: {
+
+                    legend: {
+                        display: false
+                    }
+
+                },
+
+
+                scales: {
+
+                    y: {
+
+                        beginAtZero:
+                            true,
+
+
+                        max:
+                            100,
+
+
+                        ticks: {
+
+                            callback:
+                                function(value) {
+
+                                    return (
+                                        value +
+                                        "%"
+                                    );
+
+                                }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+    );
+
+}
+
+
+
+// ======================================================
+// QR
+// ======================================================
+
+let qrSudahDibuat =
+    false;
+
+
+function bukaQR() {
+
+
+    document.getElementById(
+        "modalQR"
+    ).style.display =
+        "flex";
+
+
+    if (!qrSudahDibuat) {
+
+
+        const url =
+            "https://codingA29.github.io/masagi/dashboard-publik.html";
+
+
+        new QRCode(
+
+            document.getElementById(
+                "qrcode"
+            ),
+
+            {
+
+                text:
+                    url,
+
+
+                width:
+                    230,
+
+
+                height:
+                    230,
+
+
+                correctLevel:
+                    QRCode.CorrectLevel.H
+
+            }
+
+        );
+
+
+        qrSudahDibuat =
+            true;
+
+    }
+
+}
+
+
+
+function tutupQR() {
+
+    document.getElementById(
+        "modalQR"
+    ).style.display =
+        "none";
+
+}
+
+
+
+// ======================================================
+// START
+// ======================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        tampilkanTanggal();
+
+
+        const data =
+            hitungDashboard();
+
+
+        buatStatusChart(
+            data.sudah,
+            data.belum
+        );
+
+
+        buatRWChart();
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

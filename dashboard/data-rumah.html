@@ -5,311 +5,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard Publik MASAGI</title>
+    <title>Data Rumah - MASAGI</title>
 
-    <link rel="stylesheet" href="../style/style.css">
+    <link
+        rel="stylesheet"
+        href="../style/style.css">
 </head>
 
-<body class="public-dashboard-page">
+
+<body class="data-rumah-page">
 
 
 <!-- =====================================================
-     SIDEBAR
+     MAIN
 ===================================================== -->
 
-<aside class="sidebar public-sidebar">
+<main class="data-rumah-only">
 
-    <div class="logo-container">
 
-        <img
-            src="../assets/logo-masagi.jpeg"
-            alt="Logo MASAGI"
-            class="logo-masagi">
+    <!-- =================================================
+         TOMBOL KEMBALI
+    ================================================== -->
+
+    <div class="data-rumah-back">
+
+        <a
+            href="../dashboard-publik.html"
+            class="btn-back-dashboard">
+
+            ← Dashboard
+
+        </a>
 
     </div>
 
 
-    <nav>
-
-        <a
-            href="data-rumah.html"
-            class="active">
-
-            Dashboard
-
-        </a>
-
-    </nav>
-
-</aside>
-
-
-
-<!-- =====================================================
-     MAIN CONTENT
-===================================================== -->
-
-<main class="main-content">
-
 
     <!-- =================================================
-         HEADER
+         DATA RUMAH
     ================================================== -->
 
-    <header class="dashboard-header">
-
-        <div class="header-space"></div>
+    <section class="table-container">
 
 
-        <div class="header-right">
+        <div class="table-header">
 
 
-            <!-- TANGGAL -->
+            <div>
 
-            <div class="tanggal">
+                <h2>
+                    Data Rumah
+                </h2>
 
-                <span>
-                    Tanggal
-                </span>
-
-                <strong id="tanggalHariIni">
-                </strong>
+                <p>
+                    Status Pemilahan Sampah
+                </p>
 
             </div>
 
 
 
-            <!-- QR CODE -->
+            <div class="filter-area">
 
-            <button
-                class="btn-qr"
-                type="button"
-                onclick="bukaQR()">
 
-                ▦ QR Code
+                <!-- SEARCH -->
 
-            </button>
+                <input
+                    type="text"
+                    id="cariData"
+                    placeholder="Cari ID atau alamat..."
+                    onkeyup="filterData()">
 
 
-        </div>
 
-    </header>
+                <!-- FILTER RW -->
 
+                <select
+                    id="filterRW"
+                    onchange="filterData()">
 
+                    <option value="">
+                        Semua RW
+                    </option>
 
-    <!-- =================================================
-         SUMMARY CARDS
-    ================================================== -->
+                </select>
 
-    <section class="cards">
 
 
-        <!-- TOTAL -->
+                <!-- FILTER STATUS -->
 
-        <div class="card">
+                <select
+                    id="filterStatus"
+                    onchange="filterData()">
 
-            <p>
-                Total Rumah
-            </p>
+                    <option value="">
+                        Semua Status
+                    </option>
 
-            <h2 id="totalRumah">
-                0
-            </h2>
+                    <option value="Sudah Memilah">
+                        Sudah Memilah
+                    </option>
 
-            <span>
-                Rumah Terdata
-            </span>
+                    <option value="Belum Memilah">
+                        Belum Memilah
+                    </option>
 
-        </div>
+                </select>
 
-
-
-        <!-- SUDAH -->
-
-        <div class="card card-sudah">
-
-            <p>
-                Sudah Memilah
-            </p>
-
-            <h2 id="sudahMemilah">
-                0
-            </h2>
-
-        </div>
-
-
-
-        <!-- BELUM -->
-
-        <div class="card card-belum">
-
-            <p>
-                Belum Memilah
-            </p>
-
-            <h2 id="belumMemilah">
-                0
-            </h2>
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- =================================================
-         CHART
-    ================================================== -->
-
-    <section class="chart-section">
-
-
-        <!-- =============================================
-             DONUT CHART
-        ============================================== -->
-
-        <div class="chart-box donut-box">
-
-
-            <h2>
-                Ringkasan Pemilahan Sampah
-            </h2>
-
-
-            <div class="donut-content">
-
-
-                <!-- DONUT -->
-
-                <div class="donut-wrapper">
-
-                    <canvas id="statusChart">
-                    </canvas>
-
-
-                    <div class="donut-center">
-
-                        <strong id="totalDonut">
-                            0
-                        </strong>
-
-                        <span>
-                            Total Rumah
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- LEGEND -->
-
-                <div class="chart-legend">
-
-
-                    <!-- SUDAH MEMILAH -->
-
-                    <div class="legend-item">
-
-                        <div class="legend-left">
-
-                            <span
-                                class="legend-dot hijau-dot">
-                            </span>
-
-
-                            <div>
-
-                                <strong>
-                                    Sudah Memilah
-                                </strong>
-
-                                <p id="legendSudah">
-                                    0 Rumah
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <strong
-                            class="legend-percent hijau-text"
-                            id="persenSudahDonut">
-
-                            0%
-
-                        </strong>
-
-                    </div>
-
-
-
-                    <!-- BELUM MEMILAH -->
-
-                    <div class="legend-item">
-
-                        <div class="legend-left">
-
-                            <span
-                                class="legend-dot merah-dot">
-                            </span>
-
-
-                            <div>
-
-                                <strong>
-                                    Belum Memilah
-                                </strong>
-
-                                <p id="legendBelum">
-                                    0 Rumah
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <strong
-                            class="legend-percent merah-text"
-                            id="persenBelumDonut">
-
-                            0%
-
-                        </strong>
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- =============================================
-             BAR CHART
-        ============================================== -->
-
-        <div class="chart-box bar-box">
-
-
-            <h2>
-                Persentase Rumah Memilah per RW
-            </h2>
-
-
-            <div class="bar-chart-container">
-
-                <canvas id="rwChart">
-                </canvas>
 
             </div>
 
@@ -318,21 +120,42 @@
 
 
 
-        <!-- =============================================
-             CATATAN
-        ============================================== -->
+        <div class="table-scroll">
 
-        <div class="chart-note">
 
-            <span class="info-icon">
-                i
-            </span>
+            <table>
 
-            <p>
-                Grafik menunjukkan ringkasan status pemilahan
-                sampah dan persentase rumah yang sudah memilah
-                sampah pada setiap RW.
-            </p>
+
+                <thead>
+
+                    <tr>
+
+                        <th>No</th>
+
+                        <th>ID Rumah</th>
+
+                        <th>Alamat</th>
+
+                        <th>RT</th>
+
+                        <th>RW</th>
+
+                        <th>Status Pemilahan</th>
+
+                        <th>Tanggal Laporan</th>
+
+                    </tr>
+
+                </thead>
+
+
+
+                <tbody id="tabelDataRumah">
+                </tbody>
+
+
+            </table>
+
 
         </div>
 
@@ -341,79 +164,6 @@
 
 
 </main>
-
-
-
-<!-- =====================================================
-     MODAL QR
-===================================================== -->
-
-<div
-    id="modalQR"
-    class="modal">
-
-
-    <div class="modal-content">
-
-
-        <!-- X -->
-
-        <button
-            class="close-modal"
-            type="button"
-            onclick="tutupQR()">
-
-            ×
-
-        </button>
-
-
-        <h2>
-            QR Code Dashboard MASAGI
-        </h2>
-
-
-        <p>
-            Scan QR Code untuk melihat dashboard
-            pemilahan sampah MASAGI.
-        </p>
-
-
-        <div id="qrcode">
-        </div>
-
-
-        <p class="qr-info">
-
-            Dashboard menampilkan ringkasan status
-            pemilahan sampah Kelurahan Sukaluyu.
-
-        </p>
-
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     QR CODE
-===================================================== -->
-
-<script
-    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
-</script>
-
-
-
-<!-- =====================================================
-     CHART JS
-===================================================== -->
-
-<script
-    src="https://cdn.jsdelivr.net/npm/chart.js">
-</script>
 
 
 
@@ -427,320 +177,113 @@
 
 
 
-<!-- =====================================================
-     JAVASCRIPT HALAMAN PUBLIK
-===================================================== -->
-
 <script>
 
 
 // ======================================================
-// HITUNG DASHBOARD
+// TABEL
 // ======================================================
 
-function hitungDashboardPublik() {
+function tampilkanData(data) {
 
 
-    const total =
-        dataRumah.length;
+    const tabel =
+        document.getElementById(
+            "tabelDataRumah"
+        );
 
 
-    const sudah =
-        dataRumah.filter(
-
-            rumah =>
-                rumah.status === "Sudah Memilah"
-
-        ).length;
-
-
-    const belum =
-        dataRumah.filter(
-
-            rumah =>
-                rumah.status === "Belum Memilah"
-
-        ).length;
+    tabel.innerHTML =
+        "";
 
 
 
-    // SUMMARY CARD
-
-    document.getElementById(
-        "totalRumah"
-    ).innerText = total;
+    if (data.length === 0) {
 
 
-    document.getElementById(
-        "sudahMemilah"
-    ).innerText = sudah;
+        tabel.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="7"
+                    style="
+                        text-align:center;
+                        padding:30px;
+                        color:#667085;
+                    ">
+
+                    Data tidak ditemukan.
+
+                </td>
+
+            </tr>
+
+        `;
 
 
-    document.getElementById(
-        "belumMemilah"
-    ).innerText = belum;
-
-
-
-    // DONUT CENTER
-
-    document.getElementById(
-        "totalDonut"
-    ).innerText = total;
-
-
-
-    // LEGEND
-
-    document.getElementById(
-        "legendSudah"
-    ).innerText =
-        sudah + " Rumah";
-
-
-    document.getElementById(
-        "legendBelum"
-    ).innerText =
-        belum + " Rumah";
-
-
-
-    // PERSENTASE
-
-    const persenSudah =
-        total > 0
-            ? (sudah / total) * 100
-            : 0;
-
-
-    const persenBelum =
-        total > 0
-            ? (belum / total) * 100
-            : 0;
-
-
-
-    document.getElementById(
-        "persenSudahDonut"
-    ).innerText =
-        formatPersen(persenSudah);
-
-
-    document.getElementById(
-        "persenBelumDonut"
-    ).innerText =
-        formatPersen(persenBelum);
-
-
-
-    return {
-
-        total,
-        sudah,
-        belum
-
-    };
-
-}
-
-
-
-// ======================================================
-// FORMAT PERSEN
-// ======================================================
-
-function formatPersen(nilai) {
-
-
-    if (
-        Number.isInteger(nilai)
-    ) {
-
-        return nilai + "%";
+        return;
 
     }
 
 
-    return (
-        nilai.toFixed(1) + "%"
-    );
 
-}
+    data.forEach(
+        (rumah, index) => {
 
 
+            const kelasStatus =
+                rumah.status ===
+                "Sudah Memilah"
 
-// ======================================================
-// TANGGAL
-// ======================================================
+                    ? "sudah"
 
-function tampilkanTanggalPublik() {
+                    : "belum";
 
 
-    const tanggal =
-        new Date();
 
+            tabel.innerHTML += `
 
-    const format =
-        tanggal.toLocaleDateString(
-            "id-ID",
-            {
+                <tr>
 
-                day: "numeric",
+                    <td>
+                        ${index + 1}
+                    </td>
 
-                month: "long",
+                    <td>
+                        ${rumah.id}
+                    </td>
 
-                year: "numeric"
+                    <td>
+                        ${rumah.alamat}
+                    </td>
 
-            }
-        );
+                    <td>
+                        RT ${rumah.rt}
+                    </td>
 
+                    <td>
+                        RW ${rumah.rw}
+                    </td>
 
-    document.getElementById(
-        "tanggalHariIni"
-    ).innerText =
-        format;
+                    <td>
 
-}
+                        <span
+                            class="status ${kelasStatus}">
 
+                            ${rumah.status}
 
+                        </span>
 
-// ======================================================
-// DONUT CHART
-// ======================================================
+                    </td>
 
-function buatStatusChart(
-    sudah,
-    belum
-) {
+                    <td>
+                        ${rumah.tanggal}
+                    </td>
 
+                </tr>
 
-    const canvas =
-        document.getElementById(
-            "statusChart"
-        );
-
-
-    new Chart(
-        canvas,
-        {
-
-            type:
-                "doughnut",
-
-
-            data: {
-
-                labels: [
-
-                    "Sudah Memilah",
-
-                    "Belum Memilah"
-
-                ],
-
-
-                datasets: [
-
-                    {
-
-                        data: [
-
-                            sudah,
-
-                            belum
-
-                        ],
-
-
-                        backgroundColor: [
-
-                            "#20ad5a",
-
-                            "#f5333f"
-
-                        ],
-
-
-                        borderWidth:
-                            0
-
-                    }
-
-                ]
-
-            },
-
-
-            options: {
-
-                responsive:
-                    true,
-
-
-                maintainAspectRatio:
-                    false,
-
-
-                cutout:
-                    "72%",
-
-
-                plugins: {
-
-                    legend: {
-
-                        display:
-                            false
-
-                    },
-
-
-                    tooltip: {
-
-                        callbacks: {
-
-                            label:
-                                function(context) {
-
-
-                                    const total =
-                                        sudah +
-                                        belum;
-
-
-                                    const nilai =
-                                        context.raw;
-
-
-                                    const persen =
-                                        total > 0
-
-                                            ? (
-                                                nilai /
-                                                total
-                                            ) * 100
-
-                                            : 0;
-
-
-                                    return (
-                                        context.label +
-                                        ": " +
-                                        nilai +
-                                        " Rumah (" +
-                                        formatPersen(persen) +
-                                        ")"
-                                    );
-
-                                }
-
-                        }
-
-                    }
-
-                }
-
-            }
+            `;
 
         }
     );
@@ -750,10 +293,17 @@ function buatStatusChart(
 
 
 // ======================================================
-// BAR CHART PER RW
+// FILTER RW
 // ======================================================
 
-function buatRWChart() {
+function buatFilterRW() {
+
+
+    const selectRW =
+        document.getElementById(
+            "filterRW"
+        );
+
 
 
     const daftarRW = [
@@ -761,10 +311,8 @@ function buatRWChart() {
         ...new Set(
 
             dataRumah.map(
-
                 rumah =>
                     String(rumah.rw)
-
             )
 
         )
@@ -774,216 +322,169 @@ function buatRWChart() {
 
 
     daftarRW.sort(
-
         (a, b) =>
             Number(a) -
             Number(b)
-
     );
 
 
 
-    const persentaseRW =
-        daftarRW.map(
-
-            rw => {
+    daftarRW.forEach(
+        rw => {
 
 
-                const rumahRW =
-                    dataRumah.filter(
-
-                        rumah =>
-                            String(rumah.rw) ===
-                            String(rw)
-
-                    );
+            const option =
+                document.createElement(
+                    "option"
+                );
 
 
-                const sudahRW =
-                    rumahRW.filter(
-
-                        rumah =>
-                            rumah.status ===
-                            "Sudah Memilah"
-
-                    ).length;
+            option.value =
+                rw;
 
 
+            option.textContent =
+                "RW " + rw;
 
-                if (
-                    rumahRW.length === 0
-                ) {
 
-                    return 0;
+            selectRW.appendChild(
+                option
+            );
 
-                }
+        }
+    );
+
+}
 
 
 
-                return Number(
+// ======================================================
+// FILTER
+// ======================================================
 
-                    (
-                        sudahRW /
-                        rumahRW.length *
-                        100
+function filterData() {
 
-                    ).toFixed(1)
+
+    const keyword =
+        document
+            .getElementById(
+                "cariData"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+
+    const rw =
+        document
+            .getElementById(
+                "filterRW"
+            )
+            .value;
+
+
+
+    const status =
+        document
+            .getElementById(
+                "filterStatus"
+            )
+            .value;
+
+
+
+    const hasil =
+        dataRumah.filter(
+            rumah => {
+
+
+                const id =
+                    String(
+                        rumah.id || ""
+                    ).toLowerCase();
+
+
+                const alamat =
+                    String(
+                        rumah.alamat || ""
+                    ).toLowerCase();
+
+
+                const rt =
+                    String(
+                        rumah.rt || ""
+                    ).toLowerCase();
+
+
+                const rwRumah =
+                    String(
+                        rumah.rw || ""
+                    ).toLowerCase();
+
+
+
+                const cocokCari =
+
+                    id.includes(keyword)
+
+                    ||
+
+                    alamat.includes(keyword)
+
+                    ||
+
+                    rt.includes(keyword)
+
+                    ||
+
+                    rwRumah.includes(keyword);
+
+
+
+                const cocokRW =
+
+                    rw === ""
+
+                    ||
+
+                    String(rumah.rw) ===
+                    rw;
+
+
+
+                const cocokStatus =
+
+                    status === ""
+
+                    ||
+
+                    rumah.status ===
+                    status;
+
+
+
+                return (
+
+                    cocokCari
+
+                    &&
+
+                    cocokRW
+
+                    &&
+
+                    cocokStatus
 
                 );
 
             }
-
         );
 
 
 
-    const canvas =
-        document.getElementById(
-            "rwChart"
-        );
-
-
-
-    new Chart(
-        canvas,
-        {
-
-            type:
-                "bar",
-
-
-            data: {
-
-                labels:
-                    daftarRW.map(
-
-                        rw =>
-                            "RW " + rw
-
-                    ),
-
-
-                datasets: [
-
-                    {
-
-                        label:
-                            "Rumah Memilah",
-
-
-                        data:
-                            persentaseRW,
-
-
-                        backgroundColor:
-                            "#199453",
-
-
-                        borderRadius:
-                            7,
-
-
-                        barPercentage:
-                            0.55,
-
-
-                        categoryPercentage:
-                            0.7
-
-                    }
-
-                ]
-
-            },
-
-
-            options: {
-
-                responsive:
-                    true,
-
-
-                maintainAspectRatio:
-                    false,
-
-
-                plugins: {
-
-                    legend: {
-
-                        display:
-                            false
-
-                    },
-
-
-                    tooltip: {
-
-                        callbacks: {
-
-                            label:
-                                function(context) {
-
-                                    return (
-                                        formatPersen(
-                                            context.raw
-                                        )
-                                    );
-
-                                }
-
-                        }
-
-                    }
-
-                },
-
-
-                scales: {
-
-                    x: {
-
-                        grid: {
-
-                            display:
-                                false
-
-                        }
-
-                    },
-
-
-                    y: {
-
-                        beginAtZero:
-                            true,
-
-
-                        max:
-                            100,
-
-
-                        ticks: {
-
-                            callback:
-                                function(value) {
-
-                                    return (
-                                        value +
-                                        "%"
-                                    );
-
-                                }
-
-                        }
-
-                    }
-
-                }
-
-            }
-
-        }
+    tampilkanData(
+        hasil
     );
 
 }
@@ -991,122 +492,7 @@ function buatRWChart() {
 
 
 // ======================================================
-// QR CODE
-// ======================================================
-
-let qrSudahDibuat =
-    false;
-
-
-
-function bukaQR() {
-
-
-    const modal =
-        document.getElementById(
-            "modalQR"
-        );
-
-
-    modal.style.display =
-        "flex";
-
-
-
-    if (
-        !qrSudahDibuat
-    ) {
-
-
-        const urlDashboardPublik =
-
-            "https://codingA29.github.io/masagi/dashboard/data-rumah.html";
-
-
-
-        new QRCode(
-
-            document.getElementById(
-                "qrcode"
-            ),
-
-            {
-
-                text:
-                    urlDashboardPublik,
-
-
-                width:
-                    230,
-
-
-                height:
-                    230,
-
-
-                correctLevel:
-                    QRCode.CorrectLevel.H
-
-            }
-
-        );
-
-
-        qrSudahDibuat =
-            true;
-
-    }
-
-}
-
-
-
-// ======================================================
-// TUTUP QR
-// ======================================================
-
-function tutupQR() {
-
-
-    document.getElementById(
-        "modalQR"
-    ).style.display =
-        "none";
-
-}
-
-
-
-// ======================================================
-// KLIK DI LUAR MODAL
-// ======================================================
-
-window.addEventListener(
-    "click",
-    function(event) {
-
-
-        const modal =
-            document.getElementById(
-                "modalQR"
-            );
-
-
-        if (
-            event.target === modal
-        ) {
-
-            tutupQR();
-
-        }
-
-    }
-);
-
-
-
-// ======================================================
-// JALANKAN DASHBOARD
+// START
 // ======================================================
 
 document.addEventListener(
@@ -1114,41 +500,12 @@ document.addEventListener(
     function() {
 
 
-        if (
-            typeof dataRumah ===
-            "undefined"
-        ) {
-
-            console.error(
-                "Data rumah tidak ditemukan."
-            );
-
-            return;
-
-        }
+        buatFilterRW();
 
 
-
-        tampilkanTanggalPublik();
-
-
-
-        const ringkasan =
-            hitungDashboardPublik();
-
-
-
-        buatStatusChart(
-
-            ringkasan.sudah,
-
-            ringkasan.belum
-
+        tampilkanData(
+            dataRumah
         );
-
-
-
-        buatRWChart();
 
     }
 );

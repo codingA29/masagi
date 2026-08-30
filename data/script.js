@@ -607,7 +607,7 @@ function bukaQR() {
 
         const urlDataRumah =
 
-            "https://codingA29.github.io/masagi/dashboard/data-rumah.html";
+            "https://codingA29.github.io/masagi/dashboard-publik.html";
 
 
 
