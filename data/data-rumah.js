@@ -3,39 +3,29 @@
 // ======================================================
 
 const dataWilayah = {
-
     totalKK: 4454,
-
     totalJiwa: 14501,
-
     faktorTimbulanKgPerJiwa: 0.38,
 
     pemilahan: {
-
         organik: 30,
-
         nonorganik: 25,
-
         anorganik: 28,
-
         minyakJelantah: 16
-
     }
-
 };
 
 
-// ======================================================
-// MASAGI - DATA RUMAH
-// ======================================================
-
-const dataRumah = [
 // ======================================================
 // MASAGI - DATA RUMAH
 // Sumber: Data Rumah.xlsx
 // ======================================================
 
 const dataRumah = [
+
+    // ==================================================
+    // RT 03 / RW 04
+    // ==================================================
 
     {
         id: "SKLY-01-RT03-RW04",
@@ -579,556 +569,555 @@ const dataRumah = [
         petugasMonitoring: "Devi Iriani",
         jumlahKK: 2,
         jumlahJiwa: 5
+    },
+
+
+    // ==================================================
+    // RT 08 / RW 04
+    // ==================================================
+
+    {
+        id: "SKLY-01-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "1.a",
+        alamat: "Cibeunying Landeuh 133A RT 08/04",
+        namaKepalaRumahTangga: "Ibu Fatimah",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 1
+    },
+
+    {
+        id: "SKLY-02-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "1.b",
+        alamat: "Cibeunying Landeuh 133A RT 08/04",
+        namaKepalaRumahTangga: "Indra Budiman",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 5
+    },
+
+    {
+        id: "SKLY-03-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "2.a",
+        alamat: "Cibeunying Landeuh 255A RT 08/04",
+        namaKepalaRumahTangga: "Ibu Hj Harwati",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 2
+    },
+
+    {
+        id: "SKLY-04-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "2.b",
+        alamat: "Cibeunying Landeuh 255A RT 08/04",
+        namaKepalaRumahTangga: "Ginanjar",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 4
+    },
+
+    {
+        id: "SKLY-05-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "3",
+        alamat: "Cibeunying Landeuh 66 RT 08/04",
+        namaKepalaRumahTangga: "Pa Eutik",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 4
+    },
+
+    {
+        id: "SKLY-06-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "4",
+        alamat: "Cibeunying Landeuh 66H RT 08/04",
+        namaKepalaRumahTangga: "Ibu Mimih Karwati",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 2
+    },
+
+    {
+        id: "SKLY-07-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "5",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Ibnu Muhammad Nur",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 4
+    },
+
+    {
+        id: "SKLY-08-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "6",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Bapak Agustinus Wasino",
+        status: "Mengolah",
+        keterangan: "Pakan Ternak",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 2
+    },
+
+    {
+        id: "SKLY-09-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "7",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Eka Cahya Kurniawan",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 4
+    },
+
+    {
+        id: "SKLY-10-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "8.a",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Anis Hernis",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 5
+    },
+
+    {
+        id: "SKLY-11-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "8.b",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Rendi",
+        status: "Belum Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 1
+    },
+
+    {
+        id: "SKLY-12-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "8.c",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Isep",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 2
+    },
+
+    {
+        id: "SKLY-13-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "9",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Masri",
+        status: "Mengolah",
+        keterangan: "Pakan Ternak",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 2
+    },
+
+    {
+        id: "SKLY-14-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "10",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Uum Marlina",
+        status: "Belum Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 1
+    },
+
+    {
+        id: "SKLY-15-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "11.a",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Githa Nindia Safarda",
+        status: "Belum Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 1
+    },
+
+    {
+        id: "SKLY-16-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "11.b",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Marsan Kusyadi",
+        status: "Mengolah",
+        keterangan: "Pakan Ternak",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 4
+    },
+
+    {
+        id: "SKLY-17-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "11.c",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Ilham Sholehudin",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: null,
+        jumlahJiwa: 2
+    },
+
+    {
+        id: "SKLY-18-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "11.d",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Teguh",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: null,
+        jumlahJiwa: 4
+    },
+
+    {
+        id: "SKLY-19-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "12",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Bu Hj Rohaniah",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 3
+    },
+
+    {
+        id: "SKLY-20-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "13",
+        alamat: "Cibeunying Landeuh RT 08/04 (Kosan Arleta)",
+        namaKepalaRumahTangga: "Toha",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 4
+    },
+
+    {
+        id: "SKLY-21-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "14.a",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Diah Ismirowati",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 1
+    },
+
+    {
+        id: "SKLY-22-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "14.b",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Achmad supriadi",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 4
+    },
+
+    {
+        id: "SKLY-23-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "15",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Didih Heryana",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 3
+    },
+
+    {
+        id: "SKLY-24-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "16.a",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Ibong Wasibah",
+        status: "Belum Memilah",
+        keterangan: "membuang sampah mandiri",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 5
+    },
+
+    {
+        id: "SKLY-25-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "16.b",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Maftukna",
+        status: "Belum Memilah",
+        keterangan: "membuang sampah mandiri",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 3
+    },
+
+    {
+        id: "SKLY-26-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "17.a",
+        alamat: "Cibeunying Landeuh RT 08/04",
+        namaKepalaRumahTangga: "Iyus Priyatna",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 4
+    },
+
+    {
+        id: "SKLY-27-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "17.b",
+        alamat: "Cibeunying Landeuh No.253/144F RT 08/04",
+        namaKepalaRumahTangga: "Edi Mulyono",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 2
+    },
+
+    {
+        id: "SKLY-28-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "17.c",
+        alamat: "Cibeunying Landeuh No. 253/144F RT 08/04",
+        namaKepalaRumahTangga: "Adi Somawijaya",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 5
+    },
+
+    {
+        id: "SKLY-29-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "18.a",
+        alamat: "Cibeunying Landeuh No.253 H7 RT 08/04",
+        namaKepalaRumahTangga: "Rosmanah",
+        status: "Sudah Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 3
+    },
+
+    {
+        id: "SKLY-30-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "18.b",
+        alamat: "Cibeunying Landeuh No.253/144f H7 RT 08/04",
+        namaKepalaRumahTangga: "Asep Mahyar",
+        status: "Belum Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 4
+    },
+
+    {
+        id: "SKLY-31-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "19.a",
+        alamat: "Cibeunying Landeuh No.253 H8 RT 08/04",
+        namaKepalaRumahTangga: "Tisna",
+        status: "Belum Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 4
+    },
+
+    {
+        id: "SKLY-32-RT08-RW04",
+        rw: "04",
+        rt: "08",
+        noRumah: "19.b",
+        alamat: "Cibeunying Landeuh No.253/144f H8 RT 08/04",
+        namaKepalaRumahTangga: "Iim Amini",
+        status: "Belum Memilah",
+        keterangan: "",
+        hariMonitoring: "Kamis",
+        tanggalMonitoring: "24/08/26",
+        tanggal: "24/08/26",
+        petugasMonitoring: "Devi Iriani",
+        jumlahKK: 1,
+        jumlahJiwa: 2
     }
 
-,
-
-// ======================================================
-// TAMBAHAN DATA RT 08 / RW 04
-// Sumber: Data Rumah(2).xlsx
-// ======================================================
-
-{
-    id: "SKLY-01-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "1.a",
-    alamat: "Cibeunying Landeuh 133A RT 08/04",
-    namaKepalaRumahTangga: "Ibu Fatimah",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 1
-},
-
-{
-    id: "SKLY-02-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "1.b",
-    alamat: "Cibeunying Landeuh 133A RT 08/04",
-    namaKepalaRumahTangga: "Indra Budiman",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 5
-},
-
-{
-    id: "SKLY-03-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "2.a",
-    alamat: "Cibeunying Landeuh 255A RT 08/04",
-    namaKepalaRumahTangga: "Ibu Hj Harwati",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 2
-},
-
-{
-    id: "SKLY-04-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "2.b",
-    alamat: "Cibeunying Landeuh 255A RT 08/04",
-    namaKepalaRumahTangga: "Ginanjar",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 4
-},
-
-{
-    id: "SKLY-05-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "3",
-    alamat: "Cibeunying Landeuh 66 RT 08/04",
-    namaKepalaRumahTangga: "Pa Eutik",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 4
-},
-
-{
-    id: "SKLY-06-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "4",
-    alamat: "Cibeunying Landeuh 66H RT 08/04",
-    namaKepalaRumahTangga: "Ibu Mimih Karwati",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 2
-},
-
-{
-    id: "SKLY-07-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "5",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Ibnu Muhammad Nur",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 4
-},
-
-{
-    id: "SKLY-08-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "6",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Bapak Agustinus Wasino",
-    status: "Mengolah",
-    keterangan: "Pakan Ternak",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 2
-},
-
-{
-    id: "SKLY-09-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "7",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Eka Cahya Kurniawan",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 4
-},
-
-{
-    id: "SKLY-10-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "8.a",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Anis Hernis",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 5
-},
-
-{
-    id: "SKLY-11-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "8.b",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Rendi",
-    status: "Belum Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 1
-},
-
-{
-    id: "SKLY-12-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "8.c",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Isep",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 2
-},
-
-{
-    id: "SKLY-13-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "9",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Masri",
-    status: "Mengolah",
-    keterangan: "Pakan Ternak",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 2
-},
-
-{
-    id: "SKLY-14-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "10",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Uum Marlina",
-    status: "Belum Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 1
-},
-
-{
-    id: "SKLY-15-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "11.a",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Githa Nindia Safarda",
-    status: "Belum Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 1
-},
-
-{
-    id: "SKLY-16-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "11.b",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Marsan Kusyadi",
-    status: "Mengolah",
-    keterangan: "Pakan Ternak",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 4
-},
-
-{
-    id: "SKLY-17-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "11.c",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Ilham Sholehudin",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: null,
-    jumlahJiwa: 2
-},
-
-{
-    id: "SKLY-18-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "11.d",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Teguh",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: null,
-    jumlahJiwa: 4
-},
-
-{
-    id: "SKLY-19-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "12",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Bu Hj Rohaniah",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 3
-},
-
-{
-    id: "SKLY-20-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "13",
-    alamat: "Cibeunying Landeuh RT 08/04 (Kosan Arleta)",
-    namaKepalaRumahTangga: "Toha",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 4
-},
-
-{
-    id: "SKLY-21-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "14.a",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Diah Ismirowati",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 1
-},
-
-{
-    id: "SKLY-22-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "14.b",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Achmad supriadi",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 4
-},
-
-{
-    id: "SKLY-23-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "15",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Didih Heryana",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 3
-},
-
-{
-    id: "SKLY-24-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "16.a",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Ibong Wasibah",
-    status: "Belum Memilah",
-    keterangan: "membuang sampah mandiri",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 5
-},
-
-{
-    id: "SKLY-25-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "16.b",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Maftukna",
-    status: "Belum Memilah",
-    keterangan: "membuang sampah mandiri",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 3
-},
-
-{
-    id: "SKLY-26-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "17.a",
-    alamat: "Cibeunying Landeuh RT 08/04",
-    namaKepalaRumahTangga: "Iyus Priyatna",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 4
-},
-
-{
-    id: "SKLY-27-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "17.b",
-    alamat: "Cibeunying Landeuh No.253/144F RT 08/04",
-    namaKepalaRumahTangga: "Edi Mulyono",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 2
-},
-
-{
-    id: "SKLY-28-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "17.c",
-    alamat: "Cibeunying Landeuh No. 253/144F RT 08/04",
-    namaKepalaRumahTangga: "Adi Somawijaya",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 5
-},
-
-{
-    id: "SKLY-29-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "18.a",
-    alamat: "Cibeunying Landeuh No.253 H7 RT 08/04",
-    namaKepalaRumahTangga: "Rosmanah",
-    status: "Sudah Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 3
-},
-
-{
-    id: "SKLY-30-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "18.b",
-    alamat: "Cibeunying Landeuh No.253/144f H7 RT 08/04",
-    namaKepalaRumahTangga: "Asep Mahyar",
-    status: "Belum Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 4
-},
-
-{
-    id: "SKLY-31-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "19.a",
-    alamat: "Cibeunying Landeuh No.253 H8 RT 08/04",
-    namaKepalaRumahTangga: "Tisna",
-    status: "Belum Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 4
-},
-
-{
-    id: "SKLY-32-RT08-RW04",
-    rw: "04",
-    rt: "08",
-    noRumah: "19.b",
-    alamat: "Cibeunying Landeuh No.253/144f H8 RT 08/04",
-    namaKepalaRumahTangga: "Iim Amini",
-    status: "Belum Memilah",
-    keterangan: "",
-    hariMonitoring: "Kamis",
-    tanggalMonitoring: "24/08/26",
-    tanggal: "24/08/26",
-    petugasMonitoring: "Devi Iriani",
-    jumlahKK: 1,
-    jumlahJiwa: 2
-}
 ];
