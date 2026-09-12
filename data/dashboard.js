@@ -4,8 +4,30 @@
 
 
 // ======================================================
-// FORMAT PERSENTASE
+// FORMAT ANGKA
 // ======================================================
+
+function formatAngka(nilai) {
+
+    return new Intl.NumberFormat(
+        "id-ID"
+    ).format(nilai);
+
+}
+
+
+function formatDesimal(nilai) {
+
+    return new Intl.NumberFormat(
+        "id-ID",
+        {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }
+    ).format(nilai);
+
+}
+
 
 function formatPersen(nilai) {
 
@@ -15,173 +37,380 @@ function formatPersen(nilai) {
 
 
 // ======================================================
-// HITUNG DASHBOARD
+// NORMALISASI STATUS
+// ======================================================
+
+function normalisasiStatus(status) {
+
+    return String(status || "")
+        .trim()
+        .toLowerCase();
+
+}
+
+
+// ======================================================
+// HELPER ISI ELEMENT
+// ======================================================
+
+function isiElement(id, nilai) {
+
+    const element =
+        document.getElementById(id);
+
+
+    if (element) {
+
+        element.textContent =
+            nilai;
+
+    }
+
+}
+
+
+// ======================================================
+// VALIDASI DATA
+// ======================================================
+
+function validasiData() {
+
+    if (
+        typeof dataRumah === "undefined" ||
+        !Array.isArray(dataRumah)
+    ) {
+
+        console.error(
+            "dataRumah tidak ditemukan."
+        );
+
+        return false;
+
+    }
+
+
+    if (
+        typeof dataWilayah === "undefined"
+    ) {
+
+        console.error(
+            "dataWilayah tidak ditemukan."
+        );
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+// ======================================================
+// HITUNG DATA RUMAH
+// ======================================================
+
+function hitungDataRumah() {
+
+    const totalRumah =
+        dataRumah.length;
+
+
+    const sudahMemilah =
+        dataRumah.filter(
+            rumah => {
+
+                const status =
+                    normalisasiStatus(
+                        rumah.status
+                    );
+
+
+                return (
+                    status === "sudah memilah" ||
+                    status === "mengolah"
+                );
+
+            }
+        ).length;
+
+
+    const belumMemilah =
+        dataRumah.filter(
+            rumah => {
+
+                return (
+                    normalisasiStatus(
+                        rumah.status
+                    ) ===
+                    "belum memilah"
+                );
+
+            }
+        ).length;
+
+
+    return {
+
+        totalRumah,
+
+        sudahMemilah,
+
+        belumMemilah
+
+    };
+
+}
+
+
+// ======================================================
+// HITUNG DATA WILAYAH
+// ======================================================
+
+function hitungDataWilayah() {
+
+    const totalKK =
+        Number(
+            dataWilayah.totalKK
+        ) || 0;
+
+
+    const totalJiwa =
+        Number(
+            dataWilayah.totalJiwa
+        ) || 0;
+
+
+    const faktorTimbulan =
+        Number(
+            dataWilayah.faktorTimbulanKgPerJiwa
+        ) || 0;
+
+
+    const potensiTimbulan =
+        totalJiwa *
+        faktorTimbulan;
+
+
+    const memilahOrganik =
+        Number(
+            dataWilayah.pemilahan?.organik
+        ) || 0;
+
+
+    const memilahNonorganik =
+        Number(
+            dataWilayah.pemilahan?.nonorganik
+        ) || 0;
+
+
+    const memilahAnorganik =
+        Number(
+            dataWilayah.pemilahan?.anorganik
+        ) || 0;
+
+
+    const memilahJelantah =
+        Number(
+            dataWilayah.pemilahan?.minyakJelantah
+        ) || 0;
+
+
+    return {
+
+        totalKK,
+
+        totalJiwa,
+
+        potensiTimbulan,
+
+        memilahOrganik,
+
+        memilahNonorganik,
+
+        memilahAnorganik,
+
+        memilahJelantah
+
+    };
+
+}
+
+
+// ======================================================
+// TAMPILKAN DASHBOARD
 // ======================================================
 
 function hitungDashboard() {
 
-    const total =
-        dataRumah.length;
+    if (!validasiData()) {
 
-
-    const sudah =
-        dataRumah.filter(
-            rumah =>
-                rumah.status ===
-                "Sudah Memilah"
-        ).length;
-
-
-    const belum =
-        dataRumah.filter(
-            rumah =>
-                rumah.status ===
-                "Belum Memilah"
-        ).length;
-
-
-    // ==================================================
-    // KARTU
-    // ==================================================
-
-    const totalElement =
-        document.getElementById(
-            "totalRumah"
-        );
-
-    const sudahElement =
-        document.getElementById(
-            "sudahMemilah"
-        );
-
-    const belumElement =
-        document.getElementById(
-            "belumMemilah"
-        );
-
-
-    if (totalElement) {
-
-        totalElement.innerText =
-            total;
+        return;
 
     }
 
 
-    if (sudahElement) {
-
-        sudahElement.innerText =
-            sudah;
-
-    }
+    const rumah =
+        hitungDataRumah();
 
 
-    if (belumElement) {
-
-        belumElement.innerText =
-            belum;
-
-    }
+    const wilayah =
+        hitungDataWilayah();
 
 
     // ==================================================
-    // DONUT CENTER
+    // KARTU UTAMA
     // ==================================================
 
-    const totalDonut =
-        document.getElementById(
-            "totalDonut"
-        );
+    isiElement(
+        "totalRumah",
+        formatAngka(
+            rumah.totalRumah
+        )
+    );
 
 
-    if (totalDonut) {
-
-        totalDonut.innerText =
-            total;
-
-    }
-
-
-    // ==================================================
-    // LEGEND
-    // ==================================================
-
-    const legendSudah =
-        document.getElementById(
-            "legendSudah"
-        );
+    isiElement(
+        "sudahMemilah",
+        formatAngka(
+            rumah.sudahMemilah
+        )
+    );
 
 
-    const legendBelum =
-        document.getElementById(
-            "legendBelum"
-        );
-
-
-    if (legendSudah) {
-
-        legendSudah.innerText =
-            sudah +
-            " Rumah";
-
-    }
-
-
-    if (legendBelum) {
-
-        legendBelum.innerText =
-            belum +
-            " Rumah";
-
-    }
+    isiElement(
+        "belumMemilah",
+        formatAngka(
+            rumah.belumMemilah
+        )
+    );
 
 
     // ==================================================
-    // PERSENTASE DONUT
+    // KARTU WILAYAH
     // ==================================================
+
+    isiElement(
+        "totalKK",
+        formatAngka(
+            wilayah.totalKK
+        )
+    );
+
+
+    isiElement(
+        "totalJiwa",
+        formatAngka(
+            wilayah.totalJiwa
+        )
+    );
+
+
+    isiElement(
+        "potensiTimbulan",
+        formatDesimal(
+            wilayah.potensiTimbulan
+        )
+    );
+
+
+    isiElement(
+        "memilahOrganik",
+        formatAngka(
+            wilayah.memilahOrganik
+        )
+    );
+
+
+    isiElement(
+        "memilahNonorganik",
+        formatAngka(
+            wilayah.memilahNonorganik
+        )
+    );
+
+
+    isiElement(
+        "memilahAnorganik",
+        formatAngka(
+            wilayah.memilahAnorganik
+        )
+    );
+
+
+    isiElement(
+        "memilahJelantah",
+        formatAngka(
+            wilayah.memilahJelantah
+        )
+    );
+
+
+    // ==================================================
+    // DONUT
+    // ==================================================
+
+    isiElement(
+        "totalDonut",
+        formatAngka(
+            rumah.totalRumah
+        )
+    );
+
+
+    isiElement(
+        "legendSudah",
+        formatAngka(
+            rumah.sudahMemilah
+        ) + " Rumah"
+    );
+
+
+    isiElement(
+        "legendBelum",
+        formatAngka(
+            rumah.belumMemilah
+        ) + " Rumah"
+    );
+
 
     const persenSudah =
-        total > 0
-            ? (sudah / total) * 100
+        rumah.totalRumah > 0
+            ?
+            (
+                rumah.sudahMemilah /
+                rumah.totalRumah *
+                100
+            )
             : 0;
 
 
     const persenBelum =
-        total > 0
-            ? (belum / total) * 100
+        rumah.totalRumah > 0
+            ?
+            (
+                rumah.belumMemilah /
+                rumah.totalRumah *
+                100
+            )
             : 0;
 
 
-    const persenSudahElement =
-        document.getElementById(
-            "persenSudahDonut"
-        );
+    isiElement(
+        "persenSudahDonut",
+        formatPersen(
+            persenSudah
+        )
+    );
 
 
-    const persenBelumElement =
-        document.getElementById(
-            "persenBelumDonut"
-        );
-
-
-    if (persenSudahElement) {
-
-        persenSudahElement.innerText =
-            formatPersen(
-                persenSudah
-            );
-
-    }
-
-
-    if (persenBelumElement) {
-
-        persenBelumElement.innerText =
-            formatPersen(
-                persenBelum
-            );
-
-    }
+    isiElement(
+        "persenBelumDonut",
+        formatPersen(
+            persenBelum
+        )
+    );
 
 
     // ==================================================
@@ -189,8 +418,8 @@ function hitungDashboard() {
     // ==================================================
 
     buatDiagramStatus(
-        sudah,
-        belum
+        rumah.sudahMemilah,
+        rumah.belumMemilah
     );
 
 
@@ -213,7 +442,6 @@ function tampilkanTanggal() {
         tanggal.toLocaleDateString(
             "id-ID",
             {
-
                 day:
                     "numeric",
 
@@ -222,7 +450,6 @@ function tampilkanTanggal() {
 
                 year:
                     "numeric"
-
             }
         );
 
@@ -235,7 +462,7 @@ function tampilkanTanggal() {
 
     if (element) {
 
-        element.innerText =
+        element.textContent =
             format;
 
     }
@@ -244,10 +471,10 @@ function tampilkanTanggal() {
 
 
 // ======================================================
-// DIAGRAM DONAT
+// DIAGRAM STATUS
 // ======================================================
 
-let statusChart;
+let statusChart = null;
 
 
 function buatDiagramStatus(
@@ -287,11 +514,8 @@ function buatDiagramStatus(
                 data: {
 
                     labels: [
-
                         "Sudah Memilah",
-
                         "Belum Memilah"
-
                     ],
 
 
@@ -300,39 +524,20 @@ function buatDiagramStatus(
                         {
 
                             data: [
-
                                 sudah,
-
                                 belum
-
                             ],
-
 
                             backgroundColor: [
-
-                                "#20AA59",
-
-                                "#F53240"
-
+                                "#20a955",
+                                "#ef3340"
                             ],
-
-
-                            hoverBackgroundColor: [
-
-                                "#17974C",
-
-                                "#E52A37"
-
-                            ],
-
 
                             borderColor:
-                                "#FFFFFF",
-
+                                "#ffffff",
 
                             borderWidth:
-                                3,
-
+                                2,
 
                             hoverOffset:
                                 4
@@ -349,21 +554,11 @@ function buatDiagramStatus(
                     responsive:
                         true,
 
-
                     maintainAspectRatio:
                         false,
 
-
                     cutout:
-                        "69%",
-
-
-                    animation: {
-
-                        duration:
-                            700
-
-                    },
+                        "68%",
 
 
                     plugins: {
@@ -372,52 +567,6 @@ function buatDiagramStatus(
 
                             display:
                                 false
-
-                        },
-
-
-                        tooltip: {
-
-                            backgroundColor:
-                                "#14213D",
-
-
-                            titleColor:
-                                "#FFFFFF",
-
-
-                            bodyColor:
-                                "#FFFFFF",
-
-
-                            padding:
-                                12,
-
-
-                            cornerRadius:
-                                8,
-
-
-                            callbacks: {
-
-                                label:
-                                    function(context) {
-
-                                        return (
-
-                                            context.label +
-
-                                            ": " +
-
-                                            context.raw +
-
-                                            " Rumah"
-
-                                        );
-
-                                    }
-
-                            }
 
                         }
 
@@ -432,10 +581,26 @@ function buatDiagramStatus(
 
 
 // ======================================================
-// DATA PER RW
+// DIAGRAM PER RW
 // ======================================================
 
-function hitungDataRW() {
+let rwChart = null;
+
+
+function buatDiagramRW() {
+
+    const canvas =
+        document.getElementById(
+            "rwChart"
+        );
+
+
+    if (!canvas) {
+
+        return;
+
+    }
+
 
     const rwData = {};
 
@@ -445,11 +610,23 @@ function hitungDataRW() {
 
             const rw =
                 String(
-                    rumah.rw
-                ).padStart(
+                    rumah.rw || ""
+                )
+                .replace(
+                    /^RW\s*/i,
+                    ""
+                )
+                .padStart(
                     2,
                     "0"
                 );
+
+
+            if (!rw) {
+
+                return;
+
+            }
 
 
             if (!rwData[rw]) {
@@ -470,9 +647,17 @@ function hitungDataRW() {
             rwData[rw].total++;
 
 
+            const status =
+                normalisasiStatus(
+                    rumah.status
+                );
+
+
             if (
-                rumah.status ===
-                "Sudah Memilah"
+                status ===
+                    "sudah memilah" ||
+                status ===
+                    "mengolah"
             ) {
 
                 rwData[rw].sudah++;
@@ -483,125 +668,12 @@ function hitungDataRW() {
     );
 
 
-    return rwData;
-
-}
-
-
-// ======================================================
-// PLUGIN ANGKA DI ATAS BATANG
-// ======================================================
-
-const labelBatangPlugin = {
-
-    id:
-        "labelBatangMasagi",
-
-
-    afterDatasetsDraw(chart) {
-
-        const {
-            ctx
-        } =
-            chart;
-
-
-        ctx.save();
-
-
-        ctx.font =
-            "600 12px Arial";
-
-
-        ctx.fillStyle =
-            "#14213D";
-
-
-        ctx.textAlign =
-            "center";
-
-
-        ctx.textBaseline =
-            "bottom";
-
-
-        chart.data.datasets.forEach(
-            (
-                dataset,
-                datasetIndex
-            ) => {
-
-                const meta =
-                    chart.getDatasetMeta(
-                        datasetIndex
-                    );
-
-
-                meta.data.forEach(
-                    (
-                        bar,
-                        index
-                    ) => {
-
-                        const nilai =
-                            dataset.data[index];
-
-
-                        ctx.fillText(
-                            nilai + "%",
-                            bar.x,
-                            bar.y - 7
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-        ctx.restore();
-
-    }
-
-};
-
-
-// ======================================================
-// DIAGRAM BATANG RW
-// ======================================================
-
-let rwChart;
-
-
-function buatDiagramRW() {
-
-    const canvas =
-        document.getElementById(
-            "rwChart"
-        );
-
-
-    if (!canvas) {
-
-        return;
-
-    }
-
-
-    const rwData =
-        hitungDataRW();
-
-
     const daftarRW =
         Object.keys(
             rwData
         )
         .sort(
-            (
-                a,
-                b
-            ) =>
+            (a, b) =>
                 Number(a) -
                 Number(b)
         );
@@ -610,8 +682,7 @@ function buatDiagramRW() {
     const labels =
         daftarRW.map(
             rw =>
-                "RW " +
-                rw
+                "RW " + rw
         );
 
 
@@ -635,13 +706,11 @@ function buatDiagramRW() {
 
 
                 return Number(
-
                     (
                         sudah /
                         total *
                         100
                     ).toFixed(1)
-
                 );
 
             }
@@ -677,37 +746,17 @@ function buatDiagramRW() {
                             label:
                                 "Rumah Memilah",
 
-
                             data:
                                 percentages,
 
-
                             backgroundColor:
-                                "#18A05E",
-
-
-                            hoverBackgroundColor:
-                                "#138A51",
-
-
-                            borderColor:
-                                "#168A52",
-
-
-                            borderWidth:
-                                1,
-
+                                "#159153",
 
                             borderRadius:
-                                7,
-
-
-                            borderSkipped:
-                                false,
-
+                                6,
 
                             maxBarThickness:
-                                68
+                                70
 
                         }
 
@@ -716,65 +765,27 @@ function buatDiagramRW() {
                 },
 
 
-                plugins: [
-
-                    labelBatangPlugin
-
-                ],
-
-
                 options: {
 
                     responsive:
                         true,
 
-
                     maintainAspectRatio:
                         false,
 
 
-                    layout: {
-
-                        padding: {
-
-                            top:
-                                20
-
-                        }
-
-                    },
-
-
-                    animation: {
-
-                        duration:
-                            700
-
-                    },
-
-
                     scales: {
-
 
                         y: {
 
                             beginAtZero:
                                 true,
 
-
                             max:
                                 100,
 
 
                             ticks: {
-
-                                stepSize:
-                                    10,
-
-
-                                color:
-                                    "#667085",
-
 
                                 callback:
                                     function(value) {
@@ -792,19 +803,7 @@ function buatDiagramRW() {
                             grid: {
 
                                 color:
-                                    "#E6ECE8",
-
-
-                                drawBorder:
-                                    false
-
-                            },
-
-
-                            border: {
-
-                                display:
-                                    false
+                                    "#e6ece9"
 
                             }
 
@@ -813,31 +812,7 @@ function buatDiagramRW() {
 
                         x: {
 
-                            ticks: {
-
-                                color:
-                                    "#475467",
-
-
-                                font: {
-
-                                    weight:
-                                        "600"
-
-                                }
-
-                            },
-
-
                             grid: {
-
-                                display:
-                                    false
-
-                            },
-
-
-                            border: {
 
                                 display:
                                     false
@@ -851,7 +826,6 @@ function buatDiagramRW() {
 
                     plugins: {
 
-
                         legend: {
 
                             display:
@@ -862,37 +836,16 @@ function buatDiagramRW() {
 
                         tooltip: {
 
-                            backgroundColor:
-                                "#14213D",
-
-
-                            titleColor:
-                                "#FFFFFF",
-
-
-                            bodyColor:
-                                "#FFFFFF",
-
-
-                            padding:
-                                12,
-
-
-                            cornerRadius:
-                                8,
-
-
                             callbacks: {
 
                                 label:
-                                    function(context) {
+                                    function(
+                                        context
+                                    ) {
 
                                         return (
-
                                             context.raw +
-
                                             "% rumah memilah"
-
                                         );
 
                                     }
@@ -940,51 +893,45 @@ function bukaQR() {
 
     if (!qrSudahDibuat) {
 
-        const urlDashboardPublik =
+        const urlDataRumah =
 
             "https://codingA29.github.io/masagi/dashboard-publik.html";
 
 
-        const qrContainer =
+        const tempatQR =
             document.getElementById(
                 "qrcode"
             );
 
 
-        if (!qrContainer) {
+        if (!tempatQR) {
 
             return;
 
         }
 
 
-        qrContainer.innerHTML =
+        tempatQR.innerHTML =
             "";
 
 
         new QRCode(
-
-            qrContainer,
-
+            tempatQR,
             {
 
                 text:
-                    urlDashboardPublik,
-
+                    urlDataRumah,
 
                 width:
                     230,
 
-
                 height:
                     230,
-
 
                 correctLevel:
                     QRCode.CorrectLevel.H
 
             }
-
         );
 
 
@@ -1019,7 +966,7 @@ function tutupQR() {
 
 
 // ======================================================
-// TUTUP MODAL KETIKA KLIK LUAR
+// KLIK LUAR MODAL
 // ======================================================
 
 window.addEventListener(
@@ -1046,7 +993,7 @@ window.addEventListener(
 
 
 // ======================================================
-// TUTUP QR DENGAN ESC
+// ESC
 // ======================================================
 
 document.addEventListener(
@@ -1067,7 +1014,7 @@ document.addEventListener(
 
 
 // ======================================================
-// JALANKAN
+// JALANKAN DASHBOARD
 // ======================================================
 
 document.addEventListener(
@@ -1078,18 +1025,10 @@ document.addEventListener(
 
 
         if (
-            typeof dataRumah !==
-            "undefined"
+            validasiData()
         ) {
 
             hitungDashboard();
-
-        }
-        else {
-
-            console.error(
-                "dataRumah tidak ditemukan."
-            );
 
         }
 

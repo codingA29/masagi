@@ -1,4 +1,36 @@
 // ======================================================
+// MASAGI - DATA WILAYAH KELURAHAN SUKALUYU
+// ======================================================
+
+const dataWilayah = {
+
+    totalKK: 4454,
+
+    totalJiwa: 14501,
+
+    faktorTimbulanKgPerJiwa: 0.38,
+
+    pemilahan: {
+
+        organik: 30,
+
+        nonorganik: 25,
+
+        anorganik: 28,
+
+        minyakJelantah: 16
+
+    }
+
+};
+
+
+// ======================================================
+// MASAGI - DATA RUMAH
+// ======================================================
+
+const dataRumah = [
+// ======================================================
 // MASAGI - DATA RUMAH
 // Sumber: Data Rumah.xlsx
 // ======================================================
