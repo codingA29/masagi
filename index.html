@@ -2,38 +2,520 @@
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Dashboard MASAGI</title>
 
-    <link rel="stylesheet" href="style/style.css">
+    <!-- =====================================================
+         CSS UTAMA
+    ====================================================== -->
+    <link
+        rel="stylesheet"
+        href="style/style.css"
+    >
+
+
+    <!-- =====================================================
+         STYLE TAMBAHAN DASHBOARD
+    ====================================================== -->
+    <style>
+
+        /* =====================================================
+           INDIKATOR TAMBAHAN
+        ===================================================== */
+
+        .masagi-summary-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 18px;
+
+            margin-top: 18px;
+
+            margin-bottom: 24px;
+
+        }
+
+
+        .masagi-summary-card {
+
+            position: relative;
+
+            min-width: 0;
+
+            min-height: 135px;
+
+            padding: 22px 20px;
+
+            background: #ffffff;
+
+            border: 1px solid #e4ebe7;
+
+            border-radius: 17px;
+
+            box-shadow:
+                0 6px 20px
+                rgba(21, 78, 48, 0.06);
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 15px;
+
+            overflow: hidden;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .masagi-summary-card:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 26px
+                rgba(21, 78, 48, 0.11);
+
+        }
+
+
+        /* =====================================================
+           GARIS KIRI
+        ===================================================== */
+
+        .masagi-summary-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 5px;
+
+            height: 100%;
+
+        }
+
+
+        .card-kk::before {
+            background: #2f80ed;
+        }
+
+
+        .card-jiwa::before {
+            background: #009688;
+        }
+
+
+        .card-timbulan::before {
+            background: #eeb600;
+        }
+
+
+        .card-organik::before {
+            background: #27ae60;
+        }
+
+
+        .card-nonorganik::before {
+            background: #3485f4;
+        }
+
+
+        .card-anorganik::before {
+            background: #f39200;
+        }
+
+
+        .card-jelantah::before {
+            background: #8655e8;
+        }
+
+
+        /* =====================================================
+           ICON
+        ===================================================== */
+
+        .masagi-card-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .icon-blue {
+
+            color: #2f80ed;
+
+            background: #eaf3ff;
+
+        }
+
+
+        .icon-green {
+
+            color: #16894a;
+
+            background: #e8f7ee;
+
+        }
+
+
+        .icon-teal {
+
+            color: #00897b;
+
+            background: #e7f8f5;
+
+        }
+
+
+        .icon-yellow {
+
+            color: #d89d00;
+
+            background: #fff6d9;
+
+        }
+
+
+        .icon-organik {
+
+            color: #219653;
+
+            background: #e7f7ed;
+
+        }
+
+
+        .icon-orange {
+
+            color: #ec8a00;
+
+            background: #fff1db;
+
+        }
+
+
+        .icon-purple {
+
+            color: #7d4ce3;
+
+            background: #f1ebff;
+
+        }
+
+
+        /* =====================================================
+           ISI KARTU
+        ===================================================== */
+
+        .masagi-card-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            flex: 1;
+
+            min-width: 0;
+
+        }
+
+
+        .masagi-card-title {
+
+            margin: 1px 0 7px;
+
+            color: #0b1830;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+        }
+
+
+        .masagi-card-content h2 {
+
+            margin: 0;
+
+            color: #071b3b;
+
+            font-size: 30px;
+
+            font-weight: 800;
+
+            line-height: 1.1;
+
+        }
+
+
+        .masagi-card-content > span {
+
+            display: block;
+
+            margin-top: 9px;
+
+            color: #68758d;
+
+            font-size: 12px;
+
+        }
+
+
+        .masagi-value-unit {
+
+            display: flex;
+
+            align-items: baseline;
+
+            flex-wrap: wrap;
+
+            gap: 6px;
+
+        }
+
+
+        .masagi-value-unit h2 {
+
+            margin: 0;
+
+        }
+
+
+        .masagi-value-unit .value-unit {
+
+            color: #78849a;
+
+            font-size: 13px;
+
+            font-weight: 500;
+
+        }
+
+
+        /* =====================================================
+           WATERMARK
+        ===================================================== */
+
+        .masagi-card-watermark {
+
+            position: absolute;
+
+            right: 16px;
+
+            top: 32px;
+
+            opacity: 0.07;
+
+            pointer-events: none;
+
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 1200px) {
+
+            .masagi-summary-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+            }
+
+        }
+
+
+        /* =====================================================
+           HP
+        ===================================================== */
+
+        @media (max-width: 768px) {
+
+            .masagi-summary-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap: 10px;
+
+                margin-top: 12px;
+
+                margin-bottom: 15px;
+
+            }
+
+
+            .masagi-summary-card {
+
+                min-height: 112px;
+
+                padding: 14px 11px;
+
+                gap: 9px;
+
+                border-radius: 13px;
+
+            }
+
+
+            .masagi-card-icon {
+
+                width: 38px;
+
+                height: 38px;
+
+            }
+
+
+            .masagi-card-icon svg {
+
+                width: 21px;
+
+                height: 21px;
+
+            }
+
+
+            .masagi-card-title {
+
+                margin-bottom: 5px;
+
+                font-size: 11px;
+
+                line-height: 1.25;
+
+            }
+
+
+            .masagi-card-content h2 {
+
+                font-size: 22px;
+
+            }
+
+
+            .masagi-card-content > span {
+
+                margin-top: 5px;
+
+                font-size: 10px;
+
+            }
+
+
+            .masagi-value-unit {
+
+                gap: 4px;
+
+            }
+
+
+            .masagi-value-unit .value-unit {
+
+                font-size: 10px;
+
+            }
+
+
+            .masagi-card-watermark {
+
+                display: none;
+
+            }
+
+        }
+
+
+        @media (max-width: 420px) {
+
+            .masagi-summary-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      HEADER ADMIN MOBILE
 ===================================================== -->
+
 <header class="mobile-admin-header">
 
     <div class="mobile-admin-brand">
-        <img src="assets/logo-masagi.jpeg" alt="Logo MASAGI">
+
+        <img
+            src="assets/logo-masagi.jpeg"
+            alt="Logo MASAGI"
+        >
 
         <div>
-            <strong>MASAGI</strong>
-            <span>Dashboard Admin</span>
+
+            <strong>
+                MASAGI
+            </strong>
+
+            <span>
+                Dashboard Admin
+            </span>
+
         </div>
+
     </div>
+
 
     <button
         class="mobile-admin-toggle"
         type="button"
         onclick="bukaMenuAdmin()"
-        aria-label="Buka menu">
+        aria-label="Buka menu"
+    >
 
         <span></span>
+
         <span></span>
+
         <span></span>
 
     </button>
@@ -41,87 +523,136 @@
 </header>
 
 
+
 <!-- =====================================================
      OVERLAY MENU MOBILE
 ===================================================== -->
+
 <div
     id="mobileAdminOverlay"
     class="mobile-admin-overlay"
-    onclick="tutupMenuAdmin()">
+    onclick="tutupMenuAdmin()"
+>
 </div>
+
 
 
 <!-- =====================================================
      MENU ADMIN MOBILE
 ===================================================== -->
+
 <aside
     id="mobileAdminMenu"
-    class="mobile-admin-menu">
+    class="mobile-admin-menu"
+>
 
     <div class="mobile-admin-menu-top">
 
-        <strong>Menu Admin</strong>
+        <strong>
+            Menu Admin
+        </strong>
+
 
         <button
             type="button"
             onclick="tutupMenuAdmin()"
             class="mobile-admin-close"
-            aria-label="Tutup menu">
+            aria-label="Tutup menu"
+        >
+
             ×
+
         </button>
 
     </div>
 
+
     <nav class="mobile-admin-nav">
 
-        <a href="index.html" class="active">
+
+        <a
+            href="index.html"
+            class="active"
+        >
+
             Dashboard
+
         </a>
+
 
         <a href="dashboard/data-rumah-admin.html">
+
             Data Rumah
+
         </a>
+
 
         <a href="dashboard/pemilahan-sampah.html">
+
             Pemilahan Sampah
+
         </a>
 
+
         <a href="dashboard/laporan.html">
+
             Laporan
+
         </a>
+
 
         <button
             type="button"
             class="mobile-admin-exit"
-            onclick="logout()">
+            onclick="logout()"
+        >
+
             Exit
+
         </button>
+
 
     </nav>
 
 </aside>
 
 
+
 <!-- =====================================================
      SIDEBAR DESKTOP
 ===================================================== -->
+
 <aside class="sidebar">
+
+
+    <!-- LOGO -->
 
     <div class="logo-container">
 
         <img
             src="assets/logo-masagi.jpeg"
             alt="Logo MASAGI"
-            class="logo-masagi">
+            class="logo-masagi"
+        >
 
     </div>
 
+
+
+    <!-- MENU -->
+
     <nav>
 
+
         <!-- DASHBOARD -->
-        <a href="index.html" class="active">
+
+        <a
+            href="index.html"
+            class="active"
+        >
 
             <span class="menu-icon">
+
                 <svg
                     viewBox="0 0 24 24"
                     width="22"
@@ -130,24 +661,40 @@
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round">
+                    stroke-linejoin="round"
+                >
 
-                    <path d="M3 11.5 12 4l9 7.5"></path>
-                    <path d="M5 10.5V20h14v-9.5"></path>
-                    <path d="M9 20v-6h6v6"></path>
+                    <path
+                        d="M3 11.5 12 4l9 7.5"
+                    ></path>
+
+                    <path
+                        d="M5 10.5V20h14v-9.5"
+                    ></path>
+
+                    <path
+                        d="M9 20v-6h6v6"
+                    ></path>
 
                 </svg>
+
             </span>
 
-            <span>Dashboard</span>
+
+            <span>
+                Dashboard
+            </span>
 
         </a>
+
 
 
         <!-- DATA RUMAH -->
+
         <a href="dashboard/data-rumah-admin.html">
 
             <span class="menu-icon">
+
                 <svg
                     viewBox="0 0 24 24"
                     width="22"
@@ -156,27 +703,40 @@
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round">
+                    stroke-linejoin="round"
+                >
 
                     <path d="M3 21h18"></path>
+
                     <path d="M5 21V7l7-4 7 4v14"></path>
+
                     <path d="M9 9h2"></path>
+
                     <path d="M13 9h2"></path>
+
                     <path d="M9 13h2"></path>
+
                     <path d="M13 13h2"></path>
 
                 </svg>
+
             </span>
 
-            <span>Data Rumah</span>
+
+            <span>
+                Data Rumah
+            </span>
 
         </a>
+
 
 
         <!-- PEMILAHAN SAMPAH -->
+
         <a href="dashboard/pemilahan-sampah.html">
 
             <span class="menu-icon">
+
                 <svg
                     viewBox="0 0 24 24"
                     width="22"
@@ -185,30 +745,50 @@
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round">
+                    stroke-linejoin="round"
+                >
 
                     <path d="M12 2v4"></path>
+
                     <path d="M12 18v4"></path>
+
                     <path d="M4.93 4.93l2.83 2.83"></path>
+
                     <path d="M16.24 16.24l2.83 2.83"></path>
+
                     <path d="M2 12h4"></path>
+
                     <path d="M18 12h4"></path>
+
                     <path d="M4.93 19.07l2.83-2.83"></path>
+
                     <path d="M16.24 7.76l2.83-2.83"></path>
-                    <circle cx="12" cy="12" r="4"></circle>
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="4"
+                    ></circle>
 
                 </svg>
+
             </span>
 
-            <span>Pemilahan Sampah</span>
+
+            <span>
+                Pemilahan Sampah
+            </span>
 
         </a>
+
 
 
         <!-- LAPORAN -->
+
         <a href="dashboard/laporan.html">
 
             <span class="menu-icon">
+
                 <svg
                     viewBox="0 0 24 24"
                     width="22"
@@ -217,26 +797,37 @@
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round">
+                    stroke-linejoin="round"
+                >
 
                     <path d="M4 19V9"></path>
+
                     <path d="M10 19V5"></path>
+
                     <path d="M16 19v-7"></path>
+
                     <path d="M22 19V3"></path>
 
                 </svg>
+
             </span>
 
-            <span>Laporan</span>
+
+            <span>
+                Laporan
+            </span>
 
         </a>
 
 
+
         <!-- EXIT -->
+
         <button
             class="btn-exit"
             type="button"
-            onclick="logout()">
+            onclick="logout()"
+        >
 
             <span class="exit-icon">
 
@@ -248,76 +839,115 @@
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round">
+                    stroke-linejoin="round"
+                >
 
-                    <path d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4"></path>
-                    <path d="M14 8l4 4-4 4"></path>
-                    <path d="M18 12H9"></path>
+                    <path
+                        d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4"
+                    ></path>
+
+                    <path
+                        d="M14 8l4 4-4 4"
+                    ></path>
+
+                    <path
+                        d="M18 12H9"
+                    ></path>
 
                 </svg>
 
             </span>
 
+
             <span class="exit-text">
+
                 Exit
+
             </span>
 
         </button>
 
+
     </nav>
 
 
+
     <!-- TAGLINE -->
+
     <div class="sidebar-tagline">
 
         <span class="tagline-leaf">
+
             ❧
+
         </span>
 
+
         <p>
-            Data Akurat<br>
-            Lingkungan Sehat<br>
+
+            Data Akurat
+            <br>
+
+            Lingkungan Sehat
+            <br>
+
             Sukaluyu Hebat
+
         </p>
+
 
         <div class="tagline-line"></div>
 
     </div>
 
+
 </aside>
+
 
 
 <!-- =====================================================
      MAIN CONTENT
 ===================================================== -->
+
 <main class="main-content">
+
+
 
     <!-- =================================================
          HEADER
     ================================================== -->
+
     <header class="dashboard-header">
+
 
         <div class="header-space"></div>
 
+
         <div class="header-right">
 
+
             <!-- TANGGAL -->
+
             <div class="tanggal">
 
                 <span>
                     Tanggal
                 </span>
 
-                <strong id="tanggalHariIni"></strong>
+                <strong id="tanggalHariIni">
+                </strong>
 
             </div>
 
 
+
             <!-- QR CODE -->
+
             <button
                 class="btn-qr"
                 type="button"
-                onclick="bukaQR()">
+                onclick="bukaQR()"
+            >
 
                 <span class="qr-icon">
                     ▦
@@ -327,19 +957,29 @@
 
             </button>
 
+
         </div>
+
 
     </header>
 
 
+
     <!-- =================================================
-         KARTU RINGKASAN
+         3 INDIKATOR UTAMA
+         JANGAN DIHAPUS
     ================================================== -->
+
     <section class="stats-grid">
 
 
-        <!-- TOTAL RUMAH -->
+
+        <!-- =================================================
+             TOTAL RUMAH
+        ================================================== -->
+
         <article class="stat-card total-card">
+
 
             <div class="stat-icon blue-icon">
 
@@ -351,32 +991,51 @@
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round">
+                    stroke-linejoin="round"
+                >
 
-                    <path d="M3 11.5 12 4l9 7.5"></path>
-                    <path d="M5 10.5V20h14v-9.5"></path>
-                    <path d="M9 20v-6h6v6"></path>
+                    <path
+                        d="M3 11.5 12 4l9 7.5"
+                    ></path>
+
+                    <path
+                        d="M5 10.5V20h14v-9.5"
+                    ></path>
+
+                    <path
+                        d="M9 20v-6h6v6"
+                    ></path>
 
                 </svg>
 
             </div>
 
 
+
             <div class="stat-content">
 
                 <p class="stat-title">
+
                     Total Rumah
+
                 </p>
 
+
                 <h2 id="totalRumah">
+
                     0
+
                 </h2>
 
+
                 <span>
+
                     Rumah Terdata
+
                 </span>
 
             </div>
+
 
 
             <div class="stat-watermark">
@@ -387,21 +1046,36 @@
                     height="72"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="1.5">
+                    stroke-width="1.5"
+                >
 
-                    <path d="M3 11.5 12 4l9 7.5"></path>
-                    <path d="M5 10.5V20h14v-9.5"></path>
-                    <path d="M9 20v-6h6v6"></path>
+                    <path
+                        d="M3 11.5 12 4l9 7.5"
+                    ></path>
+
+                    <path
+                        d="M5 10.5V20h14v-9.5"
+                    ></path>
+
+                    <path
+                        d="M9 20v-6h6v6"
+                    ></path>
 
                 </svg>
 
             </div>
 
+
         </article>
 
 
-        <!-- SUDAH MEMILAH -->
+
+        <!-- =================================================
+             SUDAH MEMILAH
+        ================================================== -->
+
         <article class="stat-card sudah-card">
+
 
             <div class="stat-icon green-icon">
 
@@ -413,31 +1087,47 @@
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round">
+                    stroke-linejoin="round"
+                >
 
-                    <path d="M20 4c-8 0-13 4-14 10 4-1 8-4 11-7"></path>
-                    <path d="M6 14c0 3 2 5 5 6"></path>
+                    <path
+                        d="M20 4c-8 0-13 4-14 10 4-1 8-4 11-7"
+                    ></path>
+
+                    <path
+                        d="M6 14c0 3 2 5 5 6"
+                    ></path>
 
                 </svg>
 
             </div>
 
 
+
             <div class="stat-content">
 
                 <p class="stat-title">
+
                     Sudah Memilah
+
                 </p>
 
+
                 <h2 id="sudahMemilah">
+
                     0
+
                 </h2>
 
+
                 <span>
+
                     Rumah
+
                 </span>
 
             </div>
+
 
 
             <div class="stat-watermark">
@@ -448,20 +1138,32 @@
                     height="72"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="1.5">
+                    stroke-width="1.5"
+                >
 
-                    <path d="M20 4c-8 0-13 4-14 10 4-1 8-4 11-7"></path>
-                    <path d="M6 14c0 3 2 5 5 6"></path>
+                    <path
+                        d="M20 4c-8 0-13 4-14 10 4-1 8-4 11-7"
+                    ></path>
+
+                    <path
+                        d="M6 14c0 3 2 5 5 6"
+                    ></path>
 
                 </svg>
 
             </div>
 
+
         </article>
 
 
-        <!-- BELUM MEMILAH -->
+
+        <!-- =================================================
+             BELUM MEMILAH
+        ================================================== -->
+
         <article class="stat-card belum-card">
+
 
             <div class="stat-icon red-icon">
 
@@ -473,34 +1175,59 @@
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round">
+                    stroke-linejoin="round"
+                >
 
-                    <path d="M3 6h18"></path>
-                    <path d="M8 6V4h8v2"></path>
-                    <path d="M19 6l-1 14H6L5 6"></path>
-                    <path d="M10 10v6"></path>
-                    <path d="M14 10v6"></path>
+                    <path
+                        d="M3 6h18"
+                    ></path>
+
+                    <path
+                        d="M8 6V4h8v2"
+                    ></path>
+
+                    <path
+                        d="M19 6l-1 14H6L5 6"
+                    ></path>
+
+                    <path
+                        d="M10 10v6"
+                    ></path>
+
+                    <path
+                        d="M14 10v6"
+                    ></path>
 
                 </svg>
 
             </div>
 
 
+
             <div class="stat-content">
 
                 <p class="stat-title">
+
                     Belum Memilah
+
                 </p>
 
+
                 <h2 id="belumMemilah">
+
                     0
+
                 </h2>
 
+
                 <span>
+
                     Rumah
+
                 </span>
 
             </div>
+
 
 
             <div class="stat-watermark">
@@ -511,43 +1238,592 @@
                     height="72"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="1.5">
+                    stroke-width="1.5"
+                >
 
                     <path d="M3 6h18"></path>
+
                     <path d="M8 6V4h8v2"></path>
+
                     <path d="M19 6l-1 14H6L5 6"></path>
+
                     <path d="M10 10v6"></path>
+
                     <path d="M14 10v6"></path>
 
                 </svg>
 
             </div>
 
+
         </article>
 
+
     </section>
+
+
+
+    <!-- =================================================
+         7 INDIKATOR TAMBAHAN
+    ================================================== -->
+
+    <section class="masagi-summary-grid">
+
+
+
+        <!-- =================================================
+             TOTAL KK
+        ================================================== -->
+
+        <article class="masagi-summary-card card-kk">
+
+
+            <div class="masagi-card-icon icon-blue">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="28"
+                    height="28"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+
+                    <circle
+                        cx="9"
+                        cy="7"
+                        r="4"
+                    ></circle>
+
+                    <path
+                        d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
+                    ></path>
+
+                    <path
+                        d="M22 21v-2a4 4 0 0 0-3-3.87"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+
+            <div class="masagi-card-content">
+
+                <p class="masagi-card-title">
+
+                    Total KK
+
+                </p>
+
+
+                <h2 id="totalKK">
+
+                    4.454
+
+                </h2>
+
+
+                <span>
+
+                    Kepala Keluarga
+
+                </span>
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- =================================================
+             TOTAL JIWA
+        ================================================== -->
+
+        <article class="masagi-summary-card card-jiwa">
+
+
+            <div class="masagi-card-icon icon-teal">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="28"
+                    height="28"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+
+                    <circle
+                        cx="12"
+                        cy="7"
+                        r="4"
+                    ></circle>
+
+                    <path
+                        d="M5.5 21a6.5 6.5 0 0 1 13 0"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+
+            <div class="masagi-card-content">
+
+                <p class="masagi-card-title">
+
+                    Total Jiwa
+
+                </p>
+
+
+                <h2 id="totalJiwa">
+
+                    14.501
+
+                </h2>
+
+
+                <span>
+
+                    Jiwa
+
+                </span>
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- =================================================
+             POTENSI TIMBULAN
+        ================================================== -->
+
+        <article class="masagi-summary-card card-timbulan">
+
+
+            <div class="masagi-card-icon icon-yellow">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="28"
+                    height="28"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+
+                    <path d="M3 6h18"></path>
+
+                    <path d="M8 6V4h8v2"></path>
+
+                    <path d="M19 6l-1 14H6L5 6"></path>
+
+                    <path d="M10 10v6"></path>
+
+                    <path d="M14 10v6"></path>
+
+                </svg>
+
+            </div>
+
+
+
+            <div class="masagi-card-content">
+
+                <p class="masagi-card-title">
+
+                    Potensi Timbulan Sampah
+
+                </p>
+
+
+                <div class="masagi-value-unit">
+
+                    <h2 id="potensiTimbulan">
+
+                        5.510,38
+
+                    </h2>
+
+
+                    <span class="value-unit">
+
+                        Kg/hari
+
+                    </span>
+
+                </div>
+
+
+                <span>
+
+                    Estimasi Timbulan
+
+                </span>
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- =================================================
+             MEMILAH ORGANIK
+        ================================================== -->
+
+        <article class="masagi-summary-card card-organik">
+
+
+            <div class="masagi-card-icon icon-organik">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="28"
+                    height="28"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+
+                    <path
+                        d="M20 4c-8 0-13 4-14 10 4-1 8-4 11-7"
+                    ></path>
+
+                    <path
+                        d="M6 14c0 3 2 5 5 6"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+
+            <div class="masagi-card-content">
+
+                <p class="masagi-card-title">
+
+                    Memilah Organik
+
+                </p>
+
+
+                <div class="masagi-value-unit">
+
+                    <h2 id="memilahOrganik">
+
+                        30
+
+                    </h2>
+
+
+                    <span class="value-unit">
+
+                        rumah
+
+                    </span>
+
+                </div>
+
+
+                <span>
+
+                    Pemilahan Organik
+
+                </span>
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- =================================================
+             MEMILAH NONORGANIK
+        ================================================== -->
+
+        <article class="masagi-summary-card card-nonorganik">
+
+
+            <div class="masagi-card-icon icon-blue">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="28"
+                    height="28"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+
+                    <path
+                        d="M7.7 7.7 10 3l2 4"
+                    ></path>
+
+                    <path
+                        d="M10 3h5a4 4 0 0 1 3.5 2"
+                    ></path>
+
+                    <path
+                        d="m18 8 3 4-5 .5"
+                    ></path>
+
+                    <path
+                        d="M21 12l-2.5 4.5a4 4 0 0 1-3.5 2H12"
+                    ></path>
+
+                    <path
+                        d="m12 21-5-1 2-4"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+
+            <div class="masagi-card-content">
+
+                <p class="masagi-card-title">
+
+                    Memilah Nonorganik
+
+                </p>
+
+
+                <div class="masagi-value-unit">
+
+                    <h2 id="memilahNonorganik">
+
+                        25
+
+                    </h2>
+
+
+                    <span class="value-unit">
+
+                        rumah
+
+                    </span>
+
+                </div>
+
+
+                <span>
+
+                    Pemilahan Nonorganik
+
+                </span>
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- =================================================
+             MEMILAH ANORGANIK
+        ================================================== -->
+
+        <article class="masagi-summary-card card-anorganik">
+
+
+            <div class="masagi-card-icon icon-orange">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="28"
+                    height="28"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+
+                    <path
+                        d="M12 22V8"
+                    ></path>
+
+                    <path
+                        d="M5 12c4 0 7-3 7-7-4 0-7 3-7 7Z"
+                    ></path>
+
+                    <path
+                        d="M19 8c-4 0-7 3-7 7 4 0 7-3 7-7Z"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+
+            <div class="masagi-card-content">
+
+                <p class="masagi-card-title">
+
+                    Memilah Anorganik
+
+                </p>
+
+
+                <div class="masagi-value-unit">
+
+                    <h2 id="memilahAnorganik">
+
+                        28
+
+                    </h2>
+
+
+                    <span class="value-unit">
+
+                        rumah
+
+                    </span>
+
+                </div>
+
+
+                <span>
+
+                    Pemilahan Anorganik
+
+                </span>
+
+            </div>
+
+
+        </article>
+
+
+
+        <!-- =================================================
+             MINYAK JELANTAH
+        ================================================== -->
+
+        <article class="masagi-summary-card card-jelantah">
+
+
+            <div class="masagi-card-icon icon-purple">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="28"
+                    height="28"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+
+                    <path
+                        d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12Z"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+
+            <div class="masagi-card-content">
+
+                <p class="masagi-card-title">
+
+                    Memilah Minyak Jelantah
+
+                </p>
+
+
+                <div class="masagi-value-unit">
+
+                    <h2 id="memilahJelantah">
+
+                        16
+
+                    </h2>
+
+
+                    <span class="value-unit">
+
+                        rumah
+
+                    </span>
+
+                </div>
+
+
+                <span>
+
+                    Pengelolaan Jelantah
+
+                </span>
+
+            </div>
+
+
+        </article>
+
+
+    </section>
+
 
 
     <!-- =================================================
          BAGIAN GRAFIK
     ================================================== -->
+
     <section class="chart-section">
 
 
-        <!-- DIAGRAM DONAT -->
+
+        <!-- =================================================
+             DIAGRAM DONAT
+        ================================================== -->
+
         <div class="chart-box donut-box">
+
 
             <div class="chart-heading">
 
                 <h2>
+
                     Ringkasan Pemilahan Sampah
+
                 </h2>
 
+
                 <p>
+
                     Komposisi rumah berdasarkan status pemilahan
+
                 </p>
 
             </div>
+
 
 
             <div class="donut-content">
@@ -555,118 +1831,174 @@
 
                 <div class="donut-wrapper">
 
+
                     <canvas id="statusChart"></canvas>
 
 
                     <div class="donut-center">
 
+
                         <strong id="totalDonut">
+
                             0
+
                         </strong>
 
+
                         <span>
+
                             Total Rumah
+
                         </span>
 
+
                     </div>
+
 
                 </div>
 
 
+
                 <!-- LEGEND -->
+
                 <div class="chart-legend">
 
 
-                    <!-- SUDAH -->
+
+                    <!-- SUDAH MEMILAH -->
+
                     <div class="legend-item">
+
 
                         <div class="legend-left">
 
+
                             <span
-                                class="legend-dot hijau-dot">
+                                class="legend-dot hijau-dot"
+                            >
                             </span>
+
 
                             <div>
 
                                 <strong>
+
                                     Sudah Memilah
+
                                 </strong>
 
+
                                 <p id="legendSudah">
+
                                     0 Rumah
+
                                 </p>
 
                             </div>
+
 
                         </div>
 
 
                         <strong
                             class="legend-percent hijau-text"
-                            id="persenSudahDonut">
+                            id="persenSudahDonut"
+                        >
 
                             0%
 
                         </strong>
 
+
                     </div>
 
 
-                    <!-- BELUM -->
+
+                    <!-- BELUM MEMILAH -->
+
                     <div class="legend-item">
+
 
                         <div class="legend-left">
 
+
                             <span
-                                class="legend-dot merah-dot">
+                                class="legend-dot merah-dot"
+                            >
                             </span>
+
 
                             <div>
 
                                 <strong>
+
                                     Belum Memilah
+
                                 </strong>
 
+
                                 <p id="legendBelum">
+
                                     0 Rumah
+
                                 </p>
 
                             </div>
+
 
                         </div>
 
 
                         <strong
                             class="legend-percent merah-text"
-                            id="persenBelumDonut">
+                            id="persenBelumDonut"
+                        >
 
                             0%
 
                         </strong>
 
+
                     </div>
+
 
                 </div>
 
+
             </div>
+
 
         </div>
 
 
-        <!-- DIAGRAM BATANG -->
+
+        <!-- =================================================
+             DIAGRAM BATANG
+        ================================================== -->
+
         <div class="chart-box bar-box">
+
 
             <div class="chart-heading">
 
+
                 <h2>
+
                     Persentase Rumah Memilah per RW
+
                 </h2>
 
+
                 <p>
-                    Perbandingan persentase rumah yang sudah memilah di setiap RW
+
+                    Perbandingan persentase rumah yang sudah
+                    memilah di setiap RW
+
                 </p>
 
+
             </div>
+
 
             <div class="bar-chart-container">
 
@@ -674,88 +2006,146 @@
 
             </div>
 
+
         </div>
 
 
-        <!-- CATATAN -->
+
+        <!-- =================================================
+             CATATAN
+        ================================================== -->
+
         <div class="chart-note">
 
+
             <span class="info-icon">
+
                 i
+
             </span>
 
+
             <p>
-                Grafik menunjukkan ringkasan status pemilahan sampah
-                dan persentase rumah yang sudah memilah sampah pada setiap RW.
+
+                Grafik menunjukkan ringkasan status pemilahan
+                sampah dan persentase rumah yang sudah memilah
+                sampah pada setiap RW.
+
             </p>
 
+
         </div>
+
 
     </section>
 
+
 </main>
+
 
 
 <!-- =====================================================
      MODAL QR CODE
 ===================================================== -->
+
 <div
     id="modalQR"
-    class="modal">
+    class="modal"
+>
+
 
     <div class="modal-content">
+
 
         <button
             class="close-modal"
             type="button"
             onclick="tutupQR()"
-            aria-label="Tutup">
+            aria-label="Tutup"
+        >
+
             ×
+
         </button>
 
+
         <h2>
+
             Scan Disini !
+
         </h2>
+
 
         <div id="qrcode"></div>
 
+
         <p class="qr-info">
-            Data menampilkan rumah yang sudah maupun belum memilah sampah.
+
+            Data menampilkan rumah yang sudah maupun
+            belum memilah sampah.
+
         </p>
+
 
     </div>
 
+
 </div>
+
 
 
 <!-- =====================================================
      LIBRARY JAVASCRIPT
 ===================================================== -->
 
+
 <!-- QR CODE -->
+
 <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+>
 </script>
+
+
 
 <!-- CHART.JS -->
+
 <script
-    src="https://cdn.jsdelivr.net/npm/chart.js">
+    src="https://cdn.jsdelivr.net/npm/chart.js"
+>
 </script>
+
+
 
 <!-- SUPABASE -->
+
 <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+>
 </script>
 
 
-<!-- SUPABASE CONFIG -->
+
+<!-- =====================================================
+     SUPABASE CONFIG
+===================================================== -->
+
 <script src="data/supabase.js"></script>
 
-<!-- AUTH -->
+
+
+<!-- =====================================================
+     AUTH
+===================================================== -->
+
 <script src="data/auth.js"></script>
 
 
-<!-- CEK LOGIN -->
+
+<!-- =====================================================
+     CEK LOGIN
+===================================================== -->
+
 <script>
 
     cekLogin();
@@ -763,121 +2153,167 @@
 </script>
 
 
-<!-- DATA RUMAH -->
+
+<!-- =====================================================
+     DATA RUMAH
+===================================================== -->
+
 <script src="data/data-rumah.js"></script>
 
 
-<!-- DASHBOARD -->
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
 <script src="data/dashboard.js"></script>
+
 
 
 <!-- =====================================================
      MENU ADMIN MOBILE
 ===================================================== -->
+
 <script>
 
-function bukaMenuAdmin() {
 
-    const menu =
-        document.getElementById(
-            "mobileAdminMenu"
-        );
+    /* =====================================================
+       BUKA MENU ADMIN
+    ===================================================== */
 
-    const overlay =
-        document.getElementById(
-            "mobileAdminOverlay"
-        );
+    function bukaMenuAdmin() {
 
 
-    if (menu) {
-        menu.classList.add(
-            "show"
-        );
-    }
+        const menu =
+            document.getElementById(
+                "mobileAdminMenu"
+            );
 
 
-    if (overlay) {
-        overlay.classList.add(
-            "show"
-        );
-    }
+        const overlay =
+            document.getElementById(
+                "mobileAdminOverlay"
+            );
 
 
-    document.body.classList.add(
-        "mobile-menu-open"
-    );
+        if (menu) {
 
-}
-
-
-function tutupMenuAdmin() {
-
-    const menu =
-        document.getElementById(
-            "mobileAdminMenu"
-        );
-
-    const overlay =
-        document.getElementById(
-            "mobileAdminOverlay"
-        );
-
-
-    if (menu) {
-        menu.classList.remove(
-            "show"
-        );
-    }
-
-
-    if (overlay) {
-        overlay.classList.remove(
-            "show"
-        );
-    }
-
-
-    document.body.classList.remove(
-        "mobile-menu-open"
-    );
-
-}
-
-
-/* Tutup menu jika pindah ke layar desktop */
-window.addEventListener(
-    "resize",
-    function() {
-
-        if (
-            window.innerWidth > 768
-        ) {
-
-            tutupMenuAdmin();
+            menu.classList.add(
+                "show"
+            );
 
         }
 
-    }
-);
 
+        if (overlay) {
 
-/* Tutup dengan tombol ESC */
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Escape"
-        ) {
-
-            tutupMenuAdmin();
+            overlay.classList.add(
+                "show"
+            );
 
         }
 
+
+        document.body.classList.add(
+            "mobile-menu-open"
+        );
+
     }
-);
+
+
+
+    /* =====================================================
+       TUTUP MENU ADMIN
+    ===================================================== */
+
+    function tutupMenuAdmin() {
+
+
+        const menu =
+            document.getElementById(
+                "mobileAdminMenu"
+            );
+
+
+        const overlay =
+            document.getElementById(
+                "mobileAdminOverlay"
+            );
+
+
+        if (menu) {
+
+            menu.classList.remove(
+                "show"
+            );
+
+        }
+
+
+        if (overlay) {
+
+            overlay.classList.remove(
+                "show"
+            );
+
+        }
+
+
+        document.body.classList.remove(
+            "mobile-menu-open"
+        );
+
+    }
+
+
+
+    /* =====================================================
+       TUTUP MENU SAAT LAYAR MENJADI DESKTOP
+    ===================================================== */
+
+    window.addEventListener(
+        "resize",
+        function() {
+
+
+            if (
+                window.innerWidth > 768
+            ) {
+
+                tutupMenuAdmin();
+
+            }
+
+
+        }
+    );
+
+
+
+    /* =====================================================
+       TUTUP MENU DENGAN ESC
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                tutupMenuAdmin();
+
+            }
+
+
+        }
+    );
+
 
 </script>
+
 
 </body>
 
