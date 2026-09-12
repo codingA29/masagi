@@ -2,6 +2,7 @@
 <html lang="id">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -12,26 +13,1112 @@
         Data Rumah Admin - MASAGI
     </title>
 
+
+    <!-- =====================================================
+         CSS UTAMA
+    ====================================================== -->
+
     <link
         rel="stylesheet"
         href="../style/style.css">
-</head>
-
-
-<body class="data-rumah-page admin-data-page">
-
-
-<main class="data-rumah-only">
 
 
     <!-- =====================================================
-         NAVIGASI
+         CSS KHUSUS HALAMAN DATA RUMAH
     ====================================================== -->
 
-    <div class="data-rumah-nav">
+    <style>
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
 
 
-        <!-- KEMBALI KE DASHBOARD ADMIN -->
+        body {
+
+            margin: 0;
+
+            background:
+                #f5f9f7;
+
+            color:
+                #14213d;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+        }
+
+
+        /* =====================================================
+           HALAMAN
+        ====================================================== */
+
+        .data-page {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            padding:
+                28px 32px 45px;
+
+        }
+
+
+        /* =====================================================
+           NAVIGASI ATAS
+        ====================================================== */
+
+        .top-actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        /* =====================================================
+           TOMBOL KEMBALI
+        ====================================================== */
+
+        .btn-back-dashboard {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            min-height: 44px;
+
+            padding:
+                0 18px;
+
+            background:
+                #eaf7ef;
+
+            color:
+                #087c48;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            border-radius: 12px;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+
+        }
+
+
+        .btn-back-dashboard:hover {
+
+            background:
+                #dff2e7;
+
+            transform:
+                translateY(-1px);
+
+        }
+
+
+        /* =====================================================
+           MENU HAMBURGER ADMIN
+        ====================================================== */
+
+        .admin-menu-wrapper {
+
+            position: relative;
+
+        }
+
+
+        .admin-menu-button {
+
+            width: 46px;
+
+            height: 46px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 5px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #dce7e1;
+
+            border-radius:
+                11px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 5px 14px
+                rgba(20, 33, 61, 0.06);
+
+        }
+
+
+        .admin-menu-button span {
+
+            width: 21px;
+
+            height: 2px;
+
+            display: block;
+
+            background:
+                #087c48;
+
+            border-radius:
+                10px;
+
+        }
+
+
+        /* =====================================================
+           DROPDOWN ADMIN
+        ====================================================== */
+
+        .admin-dropdown {
+
+            position: absolute;
+
+            top: 54px;
+
+            left: 0;
+
+            z-index: 50;
+
+            width: 180px;
+
+            padding: 8px;
+
+            display: none;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #e0e8e4;
+
+            border-radius:
+                12px;
+
+            box-shadow:
+                0 12px 30px
+                rgba(20, 33, 61, 0.12);
+
+        }
+
+
+        .admin-dropdown.show {
+
+            display: block;
+
+        }
+
+
+        .admin-dropdown button {
+
+            width: 100%;
+
+            min-height: 40px;
+
+            padding:
+                0 12px;
+
+            border: none;
+
+            border-radius:
+                8px;
+
+            background:
+                transparent;
+
+            color:
+                #344054;
+
+            font-size:
+                14px;
+
+            text-align:
+                left;
+
+            cursor: pointer;
+
+        }
+
+
+        .admin-dropdown button:hover {
+
+            background:
+                #f1f7f4;
+
+        }
+
+
+        .admin-dropdown .delete-menu {
+
+            color:
+                #d92d20;
+
+        }
+
+
+        /* =====================================================
+           CARD UTAMA
+        ====================================================== */
+
+        .data-card {
+
+            width: 100%;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #dfe8e3;
+
+            border-radius:
+                20px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(20, 33, 61, 0.07);
+
+            padding:
+                28px 30px 30px;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ====================================================== */
+
+        .data-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+
+            gap: 25px;
+
+            margin-bottom:
+                22px;
+
+        }
+
+
+        .data-title-area {
+
+            min-width:
+                270px;
+
+        }
+
+
+        .admin-badge {
+
+            display:
+                inline-block;
+
+            margin-bottom:
+                8px;
+
+            padding:
+                5px 12px;
+
+            background:
+                #e5f5eb;
+
+            color:
+                #087c48;
+
+            border-radius:
+                20px;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.3px;
+
+        }
+
+
+        .data-title-area h1 {
+
+            margin:
+                0 0 5px;
+
+            color:
+                #14213d;
+
+            font-size:
+                30px;
+
+            line-height:
+                1.15;
+
+        }
+
+
+        .data-title-area p {
+
+            margin: 0;
+
+            color:
+                #667085;
+
+            font-size:
+                14px;
+
+        }
+
+
+        /* =====================================================
+           FILTER
+        ====================================================== */
+
+        .data-filter {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                flex-end;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                10px;
+
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ====================================================== */
+
+        .search-box {
+
+            width:
+                300px;
+
+            min-height:
+                47px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                0 14px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #d5dfda;
+
+            border-radius:
+                11px;
+
+        }
+
+
+        .search-icon {
+
+            color:
+                #98a2b3;
+
+            font-size:
+                18px;
+
+        }
+
+
+        .search-box input {
+
+            width:
+                100%;
+
+            border:
+                none;
+
+            outline:
+                none;
+
+            background:
+                transparent;
+
+            color:
+                #344054;
+
+            font-size:
+                14px;
+
+        }
+
+
+        /* =====================================================
+           SELECT FILTER
+        ====================================================== */
+
+        .data-filter select {
+
+            min-height:
+                47px;
+
+            padding:
+                0 13px;
+
+            border:
+                1px solid #d5dfda;
+
+            border-radius:
+                11px;
+
+            background:
+                #ffffff;
+
+            color:
+                #344054;
+
+            font-size:
+                14px;
+
+            outline:
+                none;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        #filterRW {
+
+            min-width:
+                115px;
+
+        }
+
+
+        #filterRT {
+
+            min-width:
+                115px;
+
+        }
+
+
+        #filterStatus {
+
+            min-width:
+                155px;
+
+        }
+
+
+        /* =====================================================
+           INFO BAR
+        ====================================================== */
+
+        .data-info-bar {
+
+            width:
+                100%;
+
+            min-height:
+                46px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                15px;
+
+            padding:
+                0 16px;
+
+            margin-bottom:
+                14px;
+
+            background:
+                #f7faf8;
+
+            border-radius:
+                10px;
+
+            color:
+                #667085;
+
+            font-size:
+                13px;
+
+        }
+
+
+        .data-count {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+        }
+
+
+        .data-dot {
+
+            width:
+                8px;
+
+            height:
+                8px;
+
+            display:
+                block;
+
+            background:
+                #20aa59;
+
+            border-radius:
+                50%;
+
+        }
+
+
+        #jumlahData {
+
+            color:
+                #14213d;
+
+            font-weight:
+                700;
+
+        }
+
+
+        /* =====================================================
+           TABLE WRAPPER
+        ====================================================== */
+
+        .table-wrapper {
+
+            width:
+                100%;
+
+            overflow-x:
+                auto;
+
+            border:
+                1px solid #e2e9e5;
+
+            border-radius:
+                15px;
+
+        }
+
+
+        /* =====================================================
+           TABLE
+        ====================================================== */
+
+        .data-table {
+
+            width:
+                100%;
+
+            min-width:
+                1650px;
+
+            border-collapse:
+                collapse;
+
+            background:
+                #ffffff;
+
+        }
+
+
+        .data-table thead {
+
+            background:
+                #edf6f1;
+
+        }
+
+
+        .data-table th {
+
+            padding:
+                16px 14px;
+
+            color:
+                #173229;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            text-align:
+                left;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        .data-table td {
+
+            padding:
+                15px 14px;
+
+            border-bottom:
+                1px solid #e7ece9;
+
+            color:
+                #14213d;
+
+            font-size:
+                14px;
+
+            vertical-align:
+                middle;
+
+        }
+
+
+        .data-table tbody tr:last-child td {
+
+            border-bottom:
+                none;
+
+        }
+
+
+        .data-table tbody tr:hover {
+
+            background:
+                #f9fcfa;
+
+        }
+
+
+        /* =====================================================
+           NOMOR
+        ====================================================== */
+
+        .nomor-cell {
+
+            width:
+                45px;
+
+            color:
+                #667085 !important;
+
+            text-align:
+                center;
+
+        }
+
+
+        /* =====================================================
+           ID RUMAH
+        ====================================================== */
+
+        .id-rumah {
+
+            color:
+                #102a43;
+
+            font-weight:
+                700;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        /* =====================================================
+           NAMA WARGA
+        ====================================================== */
+
+        .nama-warga {
+
+            font-weight:
+                600;
+
+            color:
+                #344054;
+
+        }
+
+
+        /* =====================================================
+           RT / RW
+        ====================================================== */
+
+        .badge-rt-rw {
+
+            display:
+                inline-block;
+
+            padding:
+                6px 9px;
+
+            background:
+                #f1f4f3;
+
+            color:
+                #475467;
+
+            border-radius:
+                7px;
+
+            white-space:
+                nowrap;
+
+            font-size:
+                12px;
+
+        }
+
+
+        /* =====================================================
+           STATUS SUDAH MEMILAH
+        ====================================================== */
+
+        .status-sudah {
+
+            display:
+                inline-block;
+
+            padding:
+                7px 14px;
+
+            background:
+                #d9f3e3;
+
+            color:
+                #087c48;
+
+            border-radius:
+                20px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        /* =====================================================
+           STATUS BELUM MEMILAH
+        ====================================================== */
+
+        .status-belum {
+
+            display:
+                inline-block;
+
+            padding:
+                7px 14px;
+
+            background:
+                #fde1e4;
+
+            color:
+                #df2635;
+
+            border-radius:
+                20px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        /* =====================================================
+           STATUS MENGOLAH
+        ====================================================== */
+
+        .status-mengolah {
+
+            display:
+                inline-block;
+
+            padding:
+                7px 14px;
+
+            background:
+                #fff3d6;
+
+            color:
+                #b76e00;
+
+            border-radius:
+                20px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        /* =====================================================
+           PETUGAS
+        ====================================================== */
+
+        .petugas-cell {
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        /* =====================================================
+           JUMLAH
+        ====================================================== */
+
+        .center-cell {
+
+            text-align:
+                center;
+
+            font-weight:
+                600;
+
+        }
+
+
+        /* =====================================================
+           DATA KOSONG
+        ====================================================== */
+
+        .empty-data {
+
+            padding:
+                45px !important;
+
+            color:
+                #667085 !important;
+
+            text-align:
+                center;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE TABLET
+        ====================================================== */
+
+        @media (max-width: 1000px) {
+
+            .data-page {
+
+                padding:
+                    18px 14px 30px;
+
+            }
+
+
+            .data-card {
+
+                padding:
+                    21px 16px;
+
+                border-radius:
+                    16px;
+
+            }
+
+
+            .data-header {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    stretch;
+
+            }
+
+
+            .data-filter {
+
+                justify-content:
+                    flex-start;
+
+            }
+
+
+            .search-box {
+
+                width:
+                    100%;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE HP
+        ====================================================== */
+
+        @media (max-width: 600px) {
+
+            .data-title-area h1 {
+
+                font-size:
+                    25px;
+
+            }
+
+
+            .data-filter {
+
+                display:
+                    grid;
+
+                grid-template-columns:
+                    1fr 1fr;
+
+            }
+
+
+            .search-box {
+
+                grid-column:
+                    1 / -1;
+
+            }
+
+
+            #filterStatus {
+
+                grid-column:
+                    1 / -1;
+
+            }
+
+
+            .data-info-bar {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+                padding:
+                    12px 14px;
+
+            }
+
+
+            .data-table {
+
+                min-width:
+                    1650px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HALAMAN DATA RUMAH
+===================================================== -->
+
+<div class="data-page">
+
+
+    <!-- =================================================
+         NAVIGASI ATAS
+    ================================================== -->
+
+    <div class="top-actions">
+
+
+        <!-- KEMBALI KE DASHBOARD -->
 
         <a
             href="../index.html"
@@ -42,17 +1129,16 @@
         </a>
 
 
+        <!-- MENU ADMIN -->
 
-        <!-- HAMBURGER -->
-
-        <div class="data-action-wrapper">
+        <div class="admin-menu-wrapper">
 
 
             <button
+                class="admin-menu-button"
                 type="button"
-                class="btn-hamburger-data"
-                onclick="toggleMenuData()"
-                aria-label="Menu pengelolaan data">
+                onclick="toggleAdminMenu()"
+                aria-label="Menu admin">
 
                 <span></span>
                 <span></span>
@@ -61,96 +1147,32 @@
             </button>
 
 
-
-            <!-- MENU -->
-
             <div
-                id="menuDataRumah"
-                class="data-action-menu">
+                id="adminDropdown"
+                class="admin-dropdown">
 
-
-                <!-- UPDATE -->
 
                 <button
                     type="button"
-                    class="data-action-item action-update"
                     onclick="menuUpdate()">
 
-
-                    <span class="action-icon">
-
-                        <svg
-                            viewBox="0 0 24 24"
-                            width="20"
-                            height="20"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round">
-
-                            <path d="M12 20h9"></path>
-
-                            <path
-                                d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z">
-                            </path>
-
-                        </svg>
-
-                    </span>
-
-
-                    <span>
-                        Update
-                    </span>
+                    Update Data
 
                 </button>
 
 
-
-                <!-- DELETE -->
-
                 <button
                     type="button"
-                    class="data-action-item action-delete"
+                    class="delete-menu"
                     onclick="menuDelete()">
 
-
-                    <span class="action-icon">
-
-                        <svg
-                            viewBox="0 0 24 24"
-                            width="20"
-                            height="20"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round">
-
-                            <path d="M3 6h18"></path>
-
-                            <path d="M8 6V4h8v2"></path>
-
-                            <path d="M19 6l-1 14H6L5 6"></path>
-
-                            <path d="M10 11v5"></path>
-
-                            <path d="M14 11v5"></path>
-
-                        </svg>
-
-                    </span>
-
-
-                    <span>
-                        Delete
-                    </span>
+                    Delete Data
 
                 </button>
 
 
             </div>
+
 
         </div>
 
@@ -159,14 +1181,18 @@
 
 
 
-    <!-- =====================================================
-         DATA RUMAH
-    ====================================================== -->
+    <!-- =================================================
+         CARD UTAMA
+    ================================================== -->
 
-    <section class="table-container modern-data-card">
+    <section class="data-card">
 
 
-        <div class="table-header modern-table-header">
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <div class="data-header">
 
 
             <!-- JUDUL -->
@@ -174,19 +1200,25 @@
             <div class="data-title-area">
 
 
-                <span class="data-title-label">
+                <span class="admin-badge">
+
                     ADMIN MASAGI
+
                 </span>
 
 
-                <h2>
+                <h1>
+
                     Data Rumah
-                </h2>
+
+                </h1>
 
 
                 <p>
+
                     Pengelolaan Data Pemilahan Sampah
                     Kelurahan Sukaluyu
+
                 </p>
 
 
@@ -194,118 +1226,141 @@
 
 
 
-            <!-- FILTER -->
+            <!-- =================================================
+                 FILTER
+            ================================================== -->
 
-            <div class="filter-area modern-filter-area">
+            <div class="data-filter">
 
 
                 <!-- SEARCH -->
 
-                <div class="search-wrapper">
+                <div class="search-box">
 
 
                     <span class="search-icon">
 
-                        <svg
-                            viewBox="0 0 24 24"
-                            width="19"
-                            height="19"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round">
-
-                            <circle
-                                cx="11"
-                                cy="11"
-                                r="7">
-                            </circle>
-
-                            <path
-                                d="m20 20-3.5-3.5">
-                            </path>
-
-                        </svg>
+                        ⌕
 
                     </span>
 
 
                     <input
                         type="text"
-                        id="cariData"
-                        placeholder="Cari ID atau alamat..."
-                        onkeyup="filterData()">
+                        id="searchInput"
+                        placeholder="Cari ID, alamat, nama atau petugas..."
+                        autocomplete="off">
+
 
                 </div>
 
 
 
-                <!-- RW -->
+                <!-- FILTER RW -->
 
-                <select
-                    id="filterRW"
-                    onchange="filterData()">
+                <select id="filterRW">
+
 
                     <option value="">
+
                         Semua RW
+
                     </option>
+
 
                 </select>
 
 
 
-                <!-- STATUS -->
+                <!-- FILTER RT -->
 
-                <select
-                    id="filterStatus"
-                    onchange="filterData()">
+                <select id="filterRT">
+
 
                     <option value="">
-                        Semua Status
+
+                        Semua RT
+
                     </option>
+
+
+                </select>
+
+
+
+                <!-- FILTER STATUS -->
+
+                <select id="filterStatus">
+
+
+                    <option value="">
+
+                        Semua Status
+
+                    </option>
+
 
                     <option value="Sudah Memilah">
+
                         Sudah Memilah
+
                     </option>
 
+
                     <option value="Belum Memilah">
+
                         Belum Memilah
+
                     </option>
+
+
+                    <option value="Mengolah">
+
+                        Mengolah
+
+                    </option>
+
 
                 </select>
 
 
             </div>
 
+
         </div>
 
 
 
-        <!-- INFO -->
+        <!-- =================================================
+             INFO BAR
+        ================================================== -->
 
-        <div class="data-info-row">
+        <div class="data-info-bar">
 
 
-            <div class="data-count-info">
+            <div class="data-count">
 
-                <span class="data-count-dot">
-                </span>
+
+                <span class="data-dot"></span>
+
 
                 <span>
 
-                    <strong id="jumlahDataTampil">
+                    <strong id="jumlahData">
+
                         0
+
                     </strong>
 
                     data ditampilkan
 
                 </span>
 
+
             </div>
 
 
-            <span class="data-update-info">
+            <span>
 
                 Mode pengelolaan data admin
 
@@ -316,39 +1371,80 @@
 
 
 
-        <!-- TABLE -->
+        <!-- =================================================
+             TABEL
+        ================================================== -->
 
-        <div class="table-scroll modern-table-scroll">
+        <div class="table-wrapper">
 
 
-            <table class="modern-data-table">
+            <table class="data-table">
 
 
                 <thead>
 
+
                     <tr>
 
-                        <th>No</th>
 
-                        <th>ID Rumah</th>
+                        <th>
+                            No
+                        </th>
 
-                        <th>Alamat</th>
 
-                        <th>RT</th>
+                        <th>
+                            ID Rumah
+                        </th>
 
-                        <th>RW</th>
 
-                        <th>Status Pemilahan</th>
+                        <th>
+                            Alamat
+                        </th>
 
-                        <th>Tanggal Laporan</th>
+
+                        <th>
+                            Nama Kepala Rumah Tangga
+                        </th>
+
+
+                        <th>
+                            RT
+                        </th>
+
+
+                        <th>
+                            RW
+                        </th>
+
+
+                        <th>
+                            Status Pemilahan
+                        </th>
+
+
+                        <th>
+                            Petugas Monitoring
+                        </th>
+
+
+                        <th>
+                            Jumlah KK
+                        </th>
+
+
+                        <th>
+                            Jumlah Jiwa
+                        </th>
+
 
                     </tr>
+
 
                 </thead>
 
 
+                <tbody id="dataRumahBody">
 
-                <tbody id="tabelDataRumah">
                 </tbody>
 
 
@@ -361,21 +1457,33 @@
     </section>
 
 
-</main>
+</div>
 
 
 
 <!-- =====================================================
-     SUPABASE AUTH
+     SUPABASE LIBRARY
 ===================================================== -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
 </script>
 
+
+
+<!-- =====================================================
+     SUPABASE CONFIG
+===================================================== -->
+
 <script
     src="../data/supabase.js">
 </script>
+
+
+
+<!-- =====================================================
+     AUTH
+===================================================== -->
 
 <script
     src="../data/auth.js">
@@ -384,7 +1492,19 @@
 
 
 <!-- =====================================================
-     DATA
+     CEK LOGIN ADMIN
+===================================================== -->
+
+<script>
+
+    cekLogin();
+
+</script>
+
+
+
+<!-- =====================================================
+     DATA RUMAH
 ===================================================== -->
 
 <script
@@ -393,261 +1513,99 @@
 
 
 
+<!-- =====================================================
+     JAVASCRIPT HALAMAN
+===================================================== -->
+
 <script>
 
 
 // ======================================================
-// WAJIB LOGIN
+// ELEMENT
 // ======================================================
 
-cekLogin();
-
-
-
-// ======================================================
-// HAMBURGER
-// ======================================================
-
-function toggleMenuData() {
-
-    const menu =
-        document.getElementById(
-            "menuDataRumah"
-        );
-
-
-    menu.classList.toggle(
-        "show"
-    );
-
-}
-
-
-
-// ======================================================
-// TUTUP MENU JIKA KLIK DI LUAR
-// ======================================================
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-
-        const wrapper =
-            document.querySelector(
-                ".data-action-wrapper"
-            );
-
-
-        const menu =
-            document.getElementById(
-                "menuDataRumah"
-            );
-
-
-        if (
-            wrapper &&
-            menu &&
-            !wrapper.contains(event.target)
-        ) {
-
-            menu.classList.remove(
-                "show"
-            );
-
-        }
-
-    }
-);
-
-
-
-// ======================================================
-// UPDATE
-// ======================================================
-
-function menuUpdate() {
-
-
+const tbody =
     document.getElementById(
-        "menuDataRumah"
-    ).classList.remove(
-        "show"
+        "dataRumahBody"
     );
 
 
-    alert(
-        "Fitur Update akan dihubungkan ke database Supabase."
-    );
-
-}
-
-
-
-// ======================================================
-// DELETE
-// ======================================================
-
-function menuDelete() {
-
-
+const searchInput =
     document.getElementById(
-        "menuDataRumah"
-    ).classList.remove(
-        "show"
+        "searchInput"
     );
 
 
-    alert(
-        "Fitur Delete akan dihubungkan ke database Supabase."
-    );
-
-}
-
-
-
-// ======================================================
-// TAMPILKAN DATA
-// ======================================================
-
-function tampilkanData(data) {
-
-
-    const tabel =
-        document.getElementById(
-            "tabelDataRumah"
-        );
-
-
-    tabel.innerHTML =
-        "";
-
-
+const filterRW =
     document.getElementById(
-        "jumlahDataTampil"
-    ).innerText =
-        data.length;
+        "filterRW"
+    );
 
 
+const filterRT =
+    document.getElementById(
+        "filterRT"
+    );
+
+
+const filterStatus =
+    document.getElementById(
+        "filterStatus"
+    );
+
+
+const jumlahData =
+    document.getElementById(
+        "jumlahData"
+    );
+
+
+
+// ======================================================
+// ESCAPE HTML
+// ======================================================
+
+function escapeHTML(
+    value
+) {
 
     if (
-        data.length === 0
+        value === null ||
+        value === undefined
     ) {
 
-
-        tabel.innerHTML = `
-
-            <tr>
-
-                <td
-                    colspan="7"
-                    class="empty-data">
-
-                    Data tidak ditemukan.
-
-                </td>
-
-            </tr>
-
-        `;
-
-
-        return;
+        return "-";
 
     }
 
 
+    return String(
+        value
+    )
 
-    data.forEach(
-        (rumah, index) => {
+    .replace(
+        /&/g,
+        "&amp;"
+    )
 
+    .replace(
+        /</g,
+        "&lt;"
+    )
 
-            const kelasStatus =
+    .replace(
+        />/g,
+        "&gt;"
+    )
 
-                rumah.status ===
-                "Sudah Memilah"
+    .replace(
+        /"/g,
+        "&quot;"
+    )
 
-                    ? "sudah"
-
-                    : "belum";
-
-
-
-            tabel.innerHTML += `
-
-                <tr>
-
-
-                    <td class="nomor-data">
-
-                        ${index + 1}
-
-                    </td>
-
-
-                    <td>
-
-                        <strong class="id-rumah">
-
-                            ${rumah.id}
-
-                        </strong>
-
-                    </td>
-
-
-                    <td>
-
-                        ${rumah.alamat}
-
-                    </td>
-
-
-                    <td>
-
-                        <span class="rt-rw-chip">
-
-                            RT ${rumah.rt}
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        <span class="rt-rw-chip">
-
-                            RW ${rumah.rw}
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        <span class="status ${kelasStatus}">
-
-                            ${rumah.status}
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-
-                        ${rumah.tanggal}
-
-                    </td>
-
-
-                </tr>
-
-            `;
-
-        }
+    .replace(
+        /'/g,
+        "&#039;"
     );
 
 }
@@ -655,39 +1613,97 @@ function tampilkanData(data) {
 
 
 // ======================================================
-// FILTER RW
+// NILAI KOSONG
 // ======================================================
 
-function buatFilterRW() {
+function tampilkanNilai(
+    value
+) {
+
+    if (
+        value === null ||
+        value === undefined ||
+        value === ""
+    ) {
+
+        return "-";
+
+    }
 
 
-    const selectRW =
-        document.getElementById(
-            "filterRW"
-        );
+    return escapeHTML(
+        value
+    );
+
+}
+
+
+
+// ======================================================
+// NORMALISASI RT/RW
+// ======================================================
+
+function formatNomorWilayah(
+    value
+) {
+
+    if (
+        value === null ||
+        value === undefined ||
+        value === ""
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(
+        value
+    ).padStart(
+        2,
+        "0"
+    );
+
+}
+
+
+
+// ======================================================
+// ISI FILTER RW
+// ======================================================
+
+function isiFilterRW() {
 
 
     const daftarRW = [
 
         ...new Set(
 
-            dataRumah.map(
+            dataRumah
+
+            .map(
                 rumah =>
-                    String(rumah.rw)
+                    formatNomorWilayah(
+                        rumah.rw
+                    )
+            )
+
+            .filter(
+                rw =>
+                    rw !== ""
             )
 
         )
 
-    ];
-
-
-
-    daftarRW.sort(
-        (a, b) =>
+    ].sort(
+        (
+            a,
+            b
+        ) =>
             Number(a) -
             Number(b)
     );
-
 
 
     daftarRW.forEach(
@@ -705,12 +1721,365 @@ function buatFilterRW() {
 
 
             option.textContent =
-                "RW " + rw;
+                "RW " +
+                rw;
 
 
-            selectRW.appendChild(
+            filterRW.appendChild(
                 option
             );
+
+
+        }
+    );
+
+}
+
+
+
+// ======================================================
+// ISI FILTER RT
+// ======================================================
+
+function isiFilterRT() {
+
+
+    const daftarRT = [
+
+        ...new Set(
+
+            dataRumah
+
+            .map(
+                rumah =>
+                    formatNomorWilayah(
+                        rumah.rt
+                    )
+            )
+
+            .filter(
+                rt =>
+                    rt !== ""
+            )
+
+        )
+
+    ].sort(
+        (
+            a,
+            b
+        ) =>
+            Number(a) -
+            Number(b)
+    );
+
+
+    daftarRT.forEach(
+        rt => {
+
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                rt;
+
+
+            option.textContent =
+                "RT " +
+                rt;
+
+
+            filterRT.appendChild(
+                option
+            );
+
+
+        }
+    );
+
+}
+
+
+
+// ======================================================
+// STATUS CLASS
+// ======================================================
+
+function dapatkanStatusClass(
+    status
+) {
+
+
+    if (
+        status ===
+        "Sudah Memilah"
+    ) {
+
+        return "status-sudah";
+
+    }
+
+
+    if (
+        status ===
+        "Mengolah"
+    ) {
+
+        return "status-mengolah";
+
+    }
+
+
+    return "status-belum";
+
+}
+
+
+
+// ======================================================
+// RENDER TABLE
+// ======================================================
+
+function renderTable(
+    data
+) {
+
+
+    tbody.innerHTML =
+        "";
+
+
+    jumlahData.textContent =
+        data.length;
+
+
+
+    // ==================================================
+    // DATA TIDAK DITEMUKAN
+    // ==================================================
+
+    if (
+        data.length === 0
+    ) {
+
+
+        const tr =
+            document.createElement(
+                "tr"
+            );
+
+
+        tr.innerHTML = `
+
+            <td
+                colspan="10"
+                class="empty-data">
+
+                Data tidak ditemukan.
+
+            </td>
+
+        `;
+
+
+        tbody.appendChild(
+            tr
+        );
+
+
+        return;
+
+    }
+
+
+
+    // ==================================================
+    // DATA
+    // ==================================================
+
+    data.forEach(
+        (
+            rumah,
+            index
+        ) => {
+
+
+            const tr =
+                document.createElement(
+                    "tr"
+                );
+
+
+            const rt =
+                formatNomorWilayah(
+                    rumah.rt
+                );
+
+
+            const rw =
+                formatNomorWilayah(
+                    rumah.rw
+                );
+
+
+            const statusClass =
+                dapatkanStatusClass(
+                    rumah.status
+                );
+
+
+
+            tr.innerHTML = `
+
+
+                <!-- NO -->
+
+                <td class="nomor-cell">
+
+                    ${index + 1}
+
+                </td>
+
+
+
+                <!-- ID -->
+
+                <td>
+
+                    <span class="id-rumah">
+
+                        ${tampilkanNilai(
+                            rumah.id
+                        )}
+
+                    </span>
+
+                </td>
+
+
+
+                <!-- ALAMAT -->
+
+                <td>
+
+                    ${tampilkanNilai(
+                        rumah.alamat
+                    )}
+
+                </td>
+
+
+
+                <!-- NAMA -->
+
+                <td>
+
+                    <span class="nama-warga">
+
+                        ${tampilkanNilai(
+                            rumah.namaKepalaRumahTangga
+                        )}
+
+                    </span>
+
+                </td>
+
+
+
+                <!-- RT -->
+
+                <td>
+
+                    <span class="badge-rt-rw">
+
+                        RT ${escapeHTML(
+                            rt
+                        )}
+
+                    </span>
+
+                </td>
+
+
+
+                <!-- RW -->
+
+                <td>
+
+                    <span class="badge-rt-rw">
+
+                        RW ${escapeHTML(
+                            rw
+                        )}
+
+                    </span>
+
+                </td>
+
+
+
+                <!-- STATUS -->
+
+                <td>
+
+                    <span class="${statusClass}">
+
+                        ${tampilkanNilai(
+                            rumah.status
+                        )}
+
+                    </span>
+
+                </td>
+
+
+
+                <!-- PETUGAS -->
+
+                <td class="petugas-cell">
+
+                    ${tampilkanNilai(
+                        rumah.petugasMonitoring
+                    )}
+
+                </td>
+
+
+
+                <!-- JUMLAH KK -->
+
+                <td class="center-cell">
+
+                    ${tampilkanNilai(
+                        rumah.jumlahKK
+                    )}
+
+                </td>
+
+
+
+                <!-- JUMLAH JIWA -->
+
+                <td class="center-cell">
+
+                    ${tampilkanNilai(
+                        rumah.jumlahJiwa
+                    )}
+
+                </td>
+
+
+            `;
+
+
+            tbody.appendChild(
+                tr
+            );
+
 
         }
     );
@@ -727,124 +2096,160 @@ function filterData() {
 
 
     const keyword =
-        document
-            .getElementById(
-                "cariData"
-            )
-            .value
-            .toLowerCase()
-            .trim();
+
+        searchInput
+        .value
+        .trim()
+        .toLowerCase();
 
 
 
-    const rw =
-        document
-            .getElementById(
-                "filterRW"
-            )
-            .value;
+    const rwDipilih =
+
+        filterRW.value;
 
 
 
-    const status =
-        document
-            .getElementById(
-                "filterStatus"
-            )
-            .value;
+    const rtDipilih =
+
+        filterRT.value;
+
+
+
+    const statusDipilih =
+
+        filterStatus.value;
 
 
 
     const hasil =
+
         dataRumah.filter(
             rumah => {
 
 
-                const id =
-                    String(
-                        rumah.id || ""
-                    ).toLowerCase();
+                // ==========================================
+                // SEARCH
+                // ==========================================
+
+                const gabunganData = [
+
+                    rumah.id,
+
+                    rumah.alamat,
+
+                    rumah.namaKepalaRumahTangga,
+
+                    rumah.petugasMonitoring,
+
+                    rumah.rt,
+
+                    rumah.rw,
+
+                    rumah.status,
+
+                    rumah.keterangan
+
+                ]
+
+                .filter(
+                    value =>
+                        value !== null &&
+                        value !== undefined
+                )
+
+                .join(
+                    " "
+                )
+
+                .toLowerCase();
 
 
-                const alamat =
-                    String(
-                        rumah.alamat || ""
-                    ).toLowerCase();
+
+                const cocokSearch =
+
+                    gabunganData.includes(
+                        keyword
+                    );
 
 
-                const rt =
-                    String(
-                        rumah.rt || ""
-                    ).toLowerCase();
 
+                // ==========================================
+                // RW
+                // ==========================================
 
                 const rwRumah =
-                    String(
-                        rumah.rw || ""
-                    ).toLowerCase();
 
-
-
-                const cocokCari =
-
-                    id.includes(keyword)
-
-                    ||
-
-                    alamat.includes(keyword)
-
-                    ||
-
-                    rt.includes(keyword)
-
-                    ||
-
-                    rwRumah.includes(keyword);
-
+                    formatNomorWilayah(
+                        rumah.rw
+                    );
 
 
                 const cocokRW =
 
-                    rw === ""
+                    !rwDipilih ||
 
-                    ||
-
-                    String(
-                        rumah.rw
-                    ) === rw;
+                    rwRumah ===
+                    rwDipilih;
 
 
+
+                // ==========================================
+                // RT
+                // ==========================================
+
+                const rtRumah =
+
+                    formatNomorWilayah(
+                        rumah.rt
+                    );
+
+
+                const cocokRT =
+
+                    !rtDipilih ||
+
+                    rtRumah ===
+                    rtDipilih;
+
+
+
+                // ==========================================
+                // STATUS
+                // ==========================================
 
                 const cocokStatus =
 
-                    status === ""
-
-                    ||
+                    !statusDipilih ||
 
                     rumah.status ===
-                    status;
+                    statusDipilih;
 
 
+
+                // ==========================================
+                // HASIL
+                // ==========================================
 
                 return (
 
-                    cocokCari
+                    cocokSearch &&
 
-                    &&
+                    cocokRW &&
 
-                    cocokRW
-
-                    &&
+                    cocokRT &&
 
                     cocokStatus
 
                 );
 
+
             }
         );
 
 
-    tampilkanData(
+
+    renderTable(
         hasil
     );
 
@@ -853,7 +2258,170 @@ function filterData() {
 
 
 // ======================================================
-// START
+// EVENT SEARCH
+// ======================================================
+
+searchInput.addEventListener(
+    "input",
+    filterData
+);
+
+
+
+// ======================================================
+// EVENT RW
+// ======================================================
+
+filterRW.addEventListener(
+    "change",
+    filterData
+);
+
+
+
+// ======================================================
+// EVENT RT
+// ======================================================
+
+filterRT.addEventListener(
+    "change",
+    filterData
+);
+
+
+
+// ======================================================
+// EVENT STATUS
+// ======================================================
+
+filterStatus.addEventListener(
+    "change",
+    filterData
+);
+
+
+
+// ======================================================
+// MENU ADMIN
+// ======================================================
+
+function toggleAdminMenu() {
+
+
+    const menu =
+
+        document.getElementById(
+            "adminDropdown"
+        );
+
+
+    menu.classList.toggle(
+        "show"
+    );
+
+}
+
+
+
+// ======================================================
+// UPDATE
+// ======================================================
+
+function menuUpdate() {
+
+
+    document
+        .getElementById(
+            "adminDropdown"
+        )
+        .classList.remove(
+            "show"
+        );
+
+
+    alert(
+
+        "Fitur Update akan diaktifkan setelah data rumah terhubung langsung dengan database Supabase."
+
+    );
+
+}
+
+
+
+// ======================================================
+// DELETE
+// ======================================================
+
+function menuDelete() {
+
+
+    document
+        .getElementById(
+            "adminDropdown"
+        )
+        .classList.remove(
+            "show"
+        );
+
+
+    alert(
+
+        "Fitur Delete akan diaktifkan setelah data rumah terhubung langsung dengan database Supabase."
+
+    );
+
+}
+
+
+
+// ======================================================
+// TUTUP DROPDOWN JIKA KLIK DI LUAR
+// ======================================================
+
+document.addEventListener(
+    "click",
+    function(
+        event
+    ) {
+
+
+        const wrapper =
+
+            document.querySelector(
+                ".admin-menu-wrapper"
+            );
+
+
+        const menu =
+
+            document.getElementById(
+                "adminDropdown"
+            );
+
+
+        if (
+            wrapper &&
+            menu &&
+            !wrapper.contains(
+                event.target
+            )
+        ) {
+
+            menu.classList.remove(
+                "show"
+            );
+
+        }
+
+
+    }
+);
+
+
+
+// ======================================================
+// JALANKAN HALAMAN
 // ======================================================
 
 document.addEventListener(
@@ -866,21 +2434,35 @@ document.addEventListener(
             "undefined"
         ) {
 
+
             console.error(
-                "dataRumah tidak ditemukan."
+
+                "dataRumah tidak ditemukan. Periksa file data/data-rumah.js."
+
             );
+
 
             return;
 
         }
 
 
-        buatFilterRW();
+        // Isi dropdown RW
+
+        isiFilterRW();
 
 
-        tampilkanData(
+        // Isi dropdown RT
+
+        isiFilterRT();
+
+
+        // Tampilkan seluruh data awal
+
+        renderTable(
             dataRumah
         );
+
 
     }
 );

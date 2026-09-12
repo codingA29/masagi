@@ -2,55 +2,29 @@
 <html lang="id">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <title>Dashboard MASAGI</title>
 
-    <title>
-        Dashboard MASAGI
-    </title>
-
-    <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="style/style.css">
-
+    <link rel="stylesheet" href="style/style.css">
 </head>
-
 
 <body>
 
-
 <!-- =====================================================
      HEADER ADMIN MOBILE
-     Hanya tampil di HP melalui CSS
 ===================================================== -->
-
 <header class="mobile-admin-header">
 
     <div class="mobile-admin-brand">
-
-        <img
-            src="assets/logo-masagi.jpeg"
-            alt="Logo MASAGI">
+        <img src="assets/logo-masagi.jpeg" alt="Logo MASAGI">
 
         <div>
-
-            <strong>
-                MASAGI
-            </strong>
-
-            <span>
-                Dashboard Admin
-            </span>
-
+            <strong>MASAGI</strong>
+            <span>Dashboard Admin</span>
         </div>
-
     </div>
-
 
     <button
         class="mobile-admin-toggle"
@@ -67,11 +41,9 @@
 </header>
 
 
-
 <!-- =====================================================
      OVERLAY MENU MOBILE
 ===================================================== -->
-
 <div
     id="mobileAdminOverlay"
     class="mobile-admin-overlay"
@@ -79,105 +51,61 @@
 </div>
 
 
-
 <!-- =====================================================
      MENU ADMIN MOBILE
 ===================================================== -->
-
 <aside
     id="mobileAdminMenu"
     class="mobile-admin-menu">
 
-
     <div class="mobile-admin-menu-top">
 
-        <strong>
-            Menu Admin
-        </strong>
-
+        <strong>Menu Admin</strong>
 
         <button
             type="button"
             onclick="tutupMenuAdmin()"
             class="mobile-admin-close"
             aria-label="Tutup menu">
-
             ×
-
         </button>
 
     </div>
 
-
     <nav class="mobile-admin-nav">
 
-
-        <!-- DASHBOARD -->
-
-        <a
-            href="index.html"
-            class="active">
-
+        <a href="index.html" class="active">
             Dashboard
-
         </a>
 
-
-        <!-- DATA RUMAH -->
-
-        <a
-            href="dashboard/data-rumah-admin.html">
-
+        <a href="dashboard/data-rumah-admin.html">
             Data Rumah
-
         </a>
 
-
-        <!-- PEMILAHAN SAMPAH -->
-
-        <a href="#">
-
+        <a href="dashboard/pemilahan-sampah.html">
             Pemilahan Sampah
-
         </a>
 
-
-        <!-- LAPORAN -->
-
-        <a href="#">
-
+        <a href="dashboard/laporan.html">
             Laporan
-
         </a>
-
-
-        <!-- EXIT -->
 
         <button
             type="button"
             class="mobile-admin-exit"
             onclick="logout()">
-
             Exit
-
         </button>
-
 
     </nav>
 
-
 </aside>
-
 
 
 <!-- =====================================================
      SIDEBAR DESKTOP
 ===================================================== -->
-
 <aside class="sidebar">
-
-
-    <!-- LOGO MASAGI -->
 
     <div class="logo-container">
 
@@ -188,320 +116,475 @@
 
     </div>
 
-
-
-    <!-- MENU -->
-
     <nav>
 
-
         <!-- DASHBOARD -->
+        <a href="index.html" class="active">
 
-        <a
-            href="index.html"
-            class="active">
-
-            Dashboard
-
-        </a>
-
-
-
-        <!-- DATA RUMAH -->
-
-        <a
-            href="dashboard/data-rumah-admin.html">
-
-            Data Rumah
-
-        </a>
-
-
-
-        <!-- PEMILAHAN SAMPAH -->
-
-        <a href="#">
-
-            Pemilahan Sampah
-
-        </a>
-
-
-
-        <!-- LAPORAN -->
-
-        <a href="#">
-
-            Laporan
-
-        </a>
-
-
-
-        <!-- =================================================
-             EXIT
-        ================================================== -->
-
-        <button
-            class="btn-exit"
-            type="button"
-            onclick="logout()">
-
-
-            <!-- ICON EXIT -->
-
-            <span class="exit-icon">
-
-
+            <span class="menu-icon">
                 <svg
                     viewBox="0 0 24 24"
-                    width="26"
-                    height="26"
+                    width="22"
+                    height="22"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round">
 
+                    <path d="M3 11.5 12 4l9 7.5"></path>
+                    <path d="M5 10.5V20h14v-9.5"></path>
+                    <path d="M9 20v-6h6v6"></path>
 
-                    <!-- PINTU -->
+                </svg>
+            </span>
 
-                    <path
-                        d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4">
-                    </path>
+            <span>Dashboard</span>
 
-
-                    <!-- PANAH -->
-
-                    <path
-                        d="M14 8l4 4-4 4">
-                    </path>
+        </a>
 
 
-                    <path
-                        d="M18 12H9">
-                    </path>
+        <!-- DATA RUMAH -->
+        <a href="dashboard/data-rumah-admin.html">
 
+            <span class="menu-icon">
+                <svg
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+
+                    <path d="M3 21h18"></path>
+                    <path d="M5 21V7l7-4 7 4v14"></path>
+                    <path d="M9 9h2"></path>
+                    <path d="M13 9h2"></path>
+                    <path d="M9 13h2"></path>
+                    <path d="M13 13h2"></path>
+
+                </svg>
+            </span>
+
+            <span>Data Rumah</span>
+
+        </a>
+
+
+        <!-- PEMILAHAN SAMPAH -->
+        <a href="dashboard/pemilahan-sampah.html">
+
+            <span class="menu-icon">
+                <svg
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+
+                    <path d="M12 2v4"></path>
+                    <path d="M12 18v4"></path>
+                    <path d="M4.93 4.93l2.83 2.83"></path>
+                    <path d="M16.24 16.24l2.83 2.83"></path>
+                    <path d="M2 12h4"></path>
+                    <path d="M18 12h4"></path>
+                    <path d="M4.93 19.07l2.83-2.83"></path>
+                    <path d="M16.24 7.76l2.83-2.83"></path>
+                    <circle cx="12" cy="12" r="4"></circle>
+
+                </svg>
+            </span>
+
+            <span>Pemilahan Sampah</span>
+
+        </a>
+
+
+        <!-- LAPORAN -->
+        <a href="dashboard/laporan.html">
+
+            <span class="menu-icon">
+                <svg
+                    viewBox="0 0 24 24"
+                    width="22"
+                    height="22"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+
+                    <path d="M4 19V9"></path>
+                    <path d="M10 19V5"></path>
+                    <path d="M16 19v-7"></path>
+                    <path d="M22 19V3"></path>
+
+                </svg>
+            </span>
+
+            <span>Laporan</span>
+
+        </a>
+
+
+        <!-- EXIT -->
+        <button
+            class="btn-exit"
+            type="button"
+            onclick="logout()">
+
+            <span class="exit-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="25"
+                    height="25"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
+
+                    <path d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4"></path>
+                    <path d="M14 8l4 4-4 4"></path>
+                    <path d="M18 12H9"></path>
 
                 </svg>
 
-
             </span>
-
-
-            <!-- TEXT -->
 
             <span class="exit-text">
-
                 Exit
-
             </span>
 
-
         </button>
-
 
     </nav>
 
 
-</aside>
+    <!-- TAGLINE -->
+    <div class="sidebar-tagline">
 
+        <span class="tagline-leaf">
+            ❧
+        </span>
+
+        <p>
+            Data Akurat<br>
+            Lingkungan Sehat<br>
+            Sukaluyu Hebat
+        </p>
+
+        <div class="tagline-line"></div>
+
+    </div>
+
+</aside>
 
 
 <!-- =====================================================
      MAIN CONTENT
 ===================================================== -->
-
 <main class="main-content">
-
 
     <!-- =================================================
          HEADER
     ================================================== -->
-
     <header class="dashboard-header">
 
-
-        <div class="header-space">
-        </div>
-
-
+        <div class="header-space"></div>
 
         <div class="header-right">
 
-
             <!-- TANGGAL -->
-
             <div class="tanggal">
 
                 <span>
                     Tanggal
                 </span>
 
-                <strong id="tanggalHariIni">
-                </strong>
+                <strong id="tanggalHariIni"></strong>
 
             </div>
 
 
-
             <!-- QR CODE -->
-
             <button
                 class="btn-qr"
                 type="button"
                 onclick="bukaQR()">
 
-                ▦ QR Code
+                <span class="qr-icon">
+                    ▦
+                </span>
+
+                QR Code
 
             </button>
 
-
         </div>
 
-
     </header>
-
 
 
     <!-- =================================================
          KARTU RINGKASAN
     ================================================== -->
-
-    <section class="cards">
+    <section class="stats-grid">
 
 
         <!-- TOTAL RUMAH -->
+        <article class="stat-card total-card">
 
-        <div class="card">
+            <div class="stat-icon blue-icon">
 
-            <p>
-                Total Rumah
-            </p>
+                <svg
+                    viewBox="0 0 24 24"
+                    width="29"
+                    height="29"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
 
-            <h2 id="totalRumah">
-                0
-            </h2>
+                    <path d="M3 11.5 12 4l9 7.5"></path>
+                    <path d="M5 10.5V20h14v-9.5"></path>
+                    <path d="M9 20v-6h6v6"></path>
 
-            <span>
-                Rumah Terdata
-            </span>
+                </svg>
 
-        </div>
+            </div>
 
+
+            <div class="stat-content">
+
+                <p class="stat-title">
+                    Total Rumah
+                </p>
+
+                <h2 id="totalRumah">
+                    0
+                </h2>
+
+                <span>
+                    Rumah Terdata
+                </span>
+
+            </div>
+
+
+            <div class="stat-watermark">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="72"
+                    height="72"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5">
+
+                    <path d="M3 11.5 12 4l9 7.5"></path>
+                    <path d="M5 10.5V20h14v-9.5"></path>
+                    <path d="M9 20v-6h6v6"></path>
+
+                </svg>
+
+            </div>
+
+        </article>
 
 
         <!-- SUDAH MEMILAH -->
+        <article class="stat-card sudah-card">
 
-        <div class="card card-sudah">
+            <div class="stat-icon green-icon">
 
-            <p>
-                Sudah Memilah
-            </p>
+                <svg
+                    viewBox="0 0 24 24"
+                    width="29"
+                    height="29"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
 
-            <h2 id="sudahMemilah">
-                0
-            </h2>
+                    <path d="M20 4c-8 0-13 4-14 10 4-1 8-4 11-7"></path>
+                    <path d="M6 14c0 3 2 5 5 6"></path>
 
-        </div>
+                </svg>
 
+            </div>
+
+
+            <div class="stat-content">
+
+                <p class="stat-title">
+                    Sudah Memilah
+                </p>
+
+                <h2 id="sudahMemilah">
+                    0
+                </h2>
+
+                <span>
+                    Rumah
+                </span>
+
+            </div>
+
+
+            <div class="stat-watermark">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="72"
+                    height="72"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5">
+
+                    <path d="M20 4c-8 0-13 4-14 10 4-1 8-4 11-7"></path>
+                    <path d="M6 14c0 3 2 5 5 6"></path>
+
+                </svg>
+
+            </div>
+
+        </article>
 
 
         <!-- BELUM MEMILAH -->
+        <article class="stat-card belum-card">
 
-        <div class="card card-belum">
+            <div class="stat-icon red-icon">
 
-            <p>
-                Belum Memilah
-            </p>
+                <svg
+                    viewBox="0 0 24 24"
+                    width="29"
+                    height="29"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round">
 
-            <h2 id="belumMemilah">
-                0
-            </h2>
+                    <path d="M3 6h18"></path>
+                    <path d="M8 6V4h8v2"></path>
+                    <path d="M19 6l-1 14H6L5 6"></path>
+                    <path d="M10 10v6"></path>
+                    <path d="M14 10v6"></path>
 
-        </div>
+                </svg>
 
+            </div>
+
+
+            <div class="stat-content">
+
+                <p class="stat-title">
+                    Belum Memilah
+                </p>
+
+                <h2 id="belumMemilah">
+                    0
+                </h2>
+
+                <span>
+                    Rumah
+                </span>
+
+            </div>
+
+
+            <div class="stat-watermark">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    width="72"
+                    height="72"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5">
+
+                    <path d="M3 6h18"></path>
+                    <path d="M8 6V4h8v2"></path>
+                    <path d="M19 6l-1 14H6L5 6"></path>
+                    <path d="M10 10v6"></path>
+                    <path d="M14 10v6"></path>
+
+                </svg>
+
+            </div>
+
+        </article>
 
     </section>
-
 
 
     <!-- =================================================
          BAGIAN GRAFIK
     ================================================== -->
-
     <section class="chart-section">
 
 
-        <!-- =============================================
-             DIAGRAM DONAT
-        ============================================== -->
-
+        <!-- DIAGRAM DONAT -->
         <div class="chart-box donut-box">
 
+            <div class="chart-heading">
 
-            <h2>
-                Ringkasan Pemilahan Sampah
-            </h2>
+                <h2>
+                    Ringkasan Pemilahan Sampah
+                </h2>
 
+                <p>
+                    Komposisi rumah berdasarkan status pemilahan
+                </p>
+
+            </div>
 
 
             <div class="donut-content">
 
 
-                <!-- DONUT -->
-
                 <div class="donut-wrapper">
 
+                    <canvas id="statusChart"></canvas>
 
-                    <canvas id="statusChart">
-                    </canvas>
-
-
-
-                    <!-- TOTAL DI TENGAH DONUT -->
 
                     <div class="donut-center">
 
                         <strong id="totalDonut">
-
                             0
-
                         </strong>
 
-
                         <span>
-
                             Total Rumah
-
                         </span>
 
                     </div>
 
-
                 </div>
 
 
-
-                <!-- =====================================
-                     LEGEND DONUT
-                ====================================== -->
-
+                <!-- LEGEND -->
                 <div class="chart-legend">
 
 
-                    <!-- SUDAH MEMILAH -->
-
+                    <!-- SUDAH -->
                     <div class="legend-item">
 
-
                         <div class="legend-left">
-
 
                             <span
                                 class="legend-dot hijau-dot">
                             </span>
-
 
                             <div>
 
@@ -515,9 +598,7 @@
 
                             </div>
 
-
                         </div>
-
 
 
                         <strong
@@ -528,23 +609,17 @@
 
                         </strong>
 
-
                     </div>
 
 
-
-                    <!-- BELUM MEMILAH -->
-
+                    <!-- BELUM -->
                     <div class="legend-item">
 
-
                         <div class="legend-left">
-
 
                             <span
                                 class="legend-dot merah-dot">
                             </span>
-
 
                             <div>
 
@@ -558,9 +633,7 @@
 
                             </div>
 
-
                         </div>
-
 
 
                         <strong
@@ -571,185 +644,118 @@
 
                         </strong>
 
-
                     </div>
-
 
                 </div>
 
-
             </div>
-
 
         </div>
 
 
-
-        <!-- =============================================
-             DIAGRAM BATANG
-        ============================================== -->
-
+        <!-- DIAGRAM BATANG -->
         <div class="chart-box bar-box">
 
+            <div class="chart-heading">
 
-            <h2>
-                Persentase Rumah Memilah per RW
-            </h2>
+                <h2>
+                    Persentase Rumah Memilah per RW
+                </h2>
 
+                <p>
+                    Perbandingan persentase rumah yang sudah memilah di setiap RW
+                </p>
+
+            </div>
 
             <div class="bar-chart-container">
 
-                <canvas id="rwChart">
-                </canvas>
+                <canvas id="rwChart"></canvas>
 
             </div>
 
-
         </div>
 
 
-
-        <!-- =============================================
-             CATATAN
-        ============================================== -->
-
+        <!-- CATATAN -->
         <div class="chart-note">
 
-
             <span class="info-icon">
-
                 i
-
             </span>
 
-
             <p>
-
-                Grafik menunjukkan ringkasan status
-                pemilahan sampah dan persentase rumah
-                yang sudah memilah sampah pada setiap RW.
-
+                Grafik menunjukkan ringkasan status pemilahan sampah
+                dan persentase rumah yang sudah memilah sampah pada setiap RW.
             </p>
 
-
         </div>
-
 
     </section>
 
-
 </main>
-
 
 
 <!-- =====================================================
      MODAL QR CODE
 ===================================================== -->
-
 <div
     id="modalQR"
     class="modal">
 
-
     <div class="modal-content">
-
-
-        <!-- TOMBOL X -->
 
         <button
             class="close-modal"
             type="button"
-            onclick="tutupQR()">
-
+            onclick="tutupQR()"
+            aria-label="Tutup">
             ×
-
         </button>
 
-
-
-        <!-- JUDUL -->
-
         <h2>
-
             Scan Disini !
-
         </h2>
 
-
-
-        <!-- TEMPAT QR -->
-
-        <div id="qrcode">
-        </div>
-
-
-
-        <!-- INFORMASI -->
+        <div id="qrcode"></div>
 
         <p class="qr-info">
-
-            Data menampilkan rumah yang sudah maupun
-            belum memilah sampah.
-
+            Data menampilkan rumah yang sudah maupun belum memilah sampah.
         </p>
-
 
     </div>
 
-
 </div>
-
 
 
 <!-- =====================================================
      LIBRARY JAVASCRIPT
 ===================================================== -->
 
-
-<!-- QR CODE LIBRARY -->
-
+<!-- QR CODE -->
 <script
     src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
 </script>
 
-
-
 <!-- CHART.JS -->
-
 <script
     src="https://cdn.jsdelivr.net/npm/chart.js">
 </script>
 
-
-
-<!-- SUPABASE LIBRARY -->
-
+<!-- SUPABASE -->
 <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
 </script>
 
 
-
 <!-- SUPABASE CONFIG -->
-
-<script
-    src="data/supabase.js">
-</script>
-
-
+<script src="data/supabase.js"></script>
 
 <!-- AUTH -->
-
-<script
-    src="data/auth.js">
-</script>
+<script src="data/auth.js"></script>
 
 
-
-<!-- =====================================================
-     CEK LOGIN
-===================================================== -->
-
+<!-- CEK LOGIN -->
 <script>
 
     cekLogin();
@@ -757,33 +763,18 @@
 </script>
 
 
+<!-- DATA RUMAH -->
+<script src="data/data-rumah.js"></script>
 
-<!-- =====================================================
-     DATA RUMAH
-===================================================== -->
 
-<script
-    src="data/data-rumah.js">
-</script>
-
+<!-- DASHBOARD -->
+<script src="data/dashboard.js"></script>
 
 
 <!-- =====================================================
-     SCRIPT DASHBOARD
+     MENU ADMIN MOBILE
 ===================================================== -->
-
-<script
-    src="data/dashboard.js">
-</script>
-
-
-
-<!-- =====================================================
-     SCRIPT MENU ADMIN MOBILE
-===================================================== -->
-
 <script>
-
 
 function bukaMenuAdmin() {
 
@@ -799,20 +790,16 @@ function bukaMenuAdmin() {
 
 
     if (menu) {
-
         menu.classList.add(
             "show"
         );
-
     }
 
 
     if (overlay) {
-
         overlay.classList.add(
             "show"
         );
-
     }
 
 
@@ -821,7 +808,6 @@ function bukaMenuAdmin() {
     );
 
 }
-
 
 
 function tutupMenuAdmin() {
@@ -838,20 +824,16 @@ function tutupMenuAdmin() {
 
 
     if (menu) {
-
         menu.classList.remove(
             "show"
         );
-
     }
 
 
     if (overlay) {
-
         overlay.classList.remove(
             "show"
         );
-
     }
 
 
@@ -862,9 +844,7 @@ function tutupMenuAdmin() {
 }
 
 
-
-/* Tutup menu jika layar berubah ke desktop */
-
+/* Tutup menu jika pindah ke layar desktop */
 window.addEventListener(
     "resize",
     function() {
@@ -881,9 +861,7 @@ window.addEventListener(
 );
 
 
-
-/* Bisa ditutup dengan tombol ESC */
-
+/* Tutup dengan tombol ESC */
 document.addEventListener(
     "keydown",
     function(event) {
@@ -899,9 +877,7 @@ document.addEventListener(
     }
 );
 
-
 </script>
-
 
 </body>
 

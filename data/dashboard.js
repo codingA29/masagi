@@ -1,100 +1,155 @@
-// ========================================
+// ======================================================
+// MASAGI - DASHBOARD ADMIN
+// ======================================================
+
+
+// ======================================================
+// FORMAT PERSENTASE
+// ======================================================
+
+function formatPersen(nilai) {
+
+    return Number(nilai).toFixed(1) + "%";
+
+}
+
+
+// ======================================================
 // HITUNG DASHBOARD
-// ========================================
+// ======================================================
 
 function hitungDashboard() {
 
-    const total = dataRumah.length;
+    const total =
+        dataRumah.length;
 
 
-    const sudah = dataRumah.filter(
-        rumah =>
-            rumah.status === "Sudah Memilah"
-    ).length;
+    const sudah =
+        dataRumah.filter(
+            rumah =>
+                rumah.status ===
+                "Sudah Memilah"
+        ).length;
 
 
-    const belum = dataRumah.filter(
-        rumah =>
-            rumah.status === "Belum Memilah"
-    ).length;
+    const belum =
+        dataRumah.filter(
+            rumah =>
+                rumah.status ===
+                "Belum Memilah"
+        ).length;
 
 
-
+    // ==================================================
     // KARTU
+    // ==================================================
 
     const totalElement =
-        document.getElementById("totalRumah");
+        document.getElementById(
+            "totalRumah"
+        );
 
     const sudahElement =
-        document.getElementById("sudahMemilah");
+        document.getElementById(
+            "sudahMemilah"
+        );
 
     const belumElement =
-        document.getElementById("belumMemilah");
+        document.getElementById(
+            "belumMemilah"
+        );
 
 
     if (totalElement) {
-        totalElement.innerText = total;
+
+        totalElement.innerText =
+            total;
+
     }
 
 
     if (sudahElement) {
-        sudahElement.innerText = sudah;
+
+        sudahElement.innerText =
+            sudah;
+
     }
 
 
     if (belumElement) {
-        belumElement.innerText = belum;
+
+        belumElement.innerText =
+            belum;
+
     }
 
 
-
+    // ==================================================
     // DONUT CENTER
+    // ==================================================
 
     const totalDonut =
-        document.getElementById("totalDonut");
+        document.getElementById(
+            "totalDonut"
+        );
 
 
     if (totalDonut) {
-        totalDonut.innerText = total;
+
+        totalDonut.innerText =
+            total;
+
     }
 
 
-
+    // ==================================================
     // LEGEND
+    // ==================================================
 
     const legendSudah =
-        document.getElementById("legendSudah");
+        document.getElementById(
+            "legendSudah"
+        );
 
 
     const legendBelum =
-        document.getElementById("legendBelum");
+        document.getElementById(
+            "legendBelum"
+        );
 
 
     if (legendSudah) {
+
         legendSudah.innerText =
-            sudah + " Rumah";
+            sudah +
+            " Rumah";
+
     }
 
 
     if (legendBelum) {
+
         legendBelum.innerText =
-            belum + " Rumah";
+            belum +
+            " Rumah";
+
     }
 
 
-
+    // ==================================================
     // PERSENTASE DONUT
+    // ==================================================
 
     const persenSudah =
         total > 0
-        ? ((sudah / total) * 100).toFixed(1)
-        : 0;
+            ? (sudah / total) * 100
+            : 0;
 
 
     const persenBelum =
         total > 0
-        ? ((belum / total) * 100).toFixed(1)
-        : 0;
+            ? (belum / total) * 100
+            : 0;
 
 
     const persenSudahElement =
@@ -112,7 +167,9 @@ function hitungDashboard() {
     if (persenSudahElement) {
 
         persenSudahElement.innerText =
-            persenSudah + "%";
+            formatPersen(
+                persenSudah
+            );
 
     }
 
@@ -120,11 +177,16 @@ function hitungDashboard() {
     if (persenBelumElement) {
 
         persenBelumElement.innerText =
-            persenBelum + "%";
+            formatPersen(
+                persenBelum
+            );
 
     }
 
 
+    // ==================================================
+    // GRAFIK
+    // ==================================================
 
     buatDiagramStatus(
         sudah,
@@ -137,23 +199,30 @@ function hitungDashboard() {
 }
 
 
-
-// ========================================
+// ======================================================
 // TANGGAL
-// ========================================
+// ======================================================
 
 function tampilkanTanggal() {
 
-    const tanggal = new Date();
+    const tanggal =
+        new Date();
 
 
     const format =
         tanggal.toLocaleDateString(
             "id-ID",
             {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
+
+                day:
+                    "numeric",
+
+                month:
+                    "long",
+
+                year:
+                    "numeric"
+
             }
         );
 
@@ -166,17 +235,17 @@ function tampilkanTanggal() {
 
     if (element) {
 
-        element.innerText = format;
+        element.innerText =
+            format;
 
     }
 
 }
 
 
-
-// ========================================
+// ======================================================
 // DIAGRAM DONAT
-// ========================================
+// ======================================================
 
 let statusChart;
 
@@ -186,7 +255,6 @@ function buatDiagramStatus(
     belum
 ) {
 
-
     const canvas =
         document.getElementById(
             "statusChart"
@@ -194,9 +262,10 @@ function buatDiagramStatus(
 
 
     if (!canvas) {
-        return;
-    }
 
+        return;
+
+    }
 
 
     if (statusChart) {
@@ -206,13 +275,13 @@ function buatDiagramStatus(
     }
 
 
-
     statusChart =
         new Chart(
             canvas,
             {
 
-                type: "doughnut",
+                type:
+                    "doughnut",
 
 
                 data: {
@@ -231,21 +300,42 @@ function buatDiagramStatus(
                         {
 
                             data: [
+
                                 sudah,
+
                                 belum
+
                             ],
+
 
                             backgroundColor: [
 
-                                "#20a955",
+                                "#20AA59",
 
-                                "#ef3340"
+                                "#F53240"
 
                             ],
 
-                            borderColor: "#ffffff",
 
-                            borderWidth: 2
+                            hoverBackgroundColor: [
+
+                                "#17974C",
+
+                                "#E52A37"
+
+                            ],
+
+
+                            borderColor:
+                                "#FFFFFF",
+
+
+                            borderWidth:
+                                3,
+
+
+                            hoverOffset:
+                                4
 
                         }
 
@@ -256,32 +346,76 @@ function buatDiagramStatus(
 
                 options: {
 
-                    responsive: true,
+                    responsive:
+                        true,
 
-                    maintainAspectRatio: false,
 
-                    cutout: "68%",
+                    maintainAspectRatio:
+                        false,
+
+
+                    cutout:
+                        "69%",
+
+
+                    animation: {
+
+                        duration:
+                            700
+
+                    },
+
 
                     plugins: {
 
                         legend: {
-                            display: false
+
+                            display:
+                                false
+
                         },
+
 
                         tooltip: {
 
+                            backgroundColor:
+                                "#14213D",
+
+
+                            titleColor:
+                                "#FFFFFF",
+
+
+                            bodyColor:
+                                "#FFFFFF",
+
+
+                            padding:
+                                12,
+
+
+                            cornerRadius:
+                                8,
+
+
                             callbacks: {
 
-                                label: function(context) {
+                                label:
+                                    function(context) {
 
-                                    return (
-                                        context.label +
-                                        ": " +
-                                        context.raw +
-                                        " Rumah"
-                                    );
+                                        return (
 
-                                }
+                                            context.label +
+
+                                            ": " +
+
+                                            context.raw +
+
+                                            " Rumah"
+
+                                        );
+
+                                    }
 
                             }
 
@@ -297,13 +431,11 @@ function buatDiagramStatus(
 }
 
 
-
-// ========================================
+// ======================================================
 // DATA PER RW
-// ========================================
+// ======================================================
 
 function hitungDataRW() {
-
 
     const rwData = {};
 
@@ -311,18 +443,24 @@ function hitungDataRW() {
     dataRumah.forEach(
         rumah => {
 
-
             const rw =
-                rumah.rw;
+                String(
+                    rumah.rw
+                ).padStart(
+                    2,
+                    "0"
+                );
 
 
             if (!rwData[rw]) {
 
                 rwData[rw] = {
 
-                    total: 0,
+                    total:
+                        0,
 
-                    sudah: 0
+                    sudah:
+                        0
 
                 };
 
@@ -350,16 +488,93 @@ function hitungDataRW() {
 }
 
 
+// ======================================================
+// PLUGIN ANGKA DI ATAS BATANG
+// ======================================================
 
-// ========================================
+const labelBatangPlugin = {
+
+    id:
+        "labelBatangMasagi",
+
+
+    afterDatasetsDraw(chart) {
+
+        const {
+            ctx
+        } =
+            chart;
+
+
+        ctx.save();
+
+
+        ctx.font =
+            "600 12px Arial";
+
+
+        ctx.fillStyle =
+            "#14213D";
+
+
+        ctx.textAlign =
+            "center";
+
+
+        ctx.textBaseline =
+            "bottom";
+
+
+        chart.data.datasets.forEach(
+            (
+                dataset,
+                datasetIndex
+            ) => {
+
+                const meta =
+                    chart.getDatasetMeta(
+                        datasetIndex
+                    );
+
+
+                meta.data.forEach(
+                    (
+                        bar,
+                        index
+                    ) => {
+
+                        const nilai =
+                            dataset.data[index];
+
+
+                        ctx.fillText(
+                            nilai + "%",
+                            bar.x,
+                            bar.y - 7
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        ctx.restore();
+
+    }
+
+};
+
+
+// ======================================================
 // DIAGRAM BATANG RW
-// ========================================
+// ======================================================
 
 let rwChart;
 
 
 function buatDiagramRW() {
-
 
     const canvas =
         document.getElementById(
@@ -368,38 +583,41 @@ function buatDiagramRW() {
 
 
     if (!canvas) {
-        return;
-    }
 
+        return;
+
+    }
 
 
     const rwData =
         hitungDataRW();
 
 
-
     const daftarRW =
-        Object.keys(rwData)
+        Object.keys(
+            rwData
+        )
         .sort(
-            (a, b) =>
+            (
+                a,
+                b
+            ) =>
                 Number(a) -
                 Number(b)
         );
 
 
-
     const labels =
         daftarRW.map(
             rw =>
-                "RW " + rw
+                "RW " +
+                rw
         );
-
 
 
     const percentages =
         daftarRW.map(
             rw => {
-
 
                 const total =
                     rwData[rw].total;
@@ -410,7 +628,9 @@ function buatDiagramRW() {
 
 
                 if (total === 0) {
+
                     return 0;
+
                 }
 
 
@@ -428,7 +648,6 @@ function buatDiagramRW() {
         );
 
 
-
     if (rwChart) {
 
         rwChart.destroy();
@@ -436,18 +655,19 @@ function buatDiagramRW() {
     }
 
 
-
     rwChart =
         new Chart(
             canvas,
             {
 
-                type: "bar",
+                type:
+                    "bar",
 
 
                 data: {
 
-                    labels: labels,
+                    labels:
+                        labels,
 
 
                     datasets: [
@@ -463,15 +683,31 @@ function buatDiagramRW() {
 
 
                             backgroundColor:
-                                "#159153",
+                                "#18A05E",
+
+
+                            hoverBackgroundColor:
+                                "#138A51",
+
+
+                            borderColor:
+                                "#168A52",
+
+
+                            borderWidth:
+                                1,
 
 
                             borderRadius:
-                                6,
+                                7,
+
+
+                            borderSkipped:
+                                false,
 
 
                             maxBarThickness:
-                                70
+                                68
 
                         }
 
@@ -480,11 +716,41 @@ function buatDiagramRW() {
                 },
 
 
+                plugins: [
+
+                    labelBatangPlugin
+
+                ],
+
+
                 options: {
 
-                    responsive: true,
+                    responsive:
+                        true,
 
-                    maintainAspectRatio: false,
+
+                    maintainAspectRatio:
+                        false,
+
+
+                    layout: {
+
+                        padding: {
+
+                            top:
+                                20
+
+                        }
+
+                    },
+
+
+                    animation: {
+
+                        duration:
+                            700
+
+                    },
 
 
                     scales: {
@@ -492,12 +758,23 @@ function buatDiagramRW() {
 
                         y: {
 
-                            beginAtZero: true,
+                            beginAtZero:
+                                true,
 
-                            max: 100,
+
+                            max:
+                                100,
 
 
                             ticks: {
+
+                                stepSize:
+                                    10,
+
+
+                                color:
+                                    "#667085",
+
 
                                 callback:
                                     function(value) {
@@ -515,7 +792,19 @@ function buatDiagramRW() {
                             grid: {
 
                                 color:
-                                    "#e6ece9"
+                                    "#E6ECE8",
+
+
+                                drawBorder:
+                                    false
+
+                            },
+
+
+                            border: {
+
+                                display:
+                                    false
 
                             }
 
@@ -524,7 +813,31 @@ function buatDiagramRW() {
 
                         x: {
 
+                            ticks: {
+
+                                color:
+                                    "#475467",
+
+
+                                font: {
+
+                                    weight:
+                                        "600"
+
+                                }
+
+                            },
+
+
                             grid: {
+
+                                display:
+                                    false
+
+                            },
+
+
+                            border: {
 
                                 display:
                                     false
@@ -549,14 +862,37 @@ function buatDiagramRW() {
 
                         tooltip: {
 
+                            backgroundColor:
+                                "#14213D",
+
+
+                            titleColor:
+                                "#FFFFFF",
+
+
+                            bodyColor:
+                                "#FFFFFF",
+
+
+                            padding:
+                                12,
+
+
+                            cornerRadius:
+                                8,
+
+
                             callbacks: {
 
                                 label:
                                     function(context) {
 
                                         return (
+
                                             context.raw +
+
                                             "% rumah memilah"
+
                                         );
 
                                     }
@@ -575,16 +911,15 @@ function buatDiagramRW() {
 }
 
 
-
-// ========================================
+// ======================================================
 // QR CODE
-// ========================================
+// ======================================================
 
-let qrSudahDibuat = false;
+let qrSudahDibuat =
+    false;
 
 
 function bukaQR() {
-
 
     const modal =
         document.getElementById(
@@ -593,7 +928,9 @@ function bukaQR() {
 
 
     if (!modal) {
+
         return;
+
     }
 
 
@@ -601,32 +938,47 @@ function bukaQR() {
         "flex";
 
 
-
     if (!qrSudahDibuat) {
 
-
-        const urlDataRumah =
+        const urlDashboardPublik =
 
             "https://codingA29.github.io/masagi/dashboard-publik.html";
 
 
+        const qrContainer =
+            document.getElementById(
+                "qrcode"
+            );
+
+
+        if (!qrContainer) {
+
+            return;
+
+        }
+
+
+        qrContainer.innerHTML =
+            "";
+
 
         new QRCode(
 
-            document.getElementById(
-                "qrcode"
-            ),
+            qrContainer,
 
             {
 
                 text:
-                    urlDataRumah,
+                    urlDashboardPublik,
+
 
                 width:
                     230,
 
+
                 height:
                     230,
+
 
                 correctLevel:
                     QRCode.CorrectLevel.H
@@ -644,9 +996,11 @@ function bukaQR() {
 }
 
 
+// ======================================================
+// TUTUP QR
+// ======================================================
 
 function tutupQR() {
-
 
     const modal =
         document.getElementById(
@@ -664,15 +1018,13 @@ function tutupQR() {
 }
 
 
-
-// ========================================
+// ======================================================
 // TUTUP MODAL KETIKA KLIK LUAR
-// ========================================
+// ======================================================
 
 window.addEventListener(
     "click",
     function(event) {
-
 
         const modal =
             document.getElementById(
@@ -693,15 +1045,34 @@ window.addEventListener(
 );
 
 
+// ======================================================
+// TUTUP QR DENGAN ESC
+// ======================================================
 
-// ========================================
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            tutupQR();
+
+        }
+
+    }
+);
+
+
+// ======================================================
 // JALANKAN
-// ========================================
+// ======================================================
 
 document.addEventListener(
     "DOMContentLoaded",
     function() {
-
 
         tampilkanTanggal();
 
@@ -712,6 +1083,13 @@ document.addEventListener(
         ) {
 
             hitungDashboard();
+
+        }
+        else {
+
+            console.error(
+                "dataRumah tidak ditemukan."
+            );
 
         }
 

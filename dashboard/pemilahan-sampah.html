@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Pemilahan Sampah - MASAGI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="../style/style.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                #f4f9f6;
+
+            color:
+                #14213d;
+
+        }
+
+
+        .pemilahan-page {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            padding:
+                28px 32px 45px;
+
+        }
+
+
+        /* ===============================================
+           BACK
+        =============================================== */
+
+        .top-actions {
+
+            margin-bottom:
+                18px;
+
+        }
+
+
+        .btn-back-dashboard {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            min-height:
+                44px;
+
+            padding:
+                0 18px;
+
+            background:
+                #eaf7ef;
+
+            color:
+                #087c48;
+
+            text-decoration:
+                none;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            border-radius:
+                12px;
+
+        }
+
+
+        /* ===============================================
+           CONTAINER
+        =============================================== */
+
+        .pemilahan-card {
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #dfe8e3;
+
+            border-radius:
+                20px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(20, 33, 61, 0.07);
+
+            padding:
+                28px 30px 30px;
+
+        }
+
+
+        /* ===============================================
+           HEADER
+        =============================================== */
+
+        .pemilahan-header {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-end;
+
+            gap:
+                20px;
+
+            margin-bottom:
+                22px;
+
+        }
+
+
+        .admin-badge {
+
+            display:
+                inline-block;
+
+            padding:
+                5px 12px;
+
+            margin-bottom:
+                8px;
+
+            background:
+                #e5f5eb;
+
+            color:
+                #087c48;
+
+            border-radius:
+                20px;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .pemilahan-header h1 {
+
+            margin:
+                0 0 5px;
+
+            color:
+                #14213d;
+
+            font-size:
+                30px;
+
+        }
+
+
+        .pemilahan-header p {
+
+            margin:
+                0;
+
+            color:
+                #667085;
+
+            font-size:
+                14px;
+
+        }
+
+
+        /* ===============================================
+           KPI
+        =============================================== */
+
+        .summary-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap:
+                15px;
+
+            margin-bottom:
+                22px;
+
+        }
+
+
+        .summary-card {
+
+            padding:
+                18px 20px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #dfe8e3;
+
+            border-radius:
+                15px;
+
+            box-shadow:
+                0 5px 15px
+                rgba(20, 33, 61, 0.05);
+
+        }
+
+
+        .summary-card span {
+
+            display:
+                block;
+
+            margin-bottom:
+                7px;
+
+            color:
+                #667085;
+
+            font-size:
+                13px;
+
+        }
+
+
+        .summary-card strong {
+
+            color:
+                #14213d;
+
+            font-size:
+                27px;
+
+        }
+
+
+        .summary-card small {
+
+            color:
+                #98a2b3;
+
+        }
+
+
+        .organik-card {
+
+            border-left:
+                5px solid #20aa59;
+
+        }
+
+
+        .nonorganik-card {
+
+            border-left:
+                5px solid #2f80ed;
+
+        }
+
+
+        .anorganik-card {
+
+            border-left:
+                5px solid #f59e0b;
+
+        }
+
+
+        .jelantah-card {
+
+            border-left:
+                5px solid #8b5cf6;
+
+        }
+
+
+        /* ===============================================
+           CHART
+        =============================================== */
+
+        .chart-card {
+
+            margin-bottom:
+                22px;
+
+            padding:
+                22px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #dfe8e3;
+
+            border-radius:
+                16px;
+
+        }
+
+
+        .chart-card h2 {
+
+            margin:
+                0 0 5px;
+
+            color:
+                #14213d;
+
+            font-size:
+                20px;
+
+        }
+
+
+        .chart-card p {
+
+            margin:
+                0 0 20px;
+
+            color:
+                #667085;
+
+            font-size:
+                13px;
+
+        }
+
+
+        .chart-container {
+
+            width:
+                100%;
+
+            height:
+                330px;
+
+        }
+
+
+        /* ===============================================
+           SEARCH
+        =============================================== */
+
+        .table-tools {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            gap:
+                15px;
+
+            margin-bottom:
+                14px;
+
+        }
+
+
+        .search-box {
+
+            width:
+                330px;
+
+            max-width:
+                100%;
+
+            min-height:
+                45px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            padding:
+                0 14px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid #d5dfda;
+
+            border-radius:
+                11px;
+
+        }
+
+
+        .search-box input {
+
+            width:
+                100%;
+
+            border:
+                none;
+
+            outline:
+                none;
+
+            background:
+                transparent;
+
+            font-size:
+                14px;
+
+        }
+
+
+        .jumlah-data {
+
+            color:
+                #667085;
+
+            font-size:
+                13px;
+
+        }
+
+
+        /* ===============================================
+           TABLE
+        =============================================== */
+
+        .table-wrapper {
+
+            width:
+                100%;
+
+            overflow-x:
+                auto;
+
+            border:
+                1px solid #e2e9e5;
+
+            border-radius:
+                14px;
+
+        }
+
+
+        .pemilahan-table {
+
+            width:
+                100%;
+
+            min-width:
+                1200px;
+
+            border-collapse:
+                collapse;
+
+            background:
+                #ffffff;
+
+        }
+
+
+        .pemilahan-table thead {
+
+            background:
+                #edf6f1;
+
+        }
+
+
+        .pemilahan-table th {
+
+            padding:
+                15px 14px;
+
+            color:
+                #173229;
+
+            font-size:
+                13px;
+
+            text-align:
+                left;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        .pemilahan-table td {
+
+            padding:
+                14px;
+
+            border-bottom:
+                1px solid #e8ecea;
+
+            color:
+                #14213d;
+
+            font-size:
+                13px;
+
+        }
+
+
+        .center {
+
+            text-align:
+                center !important;
+
+        }
+
+
+        .id-rumah {
+
+            font-weight:
+                700;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        /* ===============================================
+           STATUS BADGE
+        =============================================== */
+
+        .status-ya {
+
+            display:
+                inline-block;
+
+            min-width:
+                75px;
+
+            padding:
+                6px 10px;
+
+            background:
+                #d9f3e3;
+
+            color:
+                #087c48;
+
+            border-radius:
+                20px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+            text-align:
+                center;
+
+        }
+
+
+        .status-tidak {
+
+            display:
+                inline-block;
+
+            min-width:
+                75px;
+
+            padding:
+                6px 10px;
+
+            background:
+                #fde1e4;
+
+            color:
+                #df2635;
+
+            border-radius:
+                20px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+            text-align:
+                center;
+
+        }
+
+
+        /* ===============================================
+           MOBILE
+        =============================================== */
+
+        @media (max-width: 900px) {
+
+            .pemilahan-page {
+
+                padding:
+                    18px 14px 30px;
+
+            }
+
+
+            .pemilahan-card {
+
+                padding:
+                    20px 16px;
+
+            }
+
+
+            .summary-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .pemilahan-header {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    stretch;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .summary-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .chart-container {
+
+                height:
+                    280px;
+
+            }
+
+
+            .table-tools {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    stretch;
+
+            }
+
+
+            .search-box {
+
+                width:
+                    100%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="pemilahan-page">
+
+
+    <div class="top-actions">
+
+        <a
+            href="../index.html"
+            class="btn-back-dashboard">
+
+            ← Dashboard
+
+        </a>
+
+    </div>
+
+
+    <section class="pemilahan-card">
+
+
+        <!-- ==========================================
+             HEADER
+        =========================================== -->
+
+        <div class="pemilahan-header">
+
+
+            <div>
+
+                <span class="admin-badge">
+
+                    ADMIN MASAGI
+
+                </span>
+
+
+                <h1>
+
+                    Pemilahan Sampah
+
+                </h1>
+
+
+                <p>
+
+                    Monitoring jenis pemilahan sampah
+                    pada rumah terdata Kelurahan Sukaluyu
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ==========================================
+             SUMMARY
+        =========================================== -->
+
+        <div class="summary-grid">
+
+
+            <div class="summary-card organik-card">
+
+                <span>
+                    Memilah Organik
+                </span>
+
+                <strong id="totalOrganik">
+                    0
+                </strong>
+
+                <small>
+                    rumah
+                </small>
+
+            </div>
+
+
+            <div class="summary-card nonorganik-card">
+
+                <span>
+                    Memilah Nonorganik
+                </span>
+
+                <strong id="totalNonorganik">
+                    0
+                </strong>
+
+                <small>
+                    rumah
+                </small>
+
+            </div>
+
+
+            <div class="summary-card anorganik-card">
+
+                <span>
+                    Memilah Anorganik
+                </span>
+
+                <strong id="totalAnorganik">
+                    0
+                </strong>
+
+                <small>
+                    rumah
+                </small>
+
+            </div>
+
+
+            <div class="summary-card jelantah-card">
+
+                <span>
+                    Memilah Minyak Jelantah
+                </span>
+
+                <strong id="totalJelantah">
+                    0
+                </strong>
+
+                <small>
+                    rumah
+                </small>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ==========================================
+             CHART
+        =========================================== -->
+
+        <div class="chart-card">
+
+
+            <h2>
+
+                Partisipasi Pemilahan per Jenis Sampah
+
+            </h2>
+
+
+            <p>
+
+                Jumlah rumah yang melakukan pemilahan
+                berdasarkan jenis sampah
+
+            </p>
+
+
+            <div class="chart-container">
+
+                <canvas id="pemilahanChart"></canvas>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ==========================================
+             TOOLS
+        =========================================== -->
+
+        <div class="table-tools">
+
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Cari ID, nama atau alamat...">
+
+            </div>
+
+
+            <div class="jumlah-data">
+
+                <strong id="jumlahData">
+                    0
+                </strong>
+
+                data ditampilkan
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ==========================================
+             TABLE
+        =========================================== -->
+
+        <div class="table-wrapper">
+
+
+            <table class="pemilahan-table">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            No
+                        </th>
+
+                        <th>
+                            ID Rumah
+                        </th>
+
+                        <th>
+                            Nama Kepala Rumah Tangga
+                        </th>
+
+                        <th>
+                            Alamat
+                        </th>
+
+                        <th class="center">
+                            Organik
+                        </th>
+
+                        <th class="center">
+                            Nonorganik
+                        </th>
+
+                        <th class="center">
+                            Anorganik
+                        </th>
+
+                        <th class="center">
+                            Minyak Jelantah
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="pemilahanBody">
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+<!-- ===============================================
+     LIBRARY
+================================================ -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/chart.js">
+</script>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+<script src="../data/supabase.js"></script>
+
+<script src="../data/auth.js"></script>
+
+
+<script>
+
+    cekLogin();
+
+</script>
+
+
+<!-- DATA RUMAH -->
+<script
+    src="../data/data-rumah.js">
+</script>
+
+
+<!-- DATA PEMILAHAN -->
+<script
+    src="../data/data-pemilahan.js">
+</script>
+
+
+
+<script>
+
+// ======================================================
+// DATA GABUNGAN
+// ======================================================
+
+function buatDataGabungan() {
+
+    return dataPemilahan.map(
+        pemilahan => {
+
+
+            const rumah =
+                dataRumah.find(
+                    item =>
+                        item.id ===
+                        pemilahan.idRumah
+                );
+
+
+            return {
+
+                ...pemilahan,
+
+                nama:
+                    rumah
+                        ? rumah.namaKepalaRumahTangga
+                        : "-",
+
+                alamat:
+                    rumah
+                        ? rumah.alamat
+                        : "-"
+
+            };
+
+        }
+    );
+
+}
+
+
+let dataGabungan =
+    [];
+
+
+// ======================================================
+// STATUS
+// ======================================================
+
+function statusBadge(
+    status
+) {
+
+    if (status) {
+
+        return `
+
+            <span class="status-ya">
+
+                Ya
+
+            </span>
+
+        `;
+
+    }
+
+
+    return `
+
+        <span class="status-tidak">
+
+            Belum
+
+        </span>
+
+    `;
+
+}
+
+
+// ======================================================
+// RENDER TABLE
+// ======================================================
+
+function renderTable(
+    data
+) {
+
+    const tbody =
+        document.getElementById(
+            "pemilahanBody"
+        );
+
+
+    tbody.innerHTML =
+        "";
+
+
+    document.getElementById(
+        "jumlahData"
+    ).textContent =
+        data.length;
+
+
+    data.forEach(
+        (
+            item,
+            index
+        ) => {
+
+
+            const tr =
+                document.createElement(
+                    "tr"
+                );
+
+
+            tr.innerHTML = `
+
+                <td>
+
+                    ${index + 1}
+
+                </td>
+
+
+                <td>
+
+                    <span class="id-rumah">
+
+                        ${item.idRumah}
+
+                    </span>
+
+                </td>
+
+
+                <td>
+
+                    ${item.nama}
+
+                </td>
+
+
+                <td>
+
+                    ${item.alamat}
+
+                </td>
+
+
+                <td class="center">
+
+                    ${statusBadge(
+                        item.organik
+                    )}
+
+                </td>
+
+
+                <td class="center">
+
+                    ${statusBadge(
+                        item.nonorganik
+                    )}
+
+                </td>
+
+
+                <td class="center">
+
+                    ${statusBadge(
+                        item.anorganik
+                    )}
+
+                </td>
+
+
+                <td class="center">
+
+                    ${statusBadge(
+                        item.minyakJelantah
+                    )}
+
+                </td>
+
+            `;
+
+
+            tbody.appendChild(
+                tr
+            );
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// HITUNG KATEGORI
+// ======================================================
+
+function hitungKategori() {
+
+    const organik =
+        dataPemilahan.filter(
+            item =>
+                item.organik
+        ).length;
+
+
+    const nonorganik =
+        dataPemilahan.filter(
+            item =>
+                item.nonorganik
+        ).length;
+
+
+    const anorganik =
+        dataPemilahan.filter(
+            item =>
+                item.anorganik
+        ).length;
+
+
+    const jelantah =
+        dataPemilahan.filter(
+            item =>
+                item.minyakJelantah
+        ).length;
+
+
+    document.getElementById(
+        "totalOrganik"
+    ).textContent =
+        organik;
+
+
+    document.getElementById(
+        "totalNonorganik"
+    ).textContent =
+        nonorganik;
+
+
+    document.getElementById(
+        "totalAnorganik"
+    ).textContent =
+        anorganik;
+
+
+    document.getElementById(
+        "totalJelantah"
+    ).textContent =
+        jelantah;
+
+
+    buatChart(
+        organik,
+        nonorganik,
+        anorganik,
+        jelantah
+    );
+
+}
+
+
+// ======================================================
+// CHART
+// ======================================================
+
+let pemilahanChart;
+
+
+function buatChart(
+    organik,
+    nonorganik,
+    anorganik,
+    jelantah
+) {
+
+    const canvas =
+        document.getElementById(
+            "pemilahanChart"
+        );
+
+
+    pemilahanChart =
+        new Chart(
+            canvas,
+            {
+
+                type:
+                    "bar",
+
+
+                data: {
+
+                    labels: [
+
+                        "Organik",
+
+                        "Nonorganik",
+
+                        "Anorganik",
+
+                        "Minyak Jelantah"
+
+                    ],
+
+
+                    datasets: [
+
+                        {
+
+                            label:
+                                "Jumlah Rumah",
+
+
+                            data: [
+
+                                organik,
+
+                                nonorganik,
+
+                                anorganik,
+
+                                jelantah
+
+                            ],
+
+
+                            backgroundColor: [
+
+                                "#20AA59",
+
+                                "#2F80ED",
+
+                                "#F59E0B",
+
+                                "#8B5CF6"
+
+                            ],
+
+
+                            borderRadius:
+                                8,
+
+
+                            borderSkipped:
+                                false,
+
+
+                            maxBarThickness:
+                                90
+
+                        }
+
+                    ]
+
+                },
+
+
+                options: {
+
+                    responsive:
+                        true,
+
+
+                    maintainAspectRatio:
+                        false,
+
+
+                    scales: {
+
+                        y: {
+
+                            beginAtZero:
+                                true,
+
+
+                            suggestedMax:
+                                32,
+
+
+                            ticks: {
+
+                                precision:
+                                    0
+
+                            },
+
+
+                            grid: {
+
+                                color:
+                                    "#E6ECE8"
+
+                            }
+
+                        },
+
+
+                        x: {
+
+                            grid: {
+
+                                display:
+                                    false
+
+                            }
+
+                        }
+
+                    },
+
+
+                    plugins: {
+
+                        legend: {
+
+                            display:
+                                false
+
+                        },
+
+
+                        tooltip: {
+
+                            callbacks: {
+
+                                label:
+                                    function(context) {
+
+                                        return (
+                                            context.raw +
+                                            " rumah"
+                                        );
+
+                                    }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+        );
+
+}
+
+
+// ======================================================
+// SEARCH
+// ======================================================
+
+document.getElementById(
+    "searchInput"
+)
+.addEventListener(
+    "input",
+    function() {
+
+
+        const keyword =
+            this.value
+                .trim()
+                .toLowerCase();
+
+
+        const hasil =
+            dataGabungan.filter(
+                item => {
+
+
+                    const text = (
+
+                        item.idRumah +
+                        " " +
+                        item.nama +
+                        " " +
+                        item.alamat
+
+                    ).toLowerCase();
+
+
+                    return text.includes(
+                        keyword
+                    );
+
+                }
+            );
+
+
+        renderTable(
+            hasil
+        );
+
+    }
+);
+
+
+// ======================================================
+// START
+// ======================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        if (
+            typeof dataRumah ===
+            "undefined" ||
+            typeof dataPemilahan ===
+            "undefined"
+        ) {
+
+            console.error(
+                "Data rumah atau data pemilahan tidak ditemukan."
+            );
+
+
+            return;
+
+        }
+
+
+        dataGabungan =
+            buatDataGabungan();
+
+
+        renderTable(
+            dataGabungan
+        );
+
+
+        hitungKategori();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

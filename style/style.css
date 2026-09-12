@@ -4056,3 +4056,612 @@ td {
     }
 
 }
+
+/* =====================================================
+   MASAGI MODERN DASHBOARD
+===================================================== */
+
+:root {
+    --masagi-navy: #14213d;
+    --masagi-green: #168a52;
+    --masagi-green-light: #20aa59;
+    --masagi-red: #f53240;
+    --masagi-blue: #2f80ed;
+    --masagi-orange: #f59e0b;
+
+    --masagi-bg: #f4f9f6;
+    --masagi-card: #ffffff;
+    --masagi-border: #dfe9e3;
+
+    --masagi-text: #14213d;
+    --masagi-text-secondary: #667085;
+
+    --masagi-shadow:
+        0 8px 24px rgba(20, 33, 61, 0.07);
+
+    --masagi-radius: 18px;
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body {
+    background:
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(32, 170, 89, 0.08),
+            transparent 25%
+        ),
+        #f4f9f6;
+
+    color: var(--masagi-text);
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+    background: #ffffff;
+    border-right: 1px solid var(--masagi-border);
+    box-shadow: 4px 0 18px rgba(20, 33, 61, 0.04);
+}
+
+
+/* logo */
+.sidebar img {
+    filter: drop-shadow(
+        0 5px 12px rgba(20, 33, 61, 0.08)
+    );
+}
+
+
+/* menu */
+
+.sidebar a {
+    color: var(--masagi-navy);
+    border-radius: 12px;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.sidebar a:hover {
+    background: #eef8f2;
+    color: var(--masagi-green);
+    transform: translateX(3px);
+}
+
+
+.sidebar a.active {
+    background:
+        linear-gradient(
+            135deg,
+            #168a52,
+            #0f9c5b
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 7px 18px rgba(22, 138, 82, 0.20);
+}
+
+
+/* =====================================================
+   SIDEBAR TAGLINE
+===================================================== */
+
+.sidebar-tagline {
+    margin: 35px 20px 15px;
+    padding-top: 22px;
+
+    border-top:
+        1px solid #e6ece8;
+
+    position: relative;
+}
+
+
+.sidebar-tagline p {
+    margin: 0;
+
+    font-size: 13px;
+    line-height: 1.6;
+
+    color: #4e6172;
+}
+
+
+.tagline-leaf {
+    display: block;
+    margin-bottom: 7px;
+
+    font-size: 25px;
+    color: var(--masagi-green);
+}
+
+
+.tagline-line {
+    width: 34px;
+    height: 4px;
+
+    margin-top: 13px;
+
+    background: var(--masagi-green);
+
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.main-content,
+.content {
+    background: transparent;
+}
+
+
+/* =====================================================
+   TOP HEADER
+===================================================== */
+
+.top-header {
+    background: transparent;
+
+    padding-top: 6px;
+    padding-bottom: 18px;
+}
+
+
+/* Tanggal */
+
+.date-card,
+.date-box {
+    background: #ffffff;
+
+    border:
+        1px solid var(--masagi-border);
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 5px 18px rgba(20, 33, 61, 0.05);
+
+    color: var(--masagi-navy);
+}
+
+
+/* =====================================================
+   QR BUTTON
+===================================================== */
+
+.btn-qr,
+.qr-button {
+    background:
+        linear-gradient(
+            135deg,
+            #168a52,
+            #087d47
+        );
+
+    color: #ffffff;
+
+    border: none;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 7px 18px rgba(22, 138, 82, 0.20);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.btn-qr:hover,
+.qr-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 22px rgba(22, 138, 82, 0.28);
+}
+
+
+/* =====================================================
+   STATISTIC CARDS
+===================================================== */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+
+    margin-bottom: 26px;
+}
+
+
+.stat-card {
+    min-height: 145px;
+
+    position: relative;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 17px;
+
+    padding: 27px 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fbfdfc
+        );
+
+    border:
+        1px solid var(--masagi-border);
+
+    border-radius:
+        var(--masagi-radius);
+
+    box-shadow:
+        var(--masagi-shadow);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.stat-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 13px 30px rgba(20, 33, 61, 0.10);
+}
+
+
+.stat-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 6px;
+
+    border-radius:
+        18px 0 0 18px;
+}
+
+
+.total-card::before {
+    background: var(--masagi-blue);
+}
+
+
+.sudah-card::before {
+    background: var(--masagi-green-light);
+}
+
+
+.belum-card::before {
+    background: var(--masagi-red);
+}
+
+
+/* Icon bulat */
+
+.stat-icon {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+
+.blue-icon {
+    color: #1667af;
+    background: #e6f1fc;
+}
+
+
+.green-icon {
+    color: #138649;
+    background: #e4f6ea;
+}
+
+
+.red-icon {
+    color: #f53240;
+    background: #fee9eb;
+}
+
+
+/* isi card */
+
+.stat-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+.stat-title {
+    margin:
+        2px 0 8px;
+
+    color:
+        var(--masagi-navy);
+
+    font-size: 18px;
+    font-weight: 650;
+}
+
+
+.stat-content h2 {
+    margin: 0;
+
+    color:
+        var(--masagi-navy);
+
+    font-size: 42px;
+    line-height: 1.05;
+}
+
+
+.stat-content span {
+    display: block;
+
+    margin-top: 10px;
+
+    color:
+        var(--masagi-text-secondary);
+
+    font-size: 15px;
+}
+
+
+/* watermark icon */
+
+.stat-watermark {
+    position: absolute;
+
+    right: 25px;
+    bottom: 14px;
+
+    font-size: 70px;
+
+    opacity: 0.10;
+
+    pointer-events: none;
+}
+
+
+.total-card .stat-watermark {
+    color: var(--masagi-blue);
+}
+
+
+.sudah-card .stat-watermark {
+    color: var(--masagi-green-light);
+}
+
+
+.belum-card .stat-watermark {
+    color: var(--masagi-red);
+}
+
+
+/* =====================================================
+   CHART CONTAINER
+===================================================== */
+
+.chart-container,
+.chart-card,
+.dashboard-chart {
+    background:
+        rgba(255, 255, 255, 0.95);
+
+    border:
+        1px solid var(--masagi-border);
+
+    border-radius:
+        var(--masagi-radius);
+
+    box-shadow:
+        var(--masagi-shadow);
+}
+
+
+/* jika dua chart berada dalam satu container */
+
+.charts-section {
+    overflow: hidden;
+
+    background:
+        rgba(255, 255, 255, 0.95);
+
+    border:
+        1px solid var(--masagi-border);
+
+    border-radius:
+        var(--masagi-radius);
+
+    box-shadow:
+        var(--masagi-shadow);
+}
+
+
+/* =====================================================
+   CHART TITLES
+===================================================== */
+
+.chart-title,
+.chart-container h2,
+.chart-container h3,
+.dashboard-chart h2,
+.dashboard-chart h3 {
+
+    color:
+        var(--masagi-navy);
+
+    font-weight: 700;
+
+    letter-spacing:
+        -0.3px;
+}
+
+
+/* =====================================================
+   MODAL QR
+===================================================== */
+
+.modal-content,
+.qr-modal-content {
+    border-radius:
+        20px;
+
+    border:
+        1px solid var(--masagi-border);
+
+    box-shadow:
+        0 20px 55px rgba(20, 33, 61, 0.18);
+}
+
+
+/* =====================================================
+   EXIT
+===================================================== */
+
+.exit-button,
+.sidebar .exit-btn {
+    color:
+        var(--masagi-red);
+}
+
+
+.exit-button:hover,
+.sidebar .exit-btn:hover {
+    background:
+        #fff0f1;
+
+    color:
+        #d92734;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .stats-grid {
+        gap: 16px;
+    }
+
+    .stat-card {
+        padding: 22px;
+    }
+
+    .stat-content h2 {
+        font-size: 36px;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    body {
+        background: #f4f9f6;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+
+        margin:
+            14px 14px 20px;
+    }
+
+
+    .stat-card {
+        min-height: 120px;
+
+        padding:
+            19px 20px;
+    }
+
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+
+        font-size: 22px;
+    }
+
+
+    .stat-title {
+        font-size: 16px;
+    }
+
+
+    .stat-content h2 {
+        font-size: 34px;
+    }
+
+
+    .stat-content span {
+        font-size: 13px;
+    }
+
+
+    .stat-watermark {
+        right: 15px;
+        bottom: 5px;
+
+        font-size: 60px;
+    }
+
+
+    .chart-container,
+    .chart-card,
+    .dashboard-chart,
+    .charts-section {
+
+        border-radius: 15px;
+
+        box-shadow:
+            0 5px 15px rgba(20, 33, 61, 0.06);
+    }
+
+}

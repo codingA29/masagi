@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Laporan MASAGI
+    </title>
+
+
+    <link
+        rel="stylesheet"
+        href="../style/style.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f9f6;
+            color: #14213d;
+        }
+
+
+        .laporan-page {
+            width: 100%;
+            min-height: 100vh;
+            padding: 28px 32px 45px;
+        }
+
+
+        .top-actions {
+            margin-bottom: 18px;
+        }
+
+
+        .btn-back-dashboard {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 0 18px;
+
+            background: #eaf7ef;
+            color: #087c48;
+
+            text-decoration: none;
+            font-weight: 700;
+
+            border-radius: 12px;
+        }
+
+
+        .laporan-card {
+            background: #ffffff;
+
+            border:
+                1px solid #dfe8e3;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(20, 33, 61, 0.07);
+
+            padding:
+                28px 30px 30px;
+        }
+
+
+        .laporan-header {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-end;
+
+            gap: 25px;
+
+            margin-bottom: 24px;
+        }
+
+
+        .admin-badge {
+            display: inline-block;
+
+            margin-bottom: 8px;
+
+            padding:
+                5px 12px;
+
+            background: #e5f5eb;
+
+            color: #087c48;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.3px;
+        }
+
+
+        .laporan-title h1 {
+            margin:
+                0 0 6px;
+
+            font-size: 30px;
+
+            color: #14213d;
+        }
+
+
+        .laporan-title p {
+            margin: 0;
+
+            color: #667085;
+
+            font-size: 14px;
+        }
+
+
+        .summary-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 16px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .summary-card {
+            background: #ffffff;
+
+            border:
+                1px solid #dfe8e3;
+
+            border-radius: 15px;
+
+            padding: 18px 20px;
+
+            box-shadow:
+                0 5px 15px
+                rgba(20, 33, 61, 0.05);
+        }
+
+
+        .summary-card span {
+            display: block;
+
+            color: #667085;
+
+            font-size: 13px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .summary-card strong {
+            color: #14213d;
+
+            font-size: 25px;
+        }
+
+
+        .summary-card.timbulan {
+            border-left:
+                5px solid #f1c40f;
+        }
+
+
+        .summary-card.kk {
+            border-left:
+                5px solid #2f80ed;
+        }
+
+
+        .summary-card.jiwa {
+            border-left:
+                5px solid #168a52;
+        }
+
+
+        .summary-card.rumah {
+            border-left:
+                5px solid #20aa59;
+        }
+
+
+        .table-wrapper {
+            width: 100%;
+
+            overflow-x: auto;
+
+            border:
+                1px solid #e2e9e5;
+
+            border-radius: 14px;
+        }
+
+
+        .laporan-table {
+            width: 100%;
+
+            min-width: 850px;
+
+            border-collapse: collapse;
+
+            background: #ffffff;
+        }
+
+
+        .laporan-table thead {
+            background: #edf6f1;
+        }
+
+
+        .laporan-table th {
+            padding: 16px 14px;
+
+            color: #173229;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            text-align: center;
+
+            border-bottom:
+                1px solid #dfe8e3;
+        }
+
+
+        .laporan-table td {
+            padding: 15px 14px;
+
+            border-bottom:
+                1px solid #e8ecea;
+
+            color: #14213d;
+
+            font-size: 14px;
+
+            text-align: right;
+        }
+
+
+        .laporan-table td:first-child {
+            text-align: center;
+            font-weight: 700;
+        }
+
+
+        .laporan-table tbody tr:hover {
+            background: #f9fcfa;
+        }
+
+
+        .laporan-table tfoot {
+            background: #fffbe6;
+        }
+
+
+        .laporan-table tfoot td {
+            font-weight: 800;
+
+            border-top:
+                2px solid #e3d55b;
+        }
+
+
+        .laporan-table tfoot td:first-child {
+            text-align: center;
+        }
+
+
+        .highlight-timbulan {
+            background: #fff700;
+        }
+
+
+        .laporan-note {
+            margin-top: 15px;
+
+            padding: 14px 16px;
+
+            background: #f7faf8;
+
+            border-radius: 10px;
+
+            color: #667085;
+
+            font-size: 13px;
+        }
+
+
+        @media (max-width: 900px) {
+
+            .laporan-page {
+                padding:
+                    18px 14px 30px;
+            }
+
+
+            .laporan-card {
+                padding:
+                    20px 16px;
+            }
+
+
+            .laporan-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+
+            .summary-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .summary-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .laporan-title h1 {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="laporan-page">
+
+
+    <div class="top-actions">
+
+        <a
+            href="../index.html"
+            class="btn-back-dashboard">
+
+            ← Dashboard
+
+        </a>
+
+    </div>
+
+
+    <section class="laporan-card">
+
+
+        <div class="laporan-header">
+
+
+            <div class="laporan-title">
+
+
+                <span class="admin-badge">
+
+                    ADMIN MASAGI
+
+                </span>
+
+
+                <h1>
+
+                     Laporan Timbulan Sampah
+
+                </h1>
+
+
+                <p>
+
+                    Rekap jumlah penduduk, rumah,
+                    dan potensi timbulan sampah
+                    Kelurahan Sukaluyu
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ==========================================
+             RINGKASAN
+        =========================================== -->
+
+        <div class="summary-grid">
+
+
+            <div class="summary-card kk">
+
+                <span>
+                    Total KK
+                </span>
+
+                <strong id="totalKK">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card jiwa">
+
+                <span>
+                    Total Jiwa
+                </span>
+
+                <strong id="totalJiwa">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card rumah">
+
+                <span>
+                    Total Rumah
+                </span>
+
+                <strong id="totalRumahLaporan">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card timbulan">
+
+                <span>
+                    Potensi Timbulan Sampah
+                </span>
+
+                <strong id="totalTimbulan">
+                    0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ==========================================
+             TABEL LAPORAN
+        =========================================== -->
+
+        <div class="table-wrapper">
+
+
+            <table class="laporan-table">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            RW
+                        </th>
+
+                        <th>
+                            Jumlah KK
+                        </th>
+
+                        <th>
+                            Jumlah Jiwa
+                        </th>
+
+                        <th>
+                            Jumlah Rumah
+                        </th>
+
+                        <th>
+                            Potensi Timbulan Sampah
+                            <br>
+                            (Kg/hari)
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="laporanBody">
+
+                </tbody>
+
+
+                <tfoot>
+
+                    <tr>
+
+                        <td>
+                            Jumlah
+                        </td>
+
+                        <td id="footerKK">
+                            0
+                        </td>
+
+                        <td id="footerJiwa">
+                            0
+                        </td>
+
+                        <td id="footerRumah">
+                            0
+                        </td>
+
+                        <td
+                            id="footerTimbulan"
+                            class="highlight-timbulan">
+
+                            0
+
+                        </td>
+
+                    </tr>
+
+                </tfoot>
+
+
+            </table>
+
+
+        </div>
+
+
+        <div class="laporan-note">
+
+            Data ini merupakan rekap wilayah
+            per RW yang digunakan sebagai
+            informasi pendukung monitoring
+            pengelolaan sampah MASAGI.
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+
+
+<script
+    src="../data/supabase.js">
+</script>
+
+
+<script
+    src="../data/auth.js">
+</script>
+
+
+<script>
+
+    cekLogin();
+
+</script>
+
+
+<!-- =====================================================
+     DATA LAPORAN
+===================================================== -->
+
+<script
+    src="../data/data-laporan.js">
+</script>
+
+
+<!-- =====================================================
+     JAVASCRIPT LAPORAN
+===================================================== -->
+
+<script>
+
+
+function formatAngkaIndonesia(
+    angka
+) {
+
+    return Number(
+        angka
+    ).toLocaleString(
+        "id-ID"
+    );
+
+}
+
+
+
+function formatDesimalIndonesia(
+    angka
+) {
+
+    return Number(
+        angka
+    ).toLocaleString(
+        "id-ID",
+        {
+            minimumFractionDigits:
+                2,
+
+            maximumFractionDigits:
+                2
+        }
+    );
+
+}
+
+
+
+function renderLaporan() {
+
+
+    const tbody =
+        document.getElementById(
+            "laporanBody"
+        );
+
+
+    tbody.innerHTML =
+        "";
+
+
+    let totalKK =
+        0;
+
+
+    let totalJiwa =
+        0;
+
+
+    let totalRumah =
+        0;
+
+
+    let totalTimbulan =
+        0;
+
+
+
+    dataLaporan.forEach(
+        data => {
+
+
+            totalKK +=
+                data.jumlahKK;
+
+
+            totalJiwa +=
+                data.jumlahJiwa;
+
+
+            totalRumah +=
+                data.jumlahRumah;
+
+
+            totalTimbulan +=
+                data.potensiTimbulan;
+
+
+
+            const tr =
+                document.createElement(
+                    "tr"
+                );
+
+
+            tr.innerHTML = `
+
+                <td>
+
+                    RW ${data.rw}
+
+                </td>
+
+
+                <td>
+
+                    ${formatAngkaIndonesia(
+                        data.jumlahKK
+                    )}
+
+                </td>
+
+
+                <td>
+
+                    ${formatAngkaIndonesia(
+                        data.jumlahJiwa
+                    )}
+
+                </td>
+
+
+                <td>
+
+                    ${formatAngkaIndonesia(
+                        data.jumlahRumah
+                    )}
+
+                </td>
+
+
+                <td class="highlight-timbulan">
+
+                    ${formatDesimalIndonesia(
+                        data.potensiTimbulan
+                    )}
+
+                </td>
+
+            `;
+
+
+            tbody.appendChild(
+                tr
+            );
+
+
+        }
+    );
+
+
+
+    document.getElementById(
+        "totalKK"
+    ).textContent =
+        formatAngkaIndonesia(
+            totalKK
+        );
+
+
+
+    document.getElementById(
+        "totalJiwa"
+    ).textContent =
+        formatAngkaIndonesia(
+            totalJiwa
+        );
+
+
+
+    document.getElementById(
+        "totalRumahLaporan"
+    ).textContent =
+        formatAngkaIndonesia(
+            totalRumah
+        );
+
+
+
+    document.getElementById(
+        "totalTimbulan"
+    ).textContent =
+        formatDesimalIndonesia(
+            totalTimbulan
+        ) +
+        " Kg/hari";
+
+
+
+    document.getElementById(
+        "footerKK"
+    ).textContent =
+        formatAngkaIndonesia(
+            totalKK
+        );
+
+
+
+    document.getElementById(
+        "footerJiwa"
+    ).textContent =
+        formatAngkaIndonesia(
+            totalJiwa
+        );
+
+
+
+    document.getElementById(
+        "footerRumah"
+    ).textContent =
+        formatAngkaIndonesia(
+            totalRumah
+        );
+
+
+
+    document.getElementById(
+        "footerTimbulan"
+    ).textContent =
+        formatDesimalIndonesia(
+            totalTimbulan
+        );
+
+}
+
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+
+        if (
+            typeof dataLaporan ===
+            "undefined"
+        ) {
+
+
+            console.error(
+                "dataLaporan tidak ditemukan."
+            );
+
+
+            return;
+
+        }
+
+
+        renderLaporan();
+
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
