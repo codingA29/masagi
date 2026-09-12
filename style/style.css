@@ -4665,3 +4665,1181 @@ body {
     }
 
 }
+
+/* =====================================================
+   11 INDIKATOR - UKURAN SERAGAM
+   Tempel di PALING BAWAH style/style.css
+===================================================== */
+
+
+/* =====================================================
+   GRID KARTU
+===================================================== */
+
+.stats-grid,
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: stretch;
+}
+
+
+/* =====================================================
+   SEMUA KARTU UKURANNYA SAMA
+===================================================== */
+
+.stat-card,
+.summary-card {
+    width: 100%;
+
+    height: 128px;
+    min-height: 128px;
+
+    padding: 20px 18px;
+
+    border-radius: 16px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3ebe6;
+
+    overflow: hidden;
+
+    position: relative;
+
+    box-shadow:
+        0 5px 18px
+        rgba(16, 74, 43, 0.06);
+}
+
+
+/* =====================================================
+   GARIS WARNA KIRI
+===================================================== */
+
+.stat-card::before,
+.summary-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 5px;
+    height: 100%;
+
+    border-radius: 16px 0 0 16px;
+}
+
+
+/* TOTAL RUMAH */
+
+.total-card::before {
+    background: #2f80ed;
+}
+
+
+/* SUDAH MEMILAH */
+
+.sudah-card::before {
+    background: #27ae60;
+}
+
+
+/* BELUM MEMILAH */
+
+.belum-card::before {
+    background: #ff3344;
+}
+
+
+/* TOTAL KK */
+
+.card-kk::before,
+.card-blue::before {
+    background: #2f80ed;
+}
+
+
+/* TOTAL JIWA */
+
+.card-jiwa::before,
+.card-green::before {
+    background: #00a896;
+}
+
+
+/* POTENSI TIMBULAN */
+
+.card-timbulan::before,
+.card-yellow::before {
+    background: #f2c200;
+}
+
+
+/* ORGANIK */
+
+.card-organik::before {
+    background: #27ae60;
+}
+
+
+/* NONORGANIK */
+
+.card-nonorganik::before {
+    background: #2f80ed;
+}
+
+
+/* ANORGANIK */
+
+.card-anorganik::before {
+    background: #f29900;
+}
+
+
+/* MINYAK JELANTAH */
+
+.card-jelantah::before {
+    background: #8e5cf6;
+}
+
+
+/* =====================================================
+   UKURAN ICON SEMUA KARTU
+===================================================== */
+
+.stat-icon,
+.summary-icon,
+.masagi-card-icon {
+    width: 46px;
+    height: 46px;
+
+    min-width: 46px;
+    min-height: 46px;
+
+    flex: 0 0 46px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+}
+
+
+.stat-icon svg,
+.summary-icon svg,
+.masagi-card-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* =====================================================
+   AREA TEKS KARTU
+===================================================== */
+
+.stat-content,
+.summary-card > div:last-child,
+.masagi-card-content {
+    min-width: 0;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+/* =====================================================
+   JUDUL KARTU
+===================================================== */
+
+.stat-title,
+.summary-title,
+.masagi-card-title {
+    margin: 0 0 5px 0;
+
+    color: #071b3b;
+
+    font-size: 13px;
+
+    line-height: 1.25;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   ANGKA UTAMA
+===================================================== */
+
+.stat-content h2,
+.summary-card h2,
+.masagi-card-content h2 {
+    margin: 0;
+
+    color: #071b3b;
+
+    font-size: 27px;
+
+    line-height: 1.05;
+
+    font-weight: 800;
+}
+
+
+/* =====================================================
+   KETERANGAN KECIL
+===================================================== */
+
+.stat-content > span,
+.summary-card > div:last-child > span,
+.masagi-card-content > span {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #778296;
+
+    font-size: 11px;
+
+    line-height: 1.2;
+}
+
+
+/* =====================================================
+   ANGKA + SATUAN
+   contoh: 5.510,38 Kg/hari
+===================================================== */
+
+.value-with-unit,
+.masagi-value-unit {
+    display: flex;
+
+    align-items: baseline;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+}
+
+
+.value-with-unit h2,
+.masagi-value-unit h2 {
+    margin: 0;
+}
+
+
+.value-with-unit strong,
+.masagi-value-unit .value-unit {
+    color: #778296;
+
+    font-size: 10px;
+
+    font-weight: 500;
+}
+
+
+/* =====================================================
+   WATERMARK ICON
+===================================================== */
+
+.stat-watermark,
+.masagi-card-watermark {
+    position: absolute;
+
+    right: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    opacity: 0.08;
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   WARNA BACKGROUND ICON
+===================================================== */
+
+
+/* BIRU */
+
+.blue-icon,
+.summary-icon.blue,
+.icon-blue {
+    background: #e8f2ff;
+
+    color: #2f80ed;
+}
+
+
+/* HIJAU */
+
+.green-icon,
+.summary-icon.organik,
+.icon-organik,
+.icon-green {
+    background: #e6f7ed;
+
+    color: #219653;
+}
+
+
+/* MERAH */
+
+.red-icon {
+    background: #ffe9eb;
+
+    color: #ff3344;
+}
+
+
+/* TOSCA */
+
+.summary-icon.green,
+.icon-teal {
+    background: #e5f7f4;
+
+    color: #009688;
+}
+
+
+/* KUNING */
+
+.summary-icon.yellow,
+.icon-yellow {
+    background: #fff5d9;
+
+    color: #e2aa00;
+}
+
+
+/* ORANYE */
+
+.summary-icon.orange,
+.icon-orange {
+    background: #fff0dd;
+
+    color: #f29900;
+}
+
+
+/* UNGU */
+
+.summary-icon.purple,
+.icon-purple {
+    background: #f1eaff;
+
+    color: #8855e6;
+}
+
+
+/* =====================================================
+   HOVER KARTU
+===================================================== */
+
+.stat-card,
+.summary-card {
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.stat-card:hover,
+.summary-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 22px
+        rgba(16, 74, 43, 0.09);
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1200px) {
+
+    .stats-grid,
+    .summary-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =====================================================
+   HP
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .stats-grid,
+    .summary-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+
+    .stat-card,
+    .summary-card {
+        height: 112px;
+
+        min-height: 112px;
+
+        padding: 14px 12px;
+
+        gap: 10px;
+
+        border-radius: 13px;
+    }
+
+
+    .stat-card::before,
+    .summary-card::before {
+        border-radius:
+            13px 0 0 13px;
+    }
+
+
+    .stat-icon,
+    .summary-icon,
+    .masagi-card-icon {
+        width: 39px;
+        height: 39px;
+
+        min-width: 39px;
+        min-height: 39px;
+
+        flex-basis: 39px;
+
+        font-size: 17px;
+    }
+
+
+    .stat-icon svg,
+    .summary-icon svg,
+    .masagi-card-icon svg {
+        width: 21px;
+
+        height: 21px;
+    }
+
+
+    .stat-title,
+    .summary-title,
+    .masagi-card-title {
+        font-size: 11px;
+    }
+
+
+    .stat-content h2,
+    .summary-card h2,
+    .masagi-card-content h2 {
+        font-size: 22px;
+    }
+
+
+    .stat-content > span,
+    .summary-card > div:last-child > span,
+    .masagi-card-content > span {
+        margin-top: 5px;
+
+        font-size: 9px;
+    }
+
+
+    .stat-watermark,
+    .masagi-card-watermark {
+        display: none;
+    }
+
+}
+
+
+/* =====================================================
+   HP KECIL
+===================================================== */
+
+@media (max-width: 430px) {
+
+    .stats-grid,
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .stat-card,
+    .summary-card {
+        height: 105px;
+
+        min-height: 105px;
+    }
+
+}
+
+/* =====================================================
+   FINAL LAYOUT INDIKATOR MASAGI
+   3 KARTU + 3 KARTU + 4 KARTU
+   FULL WIDTH TANPA RUANG KOSONG
+===================================================== */
+
+
+/* =====================================================
+   CONTAINER UTAMA
+===================================================== */
+
+.indikator-dashboard {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+
+/* =====================================================
+   SETIAP BARIS
+===================================================== */
+
+.indikator-row {
+    width: 100%;
+
+    display: grid;
+
+    gap: 16px;
+
+    margin-bottom: 16px;
+
+    align-items: stretch;
+}
+
+
+/* =====================================================
+   BARIS 1 DAN 2
+   MASING-MASING 3 KARTU
+===================================================== */
+
+.indikator-row-3 {
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+}
+
+
+/* =====================================================
+   BARIS 3
+   4 KARTU
+===================================================== */
+
+.indikator-row-4 {
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+}
+
+
+/* =====================================================
+   KARTU
+===================================================== */
+
+.indikator-card {
+    position: relative;
+
+    width: 100%;
+    height: 130px;
+
+    min-width: 0;
+
+    padding: 20px 20px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background: #ffffff;
+
+    border:
+        1px solid #e1e9e5;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 17px
+        rgba(
+            18,
+            68,
+            45,
+            0.055
+        );
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.indikator-card:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 22px
+        rgba(
+            18,
+            68,
+            45,
+            0.09
+        );
+}
+
+
+/* =====================================================
+   GARIS WARNA KIRI
+===================================================== */
+
+.indikator-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 5px;
+    height: 100%;
+}
+
+
+/* TOTAL RUMAH */
+
+.total-card::before {
+    background:
+        #2f80ed;
+}
+
+
+/* SUDAH MEMILAH */
+
+.sudah-card::before {
+    background:
+        #20aa5a;
+}
+
+
+/* BELUM MEMILAH */
+
+.belum-card::before {
+    background:
+        #ff3344;
+}
+
+
+/* TOTAL KK */
+
+.card-kk::before {
+    background:
+        #2f80ed;
+}
+
+
+/* TOTAL JIWA */
+
+.card-jiwa::before {
+    background:
+        #00a595;
+}
+
+
+/* TIMBULAN */
+
+.card-timbulan::before {
+    background:
+        #eeb600;
+}
+
+
+/* ORGANIK */
+
+.card-organik::before {
+    background:
+        #20aa5a;
+}
+
+
+/* NONORGANIK */
+
+.card-nonorganik::before {
+    background:
+        #2f80ed;
+}
+
+
+/* ANORGANIK */
+
+.card-anorganik::before {
+    background:
+        #f39200;
+}
+
+
+/* MINYAK JELANTAH */
+
+.card-jelantah::before {
+    background:
+        #8755ee;
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.indikator-icon {
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
+    flex:
+        0 0 48px;
+
+    border-radius:
+        50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.indikator-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* =====================================================
+   WARNA ICON
+===================================================== */
+
+.icon-blue {
+    background:
+        #e8f2ff;
+
+    color:
+        #2f80ed;
+}
+
+
+.icon-green {
+    background:
+        #e5f7ed;
+
+    color:
+        #169952;
+}
+
+
+.icon-red {
+    background:
+        #ffe8eb;
+
+    color:
+        #ff3344;
+}
+
+
+.icon-teal {
+    background:
+        #e4f7f3;
+
+    color:
+        #009b8b;
+}
+
+
+.icon-yellow {
+    background:
+        #fff4d7;
+
+    color:
+        #e0a600;
+}
+
+
+.icon-orange {
+    background:
+        #fff0dd;
+
+    color:
+        #ef9000;
+}
+
+
+.icon-purple {
+    background:
+        #f1eaff;
+
+    color:
+        #7f4fee;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.indikator-content {
+    flex: 1;
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+/* =====================================================
+   JUDUL
+===================================================== */
+
+.indikator-title {
+    margin:
+        0 0 6px;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.2;
+
+    font-weight:
+        700;
+
+    color:
+        #071a39;
+}
+
+
+/* =====================================================
+   ANGKA
+===================================================== */
+
+.indikator-content h2 {
+    margin: 0;
+
+    color:
+        #001738;
+
+    font-size:
+        29px;
+
+    line-height:
+        1.05;
+
+    font-weight:
+        800;
+}
+
+
+/* =====================================================
+   KETERANGAN
+===================================================== */
+
+.indikator-content > span,
+.indikator-content > small {
+    display:
+        block;
+
+    margin-top:
+        7px;
+
+    color:
+        #607089;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.2;
+}
+
+
+/* =====================================================
+   ANGKA + SATUAN
+===================================================== */
+
+.indikator-value-unit {
+    display: flex;
+
+    align-items:
+        baseline;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        6px;
+}
+
+
+.indikator-value-unit h2 {
+    margin: 0;
+}
+
+
+.indikator-value-unit span {
+    color:
+        #718096;
+
+    font-size:
+        10px;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =====================================================
+   WATERMARK
+===================================================== */
+
+.indikator-watermark {
+    position:
+        absolute;
+
+    right:
+        18px;
+
+    top:
+        50%;
+
+    transform:
+        translateY(-50%);
+
+    opacity:
+        0.08;
+
+    pointer-events:
+        none;
+}
+
+
+.indikator-watermark svg {
+    width:
+        63px;
+
+    height:
+        63px;
+}
+
+
+/* =====================================================
+   DESKTOP SEDANG
+===================================================== */
+
+@media
+(max-width: 1200px) {
+
+    .indikator-card {
+        height:
+            120px;
+
+        padding:
+            17px;
+    }
+
+
+    .indikator-content h2 {
+        font-size:
+            25px;
+    }
+
+
+    .indikator-title {
+        font-size:
+            12px;
+    }
+
+
+    .indikator-icon {
+        width:
+            43px;
+
+        height:
+            43px;
+
+        min-width:
+            43px;
+
+        flex-basis:
+            43px;
+    }
+
+
+    .indikator-icon svg {
+        width:
+            22px;
+
+        height:
+            22px;
+    }
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media
+(max-width: 900px) {
+
+    .indikator-row-3,
+    .indikator-row-4 {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .indikator-card {
+        height:
+            115px;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media
+(max-width: 600px) {
+
+    .indikator-row {
+        gap:
+            10px;
+
+        margin-bottom:
+            10px;
+    }
+
+
+    .indikator-row-3,
+    .indikator-row-4 {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .indikator-card {
+        height:
+            105px;
+
+        padding:
+            14px;
+
+        gap:
+            11px;
+
+        border-radius:
+            13px;
+    }
+
+
+    .indikator-icon {
+        width:
+            40px;
+
+        height:
+            40px;
+
+        min-width:
+            40px;
+
+        flex-basis:
+            40px;
+    }
+
+
+    .indikator-icon svg {
+        width:
+            21px;
+
+        height:
+            21px;
+    }
+
+
+    .indikator-title {
+        margin-bottom:
+            4px;
+
+        font-size:
+            11px;
+    }
+
+
+    .indikator-content h2 {
+        font-size:
+            23px;
+    }
+
+
+    .indikator-content > span,
+    .indikator-content > small,
+    .indikator-value-unit span {
+        font-size:
+            9px;
+    }
+
+
+    .indikator-watermark {
+        display:
+            none;
+    }
+
+}
